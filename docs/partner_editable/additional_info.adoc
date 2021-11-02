@@ -21,6 +21,7 @@
 // If post-deployment steps are required, add them here. If not, remove the heading
 
 .Below are some sample QuickSight Dashboards built using the sample AMC datasets:
+For more detailed configuration steps of the QuickSight dahboards, review the document located link:../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[here]
 
 * Audience Analysis
 ** This dashboard provides analysis on audience segments targeted by the customer and also details of audience segments that user was a part of but not targeted for purchases of customer products on Amazon.
@@ -32,6 +33,7 @@
 ** This dashboard provides analysis on performance data by geographic location (e.g.DMA) for purchases of assigned customer products on Amazon.
 * Product Mix Analysis
 ** This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.
+
 
 //== Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
