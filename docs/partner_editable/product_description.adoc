@@ -2,4 +2,14 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-<Describe how the software works on AWS.>
+This Quick Start deploys the AMC Analytics Delivery Kit, which contains the following four modules:
+
+* *Serverless Datalake Framework (DDK)*: This module is based on the open-source https://github.com/awslabs/aws-serverless-data-lake-framework[Serverless Data Lake Framework (SDLF)^] of AWS Professional Services and configured to process advertising-related datasets in AMC. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/tree/doc-edits/DataLake/ServerlessDatalakeFramework/aws-serverless-data-lake-framework#readme[Serverless Datalake Framework (SDF)^].
+
+* *Tenant Provisioning Service*: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/doc-edits/CustomerManagementService/TenantProvisioningService/sdlf-tps-pipeline/README.md[Tenant Provisioning Service (Client Manager MicroService)^].
+
+* *Workflow Management Service*: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/doc-edits/DataLakeHydrationMicroservices/WorkflowManagerService/sdlf-wfm-pipeline/README.md[Workflow Management Service^].
+
+* *Platform Notebook Manager*: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/doc-edits/PlatformManagementNotebooks/README.md[Platform Notebook Manager^].
+
+For more information about AMC, see https://advertising.amazon.com/solutions/products/amazon-marketing-cloud[Amazon Marketing Cloud^].

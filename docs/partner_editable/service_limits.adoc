@@ -1,14 +1,25 @@
 // Replace the <n> in each row to specify the number of resources used in this deployment. Remove the rows for resources that aren’t used.
 |===
-|Resource |This deployment uses
-
+|Resource
+// TODO 
 // Space needed to maintain table headers
-|VPCs |<n>
-|Elastic IP addresses |<n>
-|Security groups |<n>
-|AWS Identity and Access Management (IAM) roles |<n>
-|Auto Scaling groups |<n>
-|Application Load Balancers |<n>
-|Network Load Balancers |<n>
-|<type> instances |<n>
+|Amazon Simple Storage Service (S3) buckets
+|AWS KMS
+|Amazon DynamoDB
+|AWS Lambda
+|Amazon SNS
+|Amazon SQS
+|AWS Systems Manager
+|AWS Glue Jobs
+|AWS Lake Formation
+|AWS Glue Catalog
+|AWS CloudFormation Stacks
+|AWS Identity and Access Management (IAM) roles
+|Amazon CloudWatch Log Group 
+|AWS CodeCommit Repository
+|AWS CodePipeline Pipeline
+|AWS CodeBuild Projects
+|Amazon Athena
+|Amazon SageMaker Notebook
+|Amazon QuickSight (https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/tree/main/docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[dashboard setup guide available^]
 |===

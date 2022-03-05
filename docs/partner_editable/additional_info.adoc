@@ -3,21 +3,49 @@
 
 == Test the deployment
 // If steps are required to test the deployment, add them here. If not, remove the heading
+* Monitor the link:https://console.aws.amazon.com/cloudformation/home?region=us-east-1[AWS CloudFormation], link:https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1[AWS CodeBuild] and link:https://console.aws.amazon.com/codesuite/codepipeline/pipelines?region=us-east-1[AWS CodePipeline] in us-east-1 region and should not have any errors or failures. It will take approximate 90 minutes.
+
+
+* Once finished go to link:https://console.aws.amazon.com/athena/home?region=us-east-1[Amazon Athena] link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html[switch the role] on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.
+
+
+* Run the below queries to explore the sample AMC datasets
+
+** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_audience_analysis_adhoc" limit 10;
+** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_device_exposure_adhoc" limit 10;
+** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_frequency_distribution_adhoc" limit 10;
+** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_geo_analysis_adhoc" limit 10;
+** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_product_mix_adhoc" limit 10;
 
 == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
 
-== Best practices for using {partner-product-short-name} on AWS
+.Below are some sample QuickSight Dashboards built using the sample AMC datasets:
+For more detailed configuration steps of the QuickSight dahboards, review the document located link:../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[here]
+
+* Audience Analysis
+** This dashboard provides analysis on audience segments targeted by the customer and also details of audience segments that user was a part of but not targeted for purchases of customer products on Amazon.
+* Frequency Distribution
+** This dashboard provides analysis on performance and delivery by different frequencies/impression exposures to help optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on Amazon.
+* Device Exposure
+** This dashboard helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types (e.g., TV, Mobile, PC, Tablet) for purchases of assigned customer products on Amazon.
+* Geo Analysis
+** This dashboard provides analysis on performance data by geographic location (e.g.DMA) for purchases of assigned customer products on Amazon.
+* Product Mix Analysis
+** This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.
+
+
+//== Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-_Add any best practices for using the software._
+//_Add any best practices for using the software._
 
-== Security
+//== Security
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
 
-_Add any security-related information._
+//_Add any security-related information._
 
-== Other useful information
+//== Other useful information
 //Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs from on-premises usage.
 
-_Add any other details that will help the customer use the software on AWS._
+//_Add any other details that will help the customer use the software on AWS._

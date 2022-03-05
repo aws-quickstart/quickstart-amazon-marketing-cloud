@@ -3,4 +3,27 @@
 // Include links if helpful. 
 // You don't need to list AWS services or point to general info about AWS; the boilerplate already covers this.
 
-This Quick Start also assumes familiarity with <knowledge expectations specific to this Quick Start>.
+This Quick Start also assumes familiarity with the following AWS services and related frameworks:
+
+* link:https://github.com/awslabs/aws-serverless-data-lake-framework[aws-serverless-data-lake-framework^]
+** link:https://aws.amazon.com/codebuild/[AWS CodeBuild^]
+** link:https://aws.amazon.com/codepipeline/[AWS CodePipeline^]
+
+* Tenant Provisioning and Workflow Management
+** link:https://aws.amazon.com/lambda/[AWS Lambda^]
+** link:https://aws.amazon.com/s3/[Amazon S3^]
+** link:https://aws.amazon.com/cloudwatch/[Amazon CloudWatch^]
+** link:https://aws.amazon.com/dynamodb/[Amazon DynamoDB^]
+** link:https://aws.amazon.com/iam/[AWS Identity and Access Management (IAM)^]
+** link:https://aws.amazon.com/step-functions/[AWS Step Functions^]
+** link:https://aws.amazon.com/sqs/[Amazon Simple Queue Service^]
+** link:https://aws.amazon.com/sns/[Amazon Simple Notification Service^]
+** link:https://aws.amazon.com/kms/[AWS Key Management Service (AWS KMS)^]
+
+* Platform management notebooks
+** link:https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html[Amazon Sagemaker Notebook instance^]
+** link:https://aws.amazon.com/kms/[AWS Key Management Service (KMS)^]
+
+* Other analysis services
+** link:https://aws.amazon.com/quicksight/[Amazon Quicksight^]
+** link:https://aws.amazon.com/athena[Amazon Athena^]
