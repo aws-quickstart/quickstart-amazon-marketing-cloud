@@ -21,5 +21,5 @@
 |AWS CodeBuild Projects
 |Amazon Athena
 |Amazon SageMaker Notebook
-|Amazon QuickSight (https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/tree/main/docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[dashboard setup guide available^]
+|Amazon QuickSight (link:../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[dashboard setup guide available^]
 |===
