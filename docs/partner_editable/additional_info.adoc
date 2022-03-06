@@ -80,6 +80,11 @@ untargeted audience segments show strong performance – learning more about our
 target for potential new customers. This can be used for building better customer profiles, new creative messaging,
 campaign construction, etc.
 
+## Visual Details:
+This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.
+
+Query used for the visual: <<INSERT-LINK-TO-SQL>>
+
 === Use Case 2: Frequency Distribution
 This use case gives an analysis of performance and delivery by different frequencies/impression exposures to help
 optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on
@@ -105,6 +110,11 @@ This section provides potential business outcomes derived from the Frequency Dis
 2. Identify potential campaign level frequency cap maximums by analyzing order level frequency over an extended period
 time instead of analyzing shorter time periods of frequency caps at the line-item level.
 3. Identify opportunities to increase or decrease frequency caps on each device types based on campaign performance
+
+## Visual Details:
+This section provides details on the QuickSight dashboard visuals for the Frequency Distribution use case.
+
+Query used for the visual: <<INSERT-LINK-TO-SQL>>
 
 === Use Case 3: Device Exposure
 This use case helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types
