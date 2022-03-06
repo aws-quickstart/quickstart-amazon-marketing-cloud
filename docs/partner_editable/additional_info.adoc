@@ -21,7 +21,7 @@
 // If post-deployment steps are required, add them here. If not, remove the heading
 
 .Below are some sample QuickSight Dashboards built using the sample AMC datasets:
-For more detailed configuration steps of the QuickSight dahboards, review the document located link:../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[QuickStart Dashboard Setup Guide]
+For more detailed configuration steps of the QuickSight dashboards, review the document located link:../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[QuickStart Dashboard Setup Guide]
 
 * Audience Analysis
 ** This dashboard provides analysis on audience segments targeted by the customer and also details of audience segments that user was a part of but not targeted for purchases of customer products on Amazon.
@@ -34,6 +34,156 @@ For more detailed configuration steps of the QuickSight dahboards, review the do
 * Product Mix Analysis
 ** This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.
 
+== Amazon Marketing Cloud Dashboard Insights
+The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
+The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
+The users can get read only permissions to this dashboard and can view relevant data visuals.
+The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.
+
+=== Overview of Use Cases
+Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment, 5 use cases were created to explore the data from multiple perspectives. QuickSight was used for visualization to highlight the marketing insights provided by the use cases.
+The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The 5 uses cases highlighted in the dashboard are as below:
+1. Audience Analysis
+2. Frequency Distribution
+3. Device Exposure
+4. Geo Analysis
+5. Product Mix Analysis
+
+=== Use Case 1: Audience Analysis
+
+This use case gives the analysis of audience segments targeted by the customer and also details of audience segments
+that user was a part of but not targeted for purchases of customer products on Amazon. It provides KPIs for in-proposal
+Display campaigns like impressions, reach, cost, details by audience segments and campaign. The purchases and revenue
+are provided per product (ASIN) for both the targeted and untargeted audience segments. The impressions,
+reach, purchases and sales number on these charts cannot be added up as one purchaser may fall into multiple audiences.
+Each audience’s performance should be analyzed on its own.
+
+## Key Performance Indicators:
+a. Impressions – Per Audience Segment
+b. Clicks – Per Audience Segment
+c. Reach – Per Audience Segment
+d. Total Cost – Per Audience Segment
+e. Sales tracked (Revenue) – Per Product
+f. Total Sales tracked (Brand Revenue) – Per Product
+g. Conversions – Per Product
+h. Purchases – Per Product
+i. ROAS over Sales tracked (Revenue)– Per Product
+j. ROAS over Total Sales tracked (Brand Revenue) – Per Product
+
+## Business Outcomes:
+This section provides potential business outcomes derived from the Audience analysis use case:
+1. Investigating performance of untargeted audiences helps to discover audience segments that can be added to
+current targeted due to their potential positive impact on performance or scale.
+
+2. Additionally, we can discover more insights into the attributes of our targeted audiences by seeing what other
+untargeted audience segments show strong performance – learning more about our most valued users or audiences to best
+target for potential new customers. This can be used for building better customer profiles, new creative messaging,
+campaign construction, etc.
+
+=== Use Case 2: Frequency Distribution
+This use case gives an analysis of performance and delivery by different frequencies/impression exposures to help
+optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on
+Amazon. It is used to analyze performance across campaigns and device type within multiple frequency buckets from
+reach, impressions, purchases, conversion rate, and ROAS.
+
+## Key Performance Indicators:
+a. Impressions – Per Campaign, Device Type
+b. Reach – Per Campaign, Device Type
+c. Total Cost – Per Campaign, Device Type
+d. Product Sales (Revenue)– Per Campaign, Device Type
+e. Total Product Sales (Brand Revenue) – Per Campaign, Device Type
+f. Conversions – Per Campaign, Device Type
+g. Purchases – Per Campaign, Device Type
+h. Total Purchases – Per Campaign, Device Type
+i. Total Cost – Per Campaign, Device Type
+j. ROAS over Revenue – Per Campaign, Device Type
+k. Frequency Buckets
+
+## Business Outcomes:
+This section provides potential business outcomes derived from the Frequency Distribution use case:
+1. Identify opportunities to increase or decrease frequency caps to improve performance and/or reach over a period of time
+2. Identify potential campaign level frequency cap maximums by analyzing order level frequency over an extended period
+time instead of analyzing shorter time periods of frequency caps at the line-item level.
+3. Identify opportunities to increase or decrease frequency caps on each device types based on campaign performance
+
+=== Use Case 3: Device Exposure
+This use case helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types
+(e.g., TV, Mobile, PC, Tablet) for purchases of assigned customer products on Amazon. It is used to analyze the
+reach overlap across devices and/or exposure path to understand their impact on performance data.
+It helps clients gain visibility into how their users are being served media across their different devices, and the
+associated cost (E.g., how many TV users vs phone users were presented an impression over time). This use highlights
+the targeted device combinations that maximize reach and understand conversion performance for those device combinations
+for returning and new to brand users.
+
+## Key Performance Indicators:
+a. Impressions – Per device path, Campaign
+b. Total Cost – Per device path, Campaign
+c. Reach – Per device path, Campaign
+d. Clicks – Per device path, Campaign
+e. Detail Page View – Per device path, Campaign
+f. Product Sales (Revenue)– Per device path, Campaign
+g. Purchases – Per device path, Campaign
+h. New to brand purchases – Per device path, Campaign
+i. Total Cost – Per device path, Campaign
+j. ROAS over Product Sales (Revenue)– – Per device path, Campaign
+
+## Business Outcomes:
+This section provides potential business outcomes derived from the Device Exposure use case:
+1. Investigate customer’s path to conversion based on different devices vs combination of devices
+(PC, TV, Mobile, Tablet) to understand if there is a pattern that indicates a better chance of conversion,
+further knowledge of upper funnel device impact on conversions that occur on other devices, etc.
+2. Understand the impact of being served advertisements on more than one device (PC, TV, Mobile, Tablet)
+vs only one (e.g., exposed to impressions only on phone vs phone and TV, and any other combination) to better
+understand performance impact of omnichannel targeting.
+3. Optimize Campaign to select device combinations that can yield better conversions and reach.
+
+=== Use Case 4: Geo Analysis
+This use case determines performance data by geographic location (e.g.DMA) for purchases of assigned customer products
+on Amazon. It helps identify geographic location where the advertiser is over or under performing and highlights areas
+with highest purchases, reach, impressions and ROAS. Visuals can be analyzed per conversion event subtype, campaign,
+region and city.
+
+## Key Performance Indicators:
+a. Impressions – Per Campaign, Device Type, DMA
+b. Reach – Per Campaign, Device Type, DMA
+c. Total Cost – Per Campaign, Device Type, DMA
+d. Conversions – Per Campaign, Device Type, DMA
+e. Purchases – Per Campaign, Device Type, DMA
+f. New to brand Purchases – Per Campaign, Device Type, DMA
+g. New to brand Product Sales – Per Campaign, Device Type, DMA
+h. Product Sales (Revenue) – Per Campaign, Device Type, DMA
+i. ROAS over Revenue – Per Campaign, Device Type, DMA
+
+## Business Outcomes:
+This section provides potential business outcomes derived from the Geo Analysis use case:
+1. Shift lower funnel/performance media spend away from geographic locations that are
+underperforming ROAS, Revenue, Purchases, and/or committed action data.
+2. Shift lower funnel/performance media spends towards geographic locations with high
+performance ROAS, Revenue, Purchases, and/or committed action data
+3. Test shifting upper funnel/branding media spend towards underperforming ROAS, Revenue, and/or Purchases DMAs in
+order to improve brand’s footprints in the geos to help drive better lower funnel performance.
+
+=== Use Case 5: Product Mix Analysis
+This use case provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP)
+and KPIs surrounding them. It helps to analyze overall user performance across SP and DSP campaigns. This analysis is
+done at a user level.
+
+## Key Performance Indicators:
+a. Impressions – DSP, SP and DSP&SP campaigns
+b. Reach – DSP, SP and DSP&SP campaigns
+c. Clicks – DSP, SP and DSP&SP campaigns
+d. Total Cost – DSP, SP and DSP&SP campaigns
+e. Product Sales (Revenue) – DSP, SP and DSP&SP campaign Purchases – DSP, SP and DSP&SP campaigns
+f. New to brand purchases– DSP, SP and DSP&SP campaigns ROAS over Revenue – DSP, SP and DSP&SP campaigns
+
+## Business Outcomes:
+This section provides potential business outcomes derived from the Product Mix Analysis use case:
+case.
+1. This use case helps to study users exposed to both sponsored products and display. Were they more likely to
+purchase, or make a new to brand purchase, etc. when users were exposed to both vs just sponsored products or just display
+2. Identify conversions and other performance metrics improvement by comparing user performance who have been
+exposed to sponsored products vs display and expose users to either both DSP or Sponsored products or both based
+on the insights derived from the analysis
 
 //== Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.

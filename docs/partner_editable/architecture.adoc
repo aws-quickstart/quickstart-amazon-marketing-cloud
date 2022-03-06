@@ -10,10 +10,10 @@ image::../images/architecture_diagram.png[Architecture]
 
 As shown in <<architecture1>>, the Quick Start sets up the following:
 
-* DataLake (serverless data framework) +
-The SDLF is a collection of production-hardened, best practice templates that accelerate the data lake implementation AWS. As part of this framework a number of AWS services are configured. Please review the details link:https://github.com/awslabs/aws-serverless-data-lake-framework[here]
+* Data Lake (AWS DataOps Development Kit) +
+The AWS DataOps Development Kit (DDK) is a collection of production-hardened, best practice templates that accelerate the data lake implementation AWS. As part of this framework a number of AWS services are configured. Please review the details link:https://github.com/awslabs/aws-ddk[here]
 * DataLake Hydration service +
-The workflow management microservice is an Amazon Adtech solution to automate the creation scheduling and execution of AMC workflows to hydrate the datalake with aggreagted AMC data for performing custom analysis. The following AWS services are configured as part of this module - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), Amazon Simple Queue Service, Amazon Simple Notification Service and AWS Key Management Service (KMS)
+The workflow management microservice is an Amazon AdTech solution to automate the creation, scheduling, and execution of AMC workflows to hydrate the datalake with aggreagted AMC data for performing custom analysis. The following AWS services are configured as part of this module - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), Amazon Simple Queue Service, Amazon Simple Notification Service and AWS Key Management Service (KMS)
 * Client Management service +
 The client management microserivce is an Amazon Ad Tech solution that adds functionality for managing multiple AMC clients and works in conjuction with the workflow management service to pull the relevant data. The following services are configured as part of this microserivce deployment - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), AWS Step Functions, Amazon Simple Queue Service, Amazon Simple Notification Service, AWS Key Management Service (KMS)
 * Platform Management Notebooks +
