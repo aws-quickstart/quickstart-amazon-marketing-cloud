@@ -147,6 +147,11 @@ vs only one (e.g., exposed to impressions only on phone vs phone and TV, and any
 understand performance impact of omnichannel targeting.
 3. Optimize Campaign to select device combinations that can yield better conversions and reach.
 
+## Visual Details:
+This section provides details on the QuickSight dashboard visuals for the Device Exposure use case.
+
+Query used for the visual: <<INSERT-LINK-TO-SQL>>
+
 === Use Case 4: Geo Analysis
 This use case determines performance data by geographic location (e.g.DMA) for purchases of assigned customer products
 on Amazon. It helps identify geographic location where the advertiser is over or under performing and highlights areas
@@ -173,6 +178,11 @@ performance ROAS, Revenue, Purchases, and/or committed action data
 3. Test shifting upper funnel/branding media spend towards underperforming ROAS, Revenue, and/or Purchases DMAs in
 order to improve brand’s footprints in the geos to help drive better lower funnel performance.
 
+## Visual Details:
+This section provides details on the QuickSight dashboard visuals for the Geo Analysis use case.
+
+Query used for the visual: <<INSERT-LINK-TO-SQL>>
+
 === Use Case 5: Product Mix Analysis
 This use case provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP)
 and KPIs surrounding them. It helps to analyze overall user performance across SP and DSP campaigns. This analysis is
@@ -194,6 +204,11 @@ purchase, or make a new to brand purchase, etc. when users were exposed to both 
 2. Identify conversions and other performance metrics improvement by comparing user performance who have been
 exposed to sponsored products vs display and expose users to either both DSP or Sponsored products or both based
 on the insights derived from the analysis
+
+## Visual Details:
+This section provides details on the QuickSight dashboard visuals for the Product Mix Analysis use case.
+
+Query used for the visual: <<INSERT-LINK-TO-SQL>>
 
 //== Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
