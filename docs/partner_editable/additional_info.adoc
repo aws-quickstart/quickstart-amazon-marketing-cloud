@@ -85,7 +85,7 @@ This section provides details on the QuickSight dashboard visuals for the Audien
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
 
-### Tabular View:
+### Table View:
 This visual provides an overview of all audience segments per campaign and ASIN
 Each audience can be analyzed separately by clicking audience segment from controls and it can be further
 analyzed per product by clicking on the List of ASINs table on the left
@@ -140,7 +140,7 @@ Query used for the visual: <<INSERT-LINK-TO-SQL>>
 Provides details on Reach and Return on Ad spend for a selected campaign.
 image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view.png[FreqDistROASView]
 
-### Tabular View:
+### Table View:
 Provides the view of various KPIs per Campaign. This table provides details about the revenue, purchases,
 and ROAS for a given campaign over a specified timeframe.
 image::../images/quicksight-images/frequency_distribution/frequency_distribution_tabular_view.png[FreqDistTabularView]
@@ -189,6 +189,20 @@ This section provides details on the QuickSight dashboard visuals for the Device
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
 
+### Table View:
+Provides the view of various KPIs per device path. This table provides details about the impressions, revenue,
+purchases, cost and ROAS for a given device path over a specified timeframe.
+image::../images/quicksight-images/device_exposure/device_exposure_tabular_view.png[DeviceExpTabularView]
+
+### Users per Device Path View:
+Provides ROAS, Cost and Purchases KPIs for users per device path
+image::../images/quicksight-images/device_exposure/device_exposure_kpi_view.png[DeviceExpKPIsView]
+
+### New to Brand purchases and Unique Detail Page Views per Device Path View:
+Provides details of new to brand purchases and detail page view across various device path combinations
+(PC, PC and Phone, Phone and Tablet, Phone etc.).
+image::../images/quicksight-images/device_exposure/device_exposure_ntb_view.png[DeviceExpNTBView]
+
 === Use Case 4: Geo Analysis
 This use case determines performance data by geographic location (e.g.DMA) for purchases of assigned customer products
 on Amazon. It helps identify geographic location where the advertiser is over or under performing and highlights areas
@@ -220,6 +234,20 @@ This section provides details on the QuickSight dashboard visuals for the Geo An
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
 
+### Graphs across specified date range:
+ROAS by region per Campaign (Choose the campaign from the table to analyze per campaign)
+image::../images/quicksight-images/geo_analysis/geo_analysis_region_view.png[GeoAnalysisRegionView]
+
+### Impression and ROAS over Revenue:
+image::../images/quicksight-images/geo_analysis/geo_analysis_roas_by_city.png[GeoAnalysisRoasByCity]
+image::../images/quicksight-images/geo_analysis/geo_analysis_roas_by_city.png[GeoAnalysisRoasByDMA]
+
+### Table View:
+Provides the view of various KPIs per campaign, DMA, device type, conversion event subtype and City.
+This table provides details about the impressions, revenue, purchases, cost and ROAS for a given campaign
+over a specified timeframe.
+image::../images/quicksight-images/geo_analysis/geo_analysis_tabular_view.png[GeoAnalysisTabularView]
+
 === Use Case 5: Product Mix Analysis
 This use case provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP)
 and KPIs surrounding them. It helps to analyze overall user performance across SP and DSP campaigns. This analysis is
@@ -246,6 +274,19 @@ on the insights derived from the analysis
 This section provides details on the QuickSight dashboard visuals for the Product Mix Analysis use case.
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
+
+### Table View:
+This visual provides tabular view of key performance indicators for a specific given
+image::../images/quicksight-images/product_mix/product_mix_tabular_view.png[ProductMixTabular]
+
+### Total Users and User conversions per product mix view:
+This visual provides details of total users exposed to DSP, SP and both DSP and SP campaigns and the total user conversions
+image::../images/quicksight-images/product_mix/product_mix_reach_view.png[ProductMixReach]
+
+### New to brand purchases and non-converted user view:
+This first pie chart provides details on New to brand purchases made by the user exposed to DSP, SP and both DSP and
+SP and second provides details on how many users did not get converted when exposed to either DSP, SP and both.
+image::../images/quicksight-images/product_mix/product_mix_ntb_view.png[ProductMixNTB]
 
 //== Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
