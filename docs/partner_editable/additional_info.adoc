@@ -85,6 +85,26 @@ This section provides details on the QuickSight dashboard visuals for the Audien
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
 
+### Tabular View:
+This visual provides an overview of all audience segments per campaign and ASIN
+Each audience can be analyzed separately by clicking audience segment from controls and it can be further
+analyzed per product by clicking on the List of ASINs table on the left
+
+image::../images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png[AudienceAnalysisTabularView]
+
+### Targeted and Untargeted Analysis View:
+This visual provides details about the impressions, purchases and ROAS over targeted and untargeted audience segments.
+
+image::../images/quicksight-images/audience_analysis/audience_analysis_analysis_view.png[AudienceAnalysisView]
+
+### Performance ROAS over average ROAS View:
+This visual provides details about the impressions, purchases and ROAS over targeted and untargeted audience segments.
+
+image::../images/quicksight-images/audience_analysis/audience_analysis_matched_roas.png[AudienceAnalysisMatchedROAS]
+
+image::../images/quicksight-images/audience_analysis/audience_analysis_unmatched_roas.png[AudienceAnalysisUnmatchedROAS]
+
+
 === Use Case 2: Frequency Distribution
 This use case gives an analysis of performance and delivery by different frequencies/impression exposures to help
 optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on
@@ -115,6 +135,23 @@ time instead of analyzing shorter time periods of frequency caps at the line-ite
 This section provides details on the QuickSight dashboard visuals for the Frequency Distribution use case.
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
+
+### Users per bucket (Reach) against ROAS View:
+Provides details on Reach and Return on Ad spend for a selected campaign.
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view.png[FreqDistROASView]
+
+### Tabular View:
+Provides the view of various KPIs per Campaign. This table provides details about the revenue, purchases,
+and ROAS for a given campaign over a specified timeframe.
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_tabular_view.png[FreqDistTabularView]
+
+### Users per bucket (Reach), with device type against ROAS View:
+Provides details on Reach and product sales per device type for a selected campaign.
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view_by_device.png[FreqDistROASViewByDevice]
+
+### ROAS over frequency buckets and device type view:
+Provides an overview on ROAS distributed across frequency buckets and Device Type
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_over_buckets.png[FreqDistROAS]
 
 === Use Case 3: Device Exposure
 This use case helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types
