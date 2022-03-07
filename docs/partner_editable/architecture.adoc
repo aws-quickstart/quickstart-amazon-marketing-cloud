@@ -20,3 +20,6 @@ The client management microserivce is an Amazon Ad Tech solution that adds funct
 These are sample jupyter notebooks which will help to interact and get started with using the Tenant Provisioning Service and Workflow Manager Service.This following services are configured - Amazon Sagemaker Notebook instance, AWS Key Management Service (KMS)
 * Services for data analysis +
 Amazon Athena is configured as part of this module. Sample queries are provided below to query the data from the datalake. Detailed instructions to configure Quicksight are also provided below along with prebuilt sample dashboard for analysis.
+
+## Data Lake Architecture
+image::../images/AMC-Quickstart-Data-Lake-Architecture.png[DataLakeFlow]
