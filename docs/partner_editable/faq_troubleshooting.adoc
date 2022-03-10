@@ -34,7 +34,6 @@ To create, schedule, and manage your workflow queries, refer to the Platform Man
 
 *A.* This Quick Start invokes four AWS CodeBuilds concurrently. For a new AWS account, you may have a scenario where multiple AWS CodeBuilds are queued and failing. To increase the concurrent AWS CodeBuild service limits, contact https://aws.amazon.com/contact-us/[AWS support^].
 
----
 
 
 //== Troubleshooting
