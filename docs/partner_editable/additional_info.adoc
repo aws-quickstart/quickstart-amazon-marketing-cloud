@@ -11,11 +11,18 @@
 
 * Run the below queries to explore the sample AMC datasets
 
+[,sql]
+----
+SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_time_to_conversion_adhoc" limit 10;
+----
+
+////
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_audience_analysis_adhoc" limit 10;
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_device_exposure_adhoc" limit 10;
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_frequency_distribution_adhoc" limit 10;
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_geo_analysis_adhoc" limit 10;
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_product_mix_adhoc" limit 10;
+////
 
 // == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
