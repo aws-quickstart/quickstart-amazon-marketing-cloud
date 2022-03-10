@@ -80,9 +80,7 @@ Find out how long it takes for your customers to convert after last seeing your 
 
 
 #### Creating the Visualization:
-This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.
-
-**To connect to Amazon Athena**
+This section provides details on how to create a visualization for the Time to Conversion use case in Amazon QuickSight.
 
 1. Begin by creating a new dataset. Choose **Datasets** from the navigation pane at left, then choose **New dataset**.
 2. Next, connect to an Athena Data Source with either a using an existing connection profile (more common) or by creating a new one.
