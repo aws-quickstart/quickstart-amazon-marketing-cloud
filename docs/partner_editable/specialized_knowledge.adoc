@@ -5,7 +5,7 @@
 
 This Quick Start also assumes familiarity with the following AWS services and related frameworks:
 
-* link:https://github.com/awslabs/aws-serverless-data-lake-framework[aws-serverless-data-lake-framework^]
+* link:https://github.com/awslabs/aws-ddk[AWS DataOps Development Kit (DDK)^]
 ** link:https://aws.amazon.com/codebuild/[AWS CodeBuild^]
 ** link:https://aws.amazon.com/codepipeline/[AWS CodePipeline^]
 
