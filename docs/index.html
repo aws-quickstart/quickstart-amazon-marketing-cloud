@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.13">
 <title>Amazon Marketing Cloud Analytics Delivery Kit on the AWS Cloud</title>
 <style>
 
@@ -845,6 +845,19 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_hydrating_the_data_lake">Hydrating the Data Lake</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
 <li><a href="#_post_deployment_steps">Post-deployment steps</a></li>
+<li><a href="#_building_your_first_amazon_quicksight_dashboard">Building Your First Amazon QuickSight Dashboard</a>
+<ul class="sectlevel2">
+<li><a href="#_initial_setup">Initial Setup</a></li>
+<li><a href="#_authorize_connection_through_aws_lake_formation">Authorize connection through AWS Lake Formation</a></li>
+<li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
+</ul>
+</li>
+<li><a href="#_business_outcomes">Business Outcomes:</a></li>
+<li><a href="#_visual_details">Visual Details:</a>
+<ul class="sectlevel2">
+<li><a href="#_table_view">Table View:</a></li>
+</ul>
+</li>
 <li><a href="#_faq">FAQ</a></li>
 <li><a href="#_customer_responsibility">Customer responsibility</a></li>
 <li><a href="#_parameter_reference">Parameter reference</a></li>
@@ -953,16 +966,16 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Serverless Datalake Framework (DDK)</strong>: This module is based on the open-source <a href="https://github.com/awslabs/aws-serverless-data-lake-framework" target="_blank" rel="noopener">Serverless Data Lake Framework (SDLF)</a> of AWS Professional Services and configured to process advertising-related datasets in AMC. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/tree/doc-edits/DataLake/ServerlessDatalakeFramework/aws-serverless-data-lake-framework#readme" target="_blank" rel="noopener">Serverless Datalake Framework (SDF)</a>.</p>
+<p><strong>AWS DataOps Development Kit (DDK)</strong>: This module is based on the open-source <a href="https://github.com/awslabs/aws-ddk" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a> of AWS Professional Services and configured to process advertising-related datasets in AMC. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/data_lake/README.md" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a>.</p>
 </li>
 <li>
-<p><strong>Tenant Provisioning Service</strong>: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/doc-edits/CustomerManagementService/TenantProvisioningService/sdlf-tps-pipeline/README.md" target="_blank" rel="noopener">Tenant Provisioning Service (Client Manager MicroService)</a>.</p>
+<p><strong>Tenant Provisioning Service</strong>: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/customer_management_service/README.md" target="_blank" rel="noopener">Tenant Provisioning Service (Client Manager MicroService)</a>.</p>
 </li>
 <li>
-<p><strong>Workflow Management Service</strong>: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/doc-edits/DataLakeHydrationMicroservices/WorkflowManagerService/sdlf-wfm-pipeline/README.md" target="_blank" rel="noopener">Workflow Management Service</a>.</p>
+<p><strong>Workflow Management Service</strong>: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/data_lake_hydration_service/README.md" target="_blank" rel="noopener">Workflow Management Service</a>.</p>
 </li>
 <li>
-<p><strong>Platform Notebook Manager</strong>: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/doc-edits/PlatformManagementNotebooks/README.md" target="_blank" rel="noopener">Platform Notebook Manager</a>.</p>
+<p><strong>Platform Notebook Manager</strong>: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/platform_management_notebooks/README.md" target="_blank" rel="noopener">Platform Notebook Manager</a>.</p>
 </li>
 </ul>
 </div>
@@ -1050,16 +1063,19 @@ AWS Cloud.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>DataLake (serverless data framework)<br>
-The SDLF is a collection of production-hardened, best practice templates that accelerate the data lake implementation AWS. As part of this framework a number of AWS services are configured. Please review the details <a href="https://github.com/awslabs/aws-serverless-data-lake-framework">here</a></p>
+<p>Data Lake (AWS DataOps Development Kit)<br>
+The AWS DataOps Development Kit (DDK) is a collection of production-hardened, best practice templates that accelerate the data lake implementation AWS. As part of this framework a number of AWS services are configured. Please review the details <a href="https://github.com/awslabs/aws-ddk">here</a>
+image::../images/AMC-Quickstart-Data-Lake-Architecture.png[DataLakeFlow]</p>
 </li>
 <li>
 <p>DataLake Hydration service<br>
-The workflow management microservice is an Amazon Adtech solution to automate the creation scheduling and execution of AMC workflows to hydrate the datalake with aggreagted AMC data for performing custom analysis. The following AWS services are configured as part of this module - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), Amazon Simple Queue Service, Amazon Simple Notification Service and AWS Key Management Service (KMS)</p>
+The workflow management microservice is an Amazon AdTech solution to automate the creation, scheduling, and execution of AMC workflows to hydrate the datalake with aggreagted AMC data for performing custom analysis. The following AWS services are configured as part of this module - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), Amazon Simple Queue Service, Amazon Simple Notification Service and AWS Key Management Service (KMS)
+image::../images/AMC-Quickstart-WFM-Architecture.png[DataLakeHydration]</p>
 </li>
 <li>
 <p>Client Management service<br>
-The client management microserivce is an Amazon Ad Tech solution that adds functionality for managing multiple AMC clients and works in conjuction with the workflow management service to pull the relevant data. The following services are configured as part of this microserivce deployment - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), AWS Step Functions, Amazon Simple Queue Service, Amazon Simple Notification Service, AWS Key Management Service (KMS)</p>
+The Client Management Microserivce is an Amazon Ad Tech solution that adds functionality for managing multiple AMC clients and works in conjuction with the workflow management service to pull the relevant data. The following services are configured as part of this microserivce deployment - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), AWS Step Functions, Amazon Simple Queue Service, Amazon Simple Notification Service, AWS Key Management Service (KMS)
+image::../images/AMC-Quickstart-TPS-Architecture.png[AmcTPS]</p>
 </li>
 <li>
 <p>Platform Management Notebooks<br>
@@ -1266,7 +1282,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Amazon SageMaker Notebook</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon QuickSight (<a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/tree/main/docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf" target="_blank" rel="noopener">dashboard setup guide available</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon QuickSight (<a href="../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf" target="_blank" rel="noopener">dashboard setup guide available</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1519,7 +1535,7 @@ $ make create_workflows</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <div class="title">Below are some sample QuickSight Dashboards built using the sample AMC datasets:</div>
-<p>For more detailed configuration steps of the QuickSight dahboards, review the document located <a href="../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf">here</a></p>
+<p>For more detailed configuration steps of the QuickSight dashboards, review the document located <a href="../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf">QuickStart Dashboard Setup Guide</a></p>
 </div>
 <div class="ulist">
 <ul>
@@ -1575,10 +1591,140 @@ $ make create_workflows</code></pre>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_your_first_amazon_quicksight_dashboard">Building Your First Amazon QuickSight Dashboard</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
+The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
+The users can get read only permissions to this dashboard and can view relevant data visuals.
+The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.</p>
+</div>
+<div class="sect2">
+<h3 id="_initial_setup">Initial Setup</h3>
+<div class="paragraph">
+<p>You will need author access to a QuickSight Account to get started with building your first dashboard. If you don&#8217;t have a QuickSight account already, below are the steps to create one.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Launch the <strong>AWS Console</strong> (<a href="https://console.aws.amazon.com" class="bare">https://console.aws.amazon.com</a>) in a new browser tab, search for <strong>QuickSight</strong> and launch it.</p>
+</li>
+<li>
+<p>On the <strong>QuickSight</strong> page, click <strong>Sign up for QuickSight</strong> button.</p>
+</li>
+<li>
+<p>Keep the default <strong>Enterprise</strong> edition, scroll down and click the <strong>Continue</strong> button.</p>
+</li>
+<li>
+<p>Enter a <strong>QuickSight account name</strong> &amp; <strong>Notification email address</strong>. Enter your official email as the notification email.</p>
+</li>
+<li>
+<p>Scroll down and click the <strong>Finish</strong> button. (It can take 15-30 Secs to set up the account)</p>
+</li>
+<li>
+<p>Click the <strong>Go to Amazon QuickSight</strong> button. You will now be taken to QuickSight console.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authorize_connection_through_aws_lake_formation">Authorize connection through AWS Lake Formation</h3>
+<div class="paragraph">
+<p>Insert Steps to Get Signed up for QuickSight
+<a href="https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/" class="bare">https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</h3>
+<div class="paragraph">
+<p>Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment, Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data.</p>
+</div>
+<div class="paragraph">
+<p>The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The use case highlighted in the dashboard are as below:</p>
+</div>
+<div class="sect3">
+<h4 id="_time_to_conversion">Time to Conversion</h4>
+<div class="paragraph">
+<p>Find out how long it takes for your customers to convert after last seeing your ad. It is important to understand how long it takes customers who see your ad to complete the conversion, and how that impacts the data you see in your conversion report. Sometimes the conversions happens rapidly, within a few minutes. Other times it might take days for your customers to complete the purchase. You can use this information to adjust the duration of campaign and promotion to maximize sales. In our amazon_attributed_events_by_conversion_time and amazon_attributed_events_by_traffic_time tables, we report up to 14 days after the customers’ last exposure to your ad.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_key_performance_indicators_kpis">Key Performance Indicators (KPIs):</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">KPI</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time to Conversion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of time customers take from last seeing your ad to purchase. The time has been converted to minutes, hours and days from seconds in the query template. You may adjust it based on your use case.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of times any amount of a promoted product or products are included in a purchase event. Purchase events include video rentals and new Subscribe &amp; Save subscriptions. Sum of purchases from users_that_purchased.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total Brand Purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of times any number of products are included in a single purchase event. Purchase events include Subscribe &amp; Save subscriptions and video rentals. This counts purchases for promoted products as well as products from the same brands as the products tracked in the order. (Total purchases = Purchases + Purchases Brand Halo)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_outcomes">Business Outcomes:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides potential business outcomes derived from the Audience analysis use case:
+1) Investigating performance of untargeted audiences helps to discover audience segments that can be added to
+current targeted due to their potential positive impact on performance or scale.</p>
+</div>
+<div class="paragraph">
+<p>2) Additionally, we can discover more insights into the attributes of our targeted audiences by seeing what other
+untargeted audience segments show strong performance – learning more about our most valued users or audiences to best
+target for potential new customers. This can be used for building better customer profiles, new creative messaging,
+campaign construction, etc.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visual_details">Visual Details:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.</p>
+</div>
+<div class="paragraph">
+<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+</div>
+<div class="sect2">
+<h3 id="_table_view">Table View:</h3>
+<div class="paragraph">
+<p>This visual provides an overview of all audience segments per campaign and ASIN
+Each audience can be analyzed separately by clicking audience segment from controls and it can be further
+analyzed per product by clicking on the List of ASINs table on the left</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png" alt="AudienceAnalysisTabularView">
+</div>
+</div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1659,7 +1805,7 @@ and to share your customizations with others.</p>
 </div>
 <p class="footer-text">
 <!-- We can use document attributes: -->
-<!-- Generated with Asciidoctor v2.0.17. -->
+<!-- Generated with Asciidoctor v2.0.13. -->
 <a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> | &copy; 2021, Amazon Web Services, Inc. or its affiliates and Ad Tech Solutions. All rights reserved.
 </p>
 </body>
