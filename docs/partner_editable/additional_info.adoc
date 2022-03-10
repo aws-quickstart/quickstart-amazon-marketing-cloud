@@ -8,13 +8,14 @@
 
 * Once finished go to link:https://console.aws.amazon.com/athena/home?region=us-east-1[Amazon Athena] link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html[switch the role] on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.
 
-
+////
 * Run the below queries to explore the sample AMC datasets
 
 [,sql]
 ----
 SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_time_to_conversion_adhoc" limit 10;
 ----
+////
 
 ////
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_audience_analysis_adhoc" limit 10;
