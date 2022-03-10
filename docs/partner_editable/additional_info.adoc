@@ -82,9 +82,31 @@ Find out how long it takes for your customers to convert after last seeing your 
 #### Creating the Visualization:
 This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.
 
-Query used for the visual: <<INSERT-LINK-TO-SQL>>
+**To connect to Amazon Athena**
 
-image::../images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png[AudienceAnalysisTabularView]
+1. Begin by creating a new dataset. Choose **Datasets** from the navigation pane at left, then choose **New dataset**.
+2. Next, connect to an Athena Data Source with either a using an existing connection profile (more common) or by creating a new one.
+  A. To use an existing Athena connection profile, scroll down to the **FROM EXISTING DATA SOURCES** section, and choose the card for the existing data source that you want to use. Choose **Create dataset**. Cards are labeled with the Athena data source icon and the name provided by the person who created the connection.
+  B. Next, create a new Athena connection profile, use the following steps:
+    a. In the **FROM NEW DATA SOURCES** section, choose the **Athena** data source card.
+    b. For **Data source name**, enter a descriptive name
+    c. For **Athena workgroup**, choose your workgroup
+    d. Choose **Validate connection** to test the connection
+    e. Choose **Create data source**.
+3. On the **Choose your table screen**, do the following:
+  A. For **Catalog**, choose **AwsDataCatalog**.
+  B. Choose one of the following:
+    a. To write a SQL query, choose **Use custom SQL**
+    b. To choose a database and table, choose your catalog that contains your databases from the dropdown under **Catalog**. Then, choose a database from the dropdown under **Database** and choose a table from the **Tables** list that appears for your database. Note: If you don't have the right permissions, you receive the following error message: "You don't have sufficient permissions to connect to this dataset or run this query." Contact your QuickSight administrator for assistance. For more information, see Authorizing connections to Amazon Athena: https://docs.aws.amazon.com/quicksight/latest/user/athena.html
+4. Choose **Edit/preview data**.
+5. Create a dataset and analyze the data using the table by choosing **Visualize**. 
+6. In the **Fields list** pane, choose **purchases**, **time_to_conversion**, and **total_brand_purchases**.
+7. Amazon QuickSight uses AutoGraph to create the visual, selecting the visual type that it determines is most compatible with those fields. In this case, it selects a horizontal bar chart that shows the purchases and total_brand_purchases by time_to_conversion.
+8. In the **Visual types** pane, select **Vertical bar chart** to rotate the chart.
+9. Expand the **Field wells** pane by choosing the expand icon.
+10. Choose the **X axis** field well, choose **Sort by**, and then choose **time_to_conversion**. 
+11. Again in the **X axis** field well, select **ascending** icon.
+
 
 
 
