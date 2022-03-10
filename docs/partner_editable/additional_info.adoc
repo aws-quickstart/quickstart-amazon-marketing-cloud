@@ -43,10 +43,9 @@ For more detailed configuration steps of the QuickSight dashboards, review the d
 ////
 
 == Building Your First QuickSight Dashboard with Reports from AMC
-The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
-The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
-The users can get read only permissions to this dashboard and can view relevant data visuals.
-The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.
+The following section walks you through how to build a QuickSight dashboard with a report from Amazon Marketing Cloud (AMC). With AMC enabling advertisers to query event level data within a privacy friendly environment and Amazon QuickSight offering users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data - you can begin to build out a business intelligence strategy. 
+
+Advertisers can use QuickSight to analyze reports from AMC to identify valuable insights and then scheduling, publishing dashboards to provide marketing insights in one central location. Custom-built dashboards can pull from a series of custom workflows built on a scheduled cadence. 
 
 === Initial QuickSight Setup
 You will need author access to a QuickSight Account to get started with building your first dashboard. If you don't have a QuickSight account already, below are the steps to create one.
@@ -63,13 +62,15 @@ Insert Steps to Get Signed up for QuickSight
 https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps
 
 === Query & Visualize Your First AMC Use Case 
-Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data.
+In this section, you'll step through how to build and analyze a visualization for the Time to Conversion use case.
 
-#### Time to Conversion
+#### Overview
 
-Find out how long it takes for your customers to convert after last seeing your ad. It is important to understand how long it takes customers who see your ad to complete the conversion, and how that impacts the data you see in your conversion report. Sometimes the conversions happens rapidly, within a few minutes. Other times it might take days for your customers to complete the purchase. You can use this information to adjust the duration of campaign and promotion to maximize sales. In our amazon_attributed_events_by_conversion_time and amazon_attributed_events_by_traffic_time tables, we report up to 14 days after the customers’ last exposure to your ad.
+Advertisers may typically ask - how long does it takes for our customers to convert after last seeing our ad? This use case will enable you with the dimensions and metrics to answer that question. 
 
-#### Key Performance Indicators (KPIs):
+It is important to understand how long it takes customers who see your ad to complete the conversion, and how that impacts the data you see in your conversion report. Sometimes the conversions happen rapidly, within a few minutes and other times, it might take days for your customers to complete the purchase. You can use this information to adjust the duration of your campaign and promotion to maximize sales.
+
+*Key Performance Indicators (KPIs):*
 
 |===
 | KPI | Definition 
@@ -109,7 +110,8 @@ This section provides details on how to create a visualization for the Time to C
 8. In the **Visual types** pane, select **Vertical bar chart** to rotate the chart.
 9. Expand the **Field wells** pane by choosing the expand icon.
 10. Choose the **X axis** field well, choose **Sort by**, and then choose **time_to_conversion**. 
-11. Again from the **X axis** field well, select **ascending** icon.
+11. Again from the **X axis** field well, select the **ascending** icon.
+// INSERT SCREENSHOT 
 
 
 

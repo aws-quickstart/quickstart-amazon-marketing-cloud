@@ -1513,10 +1513,10 @@ $ make create_workflows</code></pre>
 <h2 id="_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
-The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
-The users can get read only permissions to this dashboard and can view relevant data visuals.
-The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.</p>
+<p>The following section walks you through how to build a QuickSight dashboard with a report from Amazon Marketing Cloud (AMC). With AMC enabling advertisers to query event level data within a privacy friendly environment and Amazon QuickSight offering users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data - you can begin to build out a business intelligence strategy.</p>
+</div>
+<div class="paragraph">
+<p>Advertisers can use QuickSight to analyze reports from AMC to identify valuable insights and then scheduling, publishing dashboards to provide marketing insights in one central location. Custom-built dashboards can pull from a series of custom workflows built on a scheduled cadence.</p>
 </div>
 <div class="sect2">
 <h3 id="_initial_quicksight_setup">Initial QuickSight Setup</h3>
@@ -1556,19 +1556,19 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 <div class="sect2">
 <h3 id="_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</h3>
 <div class="paragraph">
-<p>Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data. Users can pull</p>
-</div>
-<div class="paragraph">
-<p>The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The use case highlighted in the dashboard are as below:</p>
+<p>In this section, you&#8217;ll step through how to build and analyze a visualization for the Time to Conversion use case.</p>
 </div>
 <div class="sect3">
-<h4 id="_time_to_conversion">Time to Conversion</h4>
+<h4 id="_overview_2">Overview</h4>
 <div class="paragraph">
-<p>Find out how long it takes for your customers to convert after last seeing your ad. It is important to understand how long it takes customers who see your ad to complete the conversion, and how that impacts the data you see in your conversion report. Sometimes the conversions happens rapidly, within a few minutes. Other times it might take days for your customers to complete the purchase. You can use this information to adjust the duration of campaign and promotion to maximize sales. In our amazon_attributed_events_by_conversion_time and amazon_attributed_events_by_traffic_time tables, we report up to 14 days after the customers’ last exposure to your ad.</p>
+<p>Advertisers may typically ask - how long does it takes for our customers to convert after last seeing our ad? This use case will enable you with the dimensions and metrics to answer that question.</p>
 </div>
+<div class="paragraph">
+<p>It is important to understand how long it takes customers who see your ad to complete the conversion, and how that impacts the data you see in your conversion report. Sometimes the conversions happen rapidly, within a few minutes and other times, it might take days for your customers to complete the purchase. You can use this information to adjust the duration of your campaign and promotion to maximize sales.</p>
 </div>
-<div class="sect3">
-<h4 id="_key_performance_indicators_kpis">Key Performance Indicators (KPIs):</h4>
+<div class="paragraph">
+<p><strong>Key Performance Indicators (KPIs):</strong></p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1683,7 +1683,7 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 <p>Choose the <strong>X axis</strong> field well, choose <strong>Sort by</strong>, and then choose <strong>time_to_conversion</strong>.</p>
 </li>
 <li>
-<p>Again from the <strong>X axis</strong> field well, select <strong>ascending</strong> icon.</p>
+<p>Again from the <strong>X axis</strong> field well, select the <strong>ascending</strong> icon.</p>
 </li>
 </ol>
 </div>
