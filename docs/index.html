@@ -844,8 +844,7 @@ p.footer-text a{color:#d7d8d8}
 </li>
 <li><a href="#_hydrating_the_data_lake">Hydrating the Data Lake</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
-<li><a href="#_post_deployment_steps">Post-deployment steps</a></li>
-<li><a href="#_building_your_first_quicksight_dashboard_with_amc_reports">Building Your First QuickSight Dashboard with AMC Reports</a>
+<li><a href="#_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</a>
 <ul class="sectlevel2">
 <li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
 <li><a href="#_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</a></li>
@@ -1500,95 +1499,18 @@ $ make create_workflows</code></pre>
 </li>
 <li>
 <p>Run the below queries to explore the sample AMC datasets</p>
-<div class="ulist">
-<ul>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_audience_analysis_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_device_exposure_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_frequency_distribution_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_geo_analysis_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_product_mix_adhoc" limit 10;</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sql" data-lang="sql">SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_time_to_conversion_adhoc" limit 10;</code></pre>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_post_deployment_steps">Post-deployment steps</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<div class="title">Below are some sample QuickSight Dashboards built using the sample AMC datasets:</div>
-<p>For more detailed configuration steps of the QuickSight dashboards, review the document located <a href="../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf">QuickStart Dashboard Setup Guide</a></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Audience Analysis</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard provides analysis on audience segments targeted by the customer and also details of audience segments that user was a part of but not targeted for purchases of customer products on Amazon.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Frequency Distribution</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard provides analysis on performance and delivery by different frequencies/impression exposures to help optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on Amazon.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Device Exposure</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types (e.g., TV, Mobile, PC, Tablet) for purchases of assigned customer products on Amazon.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Geo Analysis</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard provides analysis on performance data by geographic location (e.g.DMA) for purchases of assigned customer products on Amazon.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Product Mix Analysis</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building_your_first_quicksight_dashboard_with_amc_reports">Building Your First QuickSight Dashboard with AMC Reports</h2>
+<h2 id="_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
@@ -1628,7 +1550,7 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 <h3 id="_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</h3>
 <div class="paragraph">
 <p>Insert Steps to Get Signed up for QuickSight
-<a href="https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/" class="bare">https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/</a></p>
+<a href="https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -1761,7 +1683,7 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 <p>Choose the <strong>X axis</strong> field well, choose <strong>Sort by</strong>, and then choose <strong>time_to_conversion</strong>.</p>
 </li>
 <li>
-<p>Again in the <strong>X axis</strong> field well, select <strong>ascending</strong> icon.</p>
+<p>Again from the <strong>X axis</strong> field well, select <strong>ascending</strong> icon.</p>
 </li>
 </ol>
 </div>

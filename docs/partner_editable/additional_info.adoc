@@ -63,9 +63,7 @@ Insert Steps to Get Signed up for QuickSight
 https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps
 
 === Query & Visualize Your First AMC Use Case 
-Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data. Users can pull 
-
-The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The use case highlighted in the dashboard are as below:
+Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data.
 
 #### Time to Conversion
 
