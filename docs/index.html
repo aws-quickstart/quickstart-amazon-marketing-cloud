@@ -848,7 +848,7 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_building_your_first_quicksight_dashboard_with_amc_reports">Building Your First QuickSight Dashboard with AMC Reports</a>
 <ul class="sectlevel2">
 <li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
-<li><a href="#_authorize_a_quicksight_connection_through_aws_lake_formation">Authorize a QuickSight Connection through AWS Lake Formation</a></li>
+<li><a href="#_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</a></li>
 <li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
 </ul>
 </li>
@@ -1625,7 +1625,7 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 </div>
 </div>
 <div class="sect2">
-<h3 id="_authorize_a_quicksight_connection_through_aws_lake_formation">Authorize a QuickSight Connection through AWS Lake Formation</h3>
+<h3 id="_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</h3>
 <div class="paragraph">
 <p>Insert Steps to Get Signed up for QuickSight
 <a href="https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/" class="bare">https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/</a></p>
@@ -1677,15 +1677,93 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 <div class="sect3">
 <h4 id="_creating_the_visualization">Creating the Visualization:</h4>
 <div class="paragraph">
-<p>This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.</p>
+<p>This section provides details on how to create a visualization for the Time to Conversion use case in Amazon QuickSight.</p>
 </div>
-<div class="paragraph">
-<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Begin by creating a new dataset. Choose <strong>Datasets</strong> from the navigation pane at left, then choose <strong>New dataset</strong>.</p>
+</li>
+<li>
+<p>Next, connect to an Athena Data Source with either a using an existing connection profile (more common) or by creating a new one.</p>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p>To use an existing Athena connection profile, scroll down to the <strong>FROM EXISTING DATA SOURCES</strong> section, and choose the card for the existing data source that you want to use. Choose <strong>Create dataset</strong>. Cards are labeled with the Athena data source icon and the name provided by the person who created the connection.</p>
+</li>
+<li>
+<p>Next, create a new Athena connection profile, use the following steps:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>In the <strong>FROM NEW DATA SOURCES</strong> section, choose the <strong>Athena</strong> data source card.</p>
+</li>
+<li>
+<p>For <strong>Data source name</strong>, enter a descriptive name</p>
+</li>
+<li>
+<p>For <strong>Athena workgroup</strong>, choose your workgroup</p>
+</li>
+<li>
+<p>Choose <strong>Validate connection</strong> to test the connection</p>
+</li>
+<li>
+<p>Choose <strong>Create data source</strong>.</p>
+</li>
+</ol>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png" alt="AudienceAnalysisTabularView">
+</li>
+</ol>
 </div>
+</li>
+<li>
+<p>On the <strong>Choose your table screen</strong>, do the following:</p>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p>For <strong>Catalog</strong>, choose <strong>AwsDataCatalog</strong>.</p>
+</li>
+<li>
+<p>Choose one of the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>To write a SQL query, choose <strong>Use custom SQL</strong></p>
+</li>
+<li>
+<p>To choose a database and table, choose your catalog that contains your databases from the dropdown under <strong>Catalog</strong>. Then, choose a database from the dropdown under <strong>Database</strong> and choose a table from the <strong>Tables</strong> list that appears for your database. Note: If you don&#8217;t have the right permissions, you receive the following error message: "You don&#8217;t have sufficient permissions to connect to this dataset or run this query." Contact your QuickSight administrator for assistance. For more information, see Authorizing connections to Amazon Athena: <a href="https://docs.aws.amazon.com/quicksight/latest/user/athena.html" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/athena.html</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Choose <strong>Edit/preview data</strong>.</p>
+</li>
+<li>
+<p>Create a dataset and analyze the data using the table by choosing <strong>Visualize</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Fields list</strong> pane, choose <strong>purchases</strong>, <strong>time_to_conversion</strong>, and <strong>total_brand_purchases</strong>.</p>
+</li>
+<li>
+<p>Amazon QuickSight uses AutoGraph to create the visual, selecting the visual type that it determines is most compatible with those fields. In this case, it selects a horizontal bar chart that shows the purchases and total_brand_purchases by time_to_conversion.</p>
+</li>
+<li>
+<p>In the <strong>Visual types</strong> pane, select <strong>Vertical bar chart</strong> to rotate the chart.</p>
+</li>
+<li>
+<p>Expand the <strong>Field wells</strong> pane by choosing the expand icon.</p>
+</li>
+<li>
+<p>Choose the <strong>X axis</strong> field well, choose <strong>Sort by</strong>, and then choose <strong>time_to_conversion</strong>.</p>
+</li>
+<li>
+<p>Again in the <strong>X axis</strong> field well, select <strong>ascending</strong> icon.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>

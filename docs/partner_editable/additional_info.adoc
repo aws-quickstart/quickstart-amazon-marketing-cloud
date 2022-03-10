@@ -17,9 +17,9 @@
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_geo_analysis_adhoc" limit 10;
 ** SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_product_mix_adhoc" limit 10;
 
-== Post-deployment steps
+// == Post-deployment steps
 // If post-deployment steps are required, add them here. If not, remove the heading
-
+////
 .Below are some sample QuickSight Dashboards built using the sample AMC datasets:
 For more detailed configuration steps of the QuickSight dashboards, review the document located link:../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf[QuickStart Dashboard Setup Guide]
 
@@ -33,8 +33,9 @@ For more detailed configuration steps of the QuickSight dashboards, review the d
 ** This dashboard provides analysis on performance data by geographic location (e.g.DMA) for purchases of assigned customer products on Amazon.
 * Product Mix Analysis
 ** This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.
+////
 
-== Building Your First QuickSight Dashboard with AMC Reports
+== Building Your First QuickSight Dashboard with Reports from AMC
 The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
 The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
 The users can get read only permissions to this dashboard and can view relevant data visuals.
@@ -52,7 +53,7 @@ You will need author access to a QuickSight Account to get started with building
 
 === Authorize Your QuickSight Connection through AWS Lake Formation
 Insert Steps to Get Signed up for QuickSight
-https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/
+https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps
 
 === Query & Visualize Your First AMC Use Case 
 Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data. Users can pull 
@@ -103,7 +104,7 @@ This section provides details on how to create a visualization for the Time to C
 8. In the **Visual types** pane, select **Vertical bar chart** to rotate the chart.
 9. Expand the **Field wells** pane by choosing the expand icon.
 10. Choose the **X axis** field well, choose **Sort by**, and then choose **time_to_conversion**. 
-11. Again in the **X axis** field well, select **ascending** icon.
+11. Again from the **X axis** field well, select **ascending** icon.
 
 
 
