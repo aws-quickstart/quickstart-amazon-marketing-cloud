@@ -49,7 +49,7 @@ For a walkthrough of the steps the AWS CodePipeline goes through to deploy these
 _NOTE:_ If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the `Retry` button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.
  
 
-## Hydrating the Data Lake
+== Hydrating the Data Lake
 
 To hydrate the data lake run the below shell script
 ```
