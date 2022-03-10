@@ -40,7 +40,7 @@ The dashboard’s goal is to provide a plethora of event level marketing insight
 The users can get read only permissions to this dashboard and can view relevant data visuals.
 The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.
 
-=== Initial Setup
+=== Initial QuickSight Setup
 You will need author access to a QuickSight Account to get started with building your first dashboard. If you don't have a QuickSight account already, below are the steps to create one.
 
 1. Launch the **AWS Console** (https://console.aws.amazon.com) in a new browser tab, search for **QuickSight** and launch it.
@@ -50,12 +50,12 @@ You will need author access to a QuickSight Account to get started with building
 5. Scroll down and click the **Finish** button. (It can take 15-30 Secs to set up the account)
 6. Click the **Go to Amazon QuickSight** button. You will now be taken to QuickSight console.
 
-=== Authorize connection through AWS Lake Formation
+=== Authorize Your QuickSight Connection through AWS Lake Formation
 Insert Steps to Get Signed up for QuickSight
 https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/
 
 === Query & Visualize Your First AMC Use Case 
-Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment, Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data. 
+Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data. Users can pull 
 
 The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The use case highlighted in the dashboard are as below:
 
@@ -79,25 +79,10 @@ Find out how long it takes for your customers to convert after last seeing your 
 |===
 
 
-## Business Outcomes:
-This section provides potential business outcomes derived from the Audience analysis use case:
-1) Investigating performance of untargeted audiences helps to discover audience segments that can be added to
-current targeted due to their potential positive impact on performance or scale.
-
-2) Additionally, we can discover more insights into the attributes of our targeted audiences by seeing what other
-untargeted audience segments show strong performance – learning more about our most valued users or audiences to best
-target for potential new customers. This can be used for building better customer profiles, new creative messaging,
-campaign construction, etc.
-
-## Visual Details:
+#### Creating the Visualization:
 This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.
 
 Query used for the visual: <<INSERT-LINK-TO-SQL>>
-
-### Table View:
-This visual provides an overview of all audience segments per campaign and ASIN
-Each audience can be analyzed separately by clicking audience segment from controls and it can be further
-analyzed per product by clicking on the List of ASINs table on the left
 
 image::../images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png[AudienceAnalysisTabularView]
 

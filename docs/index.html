@@ -845,17 +845,11 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_hydrating_the_data_lake">Hydrating the Data Lake</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
 <li><a href="#_post_deployment_steps">Post-deployment steps</a></li>
-<li><a href="#_building_your_first_amazon_quicksight_dashboard">Building Your First Amazon QuickSight Dashboard</a>
+<li><a href="#_building_your_first_quicksight_dashboard_with_amc_reports">Building Your First QuickSight Dashboard with AMC Reports</a>
 <ul class="sectlevel2">
-<li><a href="#_initial_setup">Initial Setup</a></li>
-<li><a href="#_authorize_connection_through_aws_lake_formation">Authorize connection through AWS Lake Formation</a></li>
+<li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
+<li><a href="#_authorize_a_quicksight_connection_through_aws_lake_formation">Authorize a QuickSight Connection through AWS Lake Formation</a></li>
 <li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
-</ul>
-</li>
-<li><a href="#_business_outcomes">Business Outcomes:</a></li>
-<li><a href="#_visual_details">Visual Details:</a>
-<ul class="sectlevel2">
-<li><a href="#_table_view">Table View:</a></li>
 </ul>
 </li>
 <li><a href="#_faq">FAQ</a></li>
@@ -1594,7 +1588,7 @@ $ make create_workflows</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_your_first_amazon_quicksight_dashboard">Building Your First Amazon QuickSight Dashboard</h2>
+<h2 id="_building_your_first_quicksight_dashboard_with_amc_reports">Building Your First QuickSight Dashboard with AMC Reports</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
@@ -1603,7 +1597,7 @@ The users can get read only permissions to this dashboard and can view relevant 
 The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.</p>
 </div>
 <div class="sect2">
-<h3 id="_initial_setup">Initial Setup</h3>
+<h3 id="_initial_quicksight_setup">Initial QuickSight Setup</h3>
 <div class="paragraph">
 <p>You will need author access to a QuickSight Account to get started with building your first dashboard. If you don&#8217;t have a QuickSight account already, below are the steps to create one.</p>
 </div>
@@ -1631,7 +1625,7 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 </div>
 </div>
 <div class="sect2">
-<h3 id="_authorize_connection_through_aws_lake_formation">Authorize connection through AWS Lake Formation</h3>
+<h3 id="_authorize_a_quicksight_connection_through_aws_lake_formation">Authorize a QuickSight Connection through AWS Lake Formation</h3>
 <div class="paragraph">
 <p>Insert Steps to Get Signed up for QuickSight
 <a href="https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/" class="bare">https://aws.amazon.com/blogs/big-data/securely-analyze-your-data-with-aws-lake-formation-and-amazon-quicksight/</a></p>
@@ -1640,7 +1634,7 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 <div class="sect2">
 <h3 id="_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</h3>
 <div class="paragraph">
-<p>Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment, Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data.</p>
+<p>Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment. Amazon QuickSight offers users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data. Users can pull</p>
 </div>
 <div class="paragraph">
 <p>The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The use case highlighted in the dashboard are as below:</p>
@@ -1680,40 +1674,13 @@ The dashboard shows metrics both numerically (in tabular form) and graphically (
 </tbody>
 </table>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_business_outcomes">Business Outcomes:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides potential business outcomes derived from the Audience analysis use case:
-1) Investigating performance of untargeted audiences helps to discover audience segments that can be added to
-current targeted due to their potential positive impact on performance or scale.</p>
-</div>
-<div class="paragraph">
-<p>2) Additionally, we can discover more insights into the attributes of our targeted audiences by seeing what other
-untargeted audience segments show strong performance – learning more about our most valued users or audiences to best
-target for potential new customers. This can be used for building better customer profiles, new creative messaging,
-campaign construction, etc.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_details">Visual Details:</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="_creating_the_visualization">Creating the Visualization:</h4>
 <div class="paragraph">
 <p>This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.</p>
 </div>
 <div class="paragraph">
 <p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
-</div>
-<div class="sect2">
-<h3 id="_table_view">Table View:</h3>
-<div class="paragraph">
-<p>This visual provides an overview of all audience segments per campaign and ASIN
-Each audience can be analyzed separately by clicking audience segment from controls and it can be further
-analyzed per product by clicking on the List of ASINs table on the left</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1724,6 +1691,7 @@ analyzed per product by clicking on the List of ASINs table on the left</p>
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
+</div>
 </div>
 </div>
 </div>
