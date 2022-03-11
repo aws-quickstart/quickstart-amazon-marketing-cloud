@@ -112,8 +112,10 @@ This section provides details on how to create a visualization for the Time to C
 9. Expand the **Field wells** pane by choosing the expand icon.
 10. Choose the **X axis** field well, choose **Sort by**, and then choose **time_to_conversion**. 
 11. Again from the **X axis** field well, select the **ascending** icon.
-// INSERT SCREENSHOT 
 
+
+
+image::../images/quicksight-time-to-conversion.png[QuickSightTimeToConversion]
 
 
 

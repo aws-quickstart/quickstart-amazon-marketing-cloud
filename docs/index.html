@@ -1111,7 +1111,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/awslabs/aws-serverless-data-lake-framework" target="_blank" rel="noopener">aws-serverless-data-lake-framework</a></p>
+<p><a href="https://github.com/awslabs/aws-ddk" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1497,15 +1497,7 @@ $ make create_workflows</code></pre>
 <li>
 <p>Once finished go to <a href="https://console.aws.amazon.com/athena/home?region=us-east-1">Amazon Athena</a> <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html">switch the role</a> on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.</p>
 </li>
-<li>
-<p>Run the below queries to explore the sample AMC datasets</p>
-</li>
 </ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-sql" data-lang="sql">SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_time_to_conversion_adhoc" limit 10;</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -1698,6 +1690,37 @@ $ make create_workflows</code></pre>
 <div class="sect1">
 <h2 id="_faq">FAQ</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q:</strong> I encountered a <strong>FAILED</strong> status on the <strong>Assets</strong> Step of the AWS CodePipeline Deployment.</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Q:</strong> How do I set up Amazon QuickSight dashboards to visualize the data populated on S3?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Follow the documentation [here](README.md) to set up QuickSight Dashboards for your AMC Instance data.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Q:</strong> Where can I find more information for the workflow queries available to create and schedule with for my AMC Instance?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> On the AMC UI, you can view the Interactive Query Library (IQL) for a list of available queries for a set of different use cases. Also, custom queries are supported.</p>
+</div>
+<div class="paragraph">
+<p>To create, schedule, and manage your workflow queries, refer to the Platform Manager WFM Notebooks in Amazon SageMaker for more detailed documentation.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Q:</strong> Where do I find my the configuration for my AMC Instance?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> On the AMC UI, you can view the Instance Information page for detailed information on the AMC Instance S3 Bucket, Endpoint URL, Data Upload Account, Advertiser IDs, and Entity IDs. Also, you can retrieve this information by raising a ticket to the AMC Team.</p>
+</div>
+<hr>
 <div class="paragraph">
 <p><strong>Q.</strong> I encountered multiple AWS CodeBuild failures.</p>
 </div>
