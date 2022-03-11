@@ -166,7 +166,7 @@ This section provides details on how to create a visualization for the Time to C
   a. On the far left pane, choose **Filter**
   b. Then in the Filters pane, choose the **+** in the top right corner.
   c. Select **advertiser**, then repeat for **campaign** and **file_last_modified**
-10. Use a combindation of the filters to analyze the performance by time period, to identify windows with the highest conversion rates.
+10. Use a combination of the filters to analyze the performance by time period, to identify windows with the highest conversion rates.
 
 image::../images/quicksight-time-to-conversion.png[QuickSightTimeToConversion]
 Figure 6. Verical Bar Chart visual in Amazon QuickSight for the Purchases by Time to Conversion AMC use case
