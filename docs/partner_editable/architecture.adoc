@@ -7,22 +7,3 @@ AWS Cloud.
 [#architecture1]
 .Quick Start architecture for {partner-product-short-name} on AWS
 image::../images/architecture_diagram.png[Architecture]
-
-As shown in <<architecture1>>, the Quick Start sets up the following:
-
-* Data Lake (AWS DataOps Development Kit) +
-The AWS DataOps Development Kit (DDK) is a collection of production-hardened, best practice templates that accelerate the data lake implementation AWS. As part of this framework a number of AWS services are configured. Please review the details link:https://github.com/awslabs/aws-ddk[here]
-image::../images/AMC-Quickstart-Data-Lake-Architecture.png[DataLakeFlow]
-
-* DataLake Hydration service +
-The workflow management microservice is an Amazon AdTech solution to automate the creation, scheduling, and execution of AMC workflows to hydrate the datalake with aggreagted AMC data for performing custom analysis. The following AWS services are configured as part of this module - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), Amazon Simple Queue Service, Amazon Simple Notification Service and AWS Key Management Service (KMS)
-image::../images/AMC-Quickstart-WFM-Architecture.png[DataLakeHydration]
-
-* Client Management service +
-The Client Management Microserivce is an Amazon Ad Tech solution that adds functionality for managing multiple AMC clients and works in conjuction with the workflow management service to pull the relevant data. The following services are configured as part of this microserivce deployment - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), AWS Step Functions, Amazon Simple Queue Service, Amazon Simple Notification Service, AWS Key Management Service (KMS)
-image::../images/AMC-Quickstart-TPS-Architecture.png[AmcTPS]
-
-* Platform Management Notebooks +
-These are sample jupyter notebooks which will help to interact and get started with using the Tenant Provisioning Service and Workflow Manager Service.This following services are configured - Amazon Sagemaker Notebook instance, AWS Key Management Service (KMS)
-* Services for data analysis +
-Amazon Athena is configured as part of this module. Sample queries are provided below to query the data from the datalake. Detailed instructions to configure Quicksight are also provided below along with prebuilt sample dashboard for analysis.

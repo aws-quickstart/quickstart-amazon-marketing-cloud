@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.17">
-<title>Amazon Marketing Cloud Analytics Delivery Kit on the AWS Cloud</title>
+<title>AMC Analytics on AWS Solution on the AWS Cloud</title>
 <style>
 
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -825,7 +825,7 @@ p.footer-text a{color:#d7d8d8}
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#_overview">Overview</a></li>
-<li><a href="#_amazon_marketing_cloud_analytics_delivery_kit_on_aws">Amazon Marketing Cloud Analytics Delivery Kit on AWS</a></li>
+<li><a href="#_amc_analytics_on_aws_solution_on_aws">AMC Analytics on AWS Solution on AWS</a></li>
 <li><a href="#_aws_costs">AWS costs</a></li>
 <li><a href="#_software_licenses">Software licenses</a></li>
 <li><a href="#_architecture">Architecture</a></li>
@@ -840,18 +840,18 @@ p.footer-text a{color:#d7d8d8}
 <ul class="sectlevel2">
 <li><a href="#_confirm_your_aws_account_configuration">Confirm your AWS account configuration</a></li>
 <li><a href="#_prerequisites_for_the_deployment">Prerequisites for the Deployment</a></li>
-<li><a href="#_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</a></li>
 <li><a href="#_initial_setup_with_the_ddk_cli">Initial setup with the DDK CLI</a></li>
-<li><a href="#_deploying_the_quickstart">Deploying the Quickstart</a></li>
-<li><a href="#_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</a></li>
-<li><a href="#_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</a></li>
+<li><a href="#_deploying_the_foundational_infrastructure">Deploying the Foundational Infrastructure</a></li>
+<li><a href="#_enable_default_lake_formation_permissions">Enable Default Lake Formation Permissions</a></li>
 </ul>
 </li>
+<li><a href="#_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</a></li>
+<li><a href="#_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
 <li><a href="#_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</a>
 <ul class="sectlevel2">
 <li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
-<li><a href="#_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</a></li>
+<li><a href="#_authorize_your_quicksight_connection">Authorize Your QuickSight Connection</a></li>
 <li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
 </ul>
 </li>
@@ -868,7 +868,7 @@ p.footer-text a{color:#d7d8d8}
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<h2 id="_amazon_marketing_cloud_analytics_delivery_kit_on_the_aws_cloud" class="discrete text-center">Amazon Marketing Cloud Analytics Delivery Kit on the AWS Cloud</h2>
+<h2 id="_amc_analytics_on_aws_solution_on_the_aws_cloud" class="discrete text-center">AMC Analytics on AWS Solution on the AWS Cloud</h2>
 <h2 id="_quick_start_reference_deployment" class="discrete text-left text-center">Quick Start Reference Deployment</h2>
 <div class="imageblock text-center">
 <div class="content">
@@ -926,7 +926,7 @@ report bugs, or submit feature ideas for this Quick Start.
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>This guide provides instructions for deploying the AMC Analytics Delivery Kit Quick Start reference architecture on the AWS Cloud. It is for Amazon Marketing Cloud users who want to build custom analytics using data lakes, tenant provisions, and workflow-management features.</p>
+<p>This guide provides instructions for deploying the AMC Analytics Quick Start reference architecture on the AWS Cloud. It is for Amazon Marketing Cloud users who want to build custom analytics using data lakes, tenant provisions, and workflow-management features.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -946,7 +946,7 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amazon_marketing_cloud_analytics_delivery_kit_on_aws">Amazon Marketing Cloud Analytics Delivery Kit on AWS</h2>
+<h2 id="_amc_analytics_on_aws_solution_on_aws">AMC Analytics on AWS Solution on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/product_description.adoc</code></strong></em></p>
@@ -958,21 +958,21 @@ Amazon may share user-deployment information with the AWS Partner that collabora
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>This Quick Start deploys the AMC Analytics Delivery Kit, which contains the following four modules:</p>
+<p>This Quick Start deploys the AMC Analytics, which contains the following four modules:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>AWS DataOps Development Kit (DDK)</strong>: This module is based on the open-source <a href="https://github.com/awslabs/aws-ddk" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a> of AWS Professional Services and configured to process advertising-related datasets in AMC. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/data_lake/README.md" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a>.</p>
+<p><strong>AWS DataOps Development Kit (DDK)</strong>: This module is based on the open-source <a href="https://github.com/awslabs/aws-ddk" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a> of AWS Professional Services and configured to process advertising-related datasets in AMC.</p>
 </li>
 <li>
-<p><strong>Tenant Provisioning Service</strong>: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/customer_management_service/README.md" target="_blank" rel="noopener">Tenant Provisioning Service (Client Manager MicroService)</a>.</p>
+<p><strong>Tenant Provisioning Service</strong>: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients.</p>
 </li>
 <li>
-<p><strong>Workflow Management Service</strong>: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/data_lake_hydration_service/README.md" target="_blank" rel="noopener">Workflow Management Service</a>.</p>
+<p><strong>Workflow Management Service</strong>: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows.</p>
 </li>
 <li>
-<p><strong>Platform Notebook Manager</strong>: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services. For more information, see <a href="https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/platform_management_notebooks/README.md" target="_blank" rel="noopener">Platform Notebook Manager</a>.</p>
+<p><strong>Platform Notebook Manager</strong>: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services.</p>
 </li>
 </ul>
 </div>
@@ -1045,44 +1045,14 @@ After you deploy the Quick Start, create <a href="https://docs.aws.amazon.com/aw
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Deploying this Quick Start for a new virtual private cloud (VPC) with
-default parameters builds the following AMC Analytics Delivery Kit environment in the
+default parameters builds the following AMC Analytics environment in the
 AWS Cloud.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
 <img src="images/architecture_diagram.png" alt="Architecture">
 </div>
-<div class="title">Figure 1. Quick Start architecture for AMC Analytics Delivery Kit on AWS</div>
-</div>
-<div class="paragraph">
-<p>As shown in <a href="#architecture1">Figure 1</a>, the Quick Start sets up the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Data Lake (AWS DataOps Development Kit)<br>
-The AWS DataOps Development Kit (DDK) is a collection of production-hardened, best practice templates that accelerate the data lake implementation AWS. As part of this framework a number of AWS services are configured. Please review the details <a href="https://github.com/awslabs/aws-ddk">here</a>
-image::../images/AMC-Quickstart-Data-Lake-Architecture.png[DataLakeFlow]</p>
-</li>
-<li>
-<p>DataLake Hydration service<br>
-The workflow management microservice is an Amazon AdTech solution to automate the creation, scheduling, and execution of AMC workflows to hydrate the datalake with aggreagted AMC data for performing custom analysis. The following AWS services are configured as part of this module - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), Amazon Simple Queue Service, Amazon Simple Notification Service and AWS Key Management Service (KMS)
-image::../images/AMC-Quickstart-WFM-Architecture.png[DataLakeHydration]</p>
-</li>
-<li>
-<p>Client Management service<br>
-The Client Management Microserivce is an Amazon Ad Tech solution that adds functionality for managing multiple AMC clients and works in conjuction with the workflow management service to pull the relevant data. The following services are configured as part of this microserivce deployment - AWS Lambda, S3, Amazon Cloudwatch, Amazon DynamoDB, AWS Identity and Access Management (IAM), AWS Step Functions, Amazon Simple Queue Service, Amazon Simple Notification Service, AWS Key Management Service (KMS)
-image::../images/AMC-Quickstart-TPS-Architecture.png[AmcTPS]</p>
-</li>
-<li>
-<p>Platform Management Notebooks<br>
-These are sample jupyter notebooks which will help to interact and get started with using the Tenant Provisioning Service and Workflow Manager Service.This following services are configured - Amazon Sagemaker Notebook instance, AWS Key Management Service (KMS)</p>
-</li>
-<li>
-<p>Services for data analysis<br>
-Amazon Athena is configured as part of this module. Sample queries are provided below to query the data from the datalake. Detailed instructions to configure Quicksight are also provided below along with prebuilt sample dashboard for analysis.</p>
-</li>
-</ul>
+<div class="title">Figure 1. Quick Start architecture for AMC Analytics on AWS</div>
 </div></div></td>
 </tr>
 </tbody>
@@ -1324,12 +1294,12 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>This Quick Start provides two deployment options:</p>
+<p>This Quick Start provides one deployment option:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>AWS CDK deployment</strong>. Use <a href="https://aws.amazon.com/cdk/" target="_blank" rel="noopener">AWS CDK</a> to deploy AMC Analytics Delivery Kit. This option takes about five minutes longer than the AWS CloudFormation-only option.</p>
+<p><strong>AWS CDK deployment</strong>. Use <a href="https://aws.amazon.com/cdk/" target="_blank" rel="noopener">AWS CDK</a> to deploy AMC Analytics.</p>
 </li>
 </ul>
 </div></div></td>
@@ -1435,25 +1405,8 @@ $ git config --global user.email "YOU@EMAIL.COM"</code></pre>
 <pre class="highlight"><code>$ git config --list</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>The jq Linux command line utility to extract data from JSON documents.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ jq --version</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If not installed already, you can install jq by running in your command line:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ sudo yum install jq</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</h3>
+<div class="sect3">
+<h4 id="_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</h4>
 <div class="paragraph">
 <p>If you would like to deploy this quickstart using an AWS Cloud9 Environment rather than on your local environment, follow these steps to set up AWS Cloud9:</p>
 </div>
@@ -1497,11 +1450,11 @@ pip (version 9.0.3 or above)
 AWS CDK CLI (version 2.10 and above)</p>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_initial_setup_with_the_ddk_cli">Initial setup with the DDK CLI</h3>
-<div class="paragraph">
-<p>Clone the repository for AMC QuickStart</p>
-</div>
+<div class="sect3">
+<h4 id="_clone_the_repository_for_amc_quickstart">Clone the repository for AMC QuickStart</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ git clone GITHUB-PATH
@@ -1590,10 +1543,11 @@ $ git push --set-upstream origin main</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_deploying_the_quickstart">Deploying the Quickstart</h3>
+<h3 id="_deploying_the_foundational_infrastructure">Deploying the Foundational Infrastructure</h3>
 <div class="paragraph">
-<p>Once the above steps are performed, run the deploy command to deploy the quickstart</p>
+<p>Once the above steps are performed, run the deploy command to deploy the the Foundational Infrastructure.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1621,65 +1575,75 @@ $ git push --set-upstream origin main</code></pre>
 <p>For a walkthrough of the steps the AWS CodePipeline goes through to deploy these resources please refer to [here](#amc-quickstart-codepipeline-steps).</p>
 </div>
 <div class="paragraph">
-<p><em>NOTE:</em> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.
-== Hydrating the Data Lake</p>
-</div>
-<div class="paragraph">
-<p>To hydrate the data lake run the below shell script</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>$ make insert_tps_records
-$ make create_workflows</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><em>NOTE:</em> Make sure the <code>ENV</code> variable in the <code>Makefile</code> is set to the correct environment name before proceeding to hydrate the data lake (default: <code>dev</code>)</p>
-</div>
-<div class="paragraph">
-<p>For a more detailed description of the aforementioned commands, refer to below:</p>
-</div>
-<div class="paragraph">
-<p><em>Insert TPS Records:</em> To initialize the process of onboarding your AMC instance on the Amazon AD Tech platform, this script adds client configurations to a TPS Customer Configuration table in Amazon DynamoDB. The configuration includes your AMC Endpoint URL, AMC Bucket Name and other related information on your AMC Instance. The Tenant Provisioning Service (TPS) will then automatically:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Onboard clients using configuration which is persisted in a DynamoDB Table. It helps to reduce time to onboard new customers</p>
-</li>
-<li>
-<p>Provide functionality to automatically enable different modules (AMC/Sponsored ADs/DSP) during the onboarding process for each client</p>
-</li>
-<li>
-<p>Provide a centralized location to manage various clients and modules and supports multi-tenancy</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>Create Workflows:</em> To initialize the creation, scheduling and execution of AMC workflows, this script adds 4 default workflows to an AMC Workflows Library table in Amazon DynamoDB. From there Workflow Manager Service (WFM) will automatically create workflow schedules and add them to your AMC instance. WFM also allows you to:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Automatically trigger the deployment of the SQS queues, IAM policies, workflows and workflow schedules in WFM for the customer&#8217;s AMC instance upon adding or updating a customer record to the Tenant Provisioning Service (TPS)</p>
-</li>
-<li>
-<p>Synchronize workflows and workflow schedules in the Workflow Library service with multiple AMC Instances</p>
-</li>
-<li>
-<p>Send execution requests to an SQS queue rather than directly to the AMC endpoint to prevents timeout failures when there are large number of requests in a short period of time</p>
-</li>
-<li>
-<p>Scheduled with dynamic relative time windows rather than using AMC&#8217;s scheduling feature which only allows predefined scheduled reporting such as Daily or Weekly</p>
-</li>
-<li>
-<p>Track the status of all workflow executions for customer AMC instances whether they are submitted through WFM or other means (postman, etc.). Having the status synced to DynamoDB allows events to be triggered or notifications to be sent when executions change state. This table can also be used to track historical executions for troubleshooting or performance monitoring.</p>
-</li>
-</ul>
+<p><em>NOTE:</em> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</h3>
+<h3 id="_enable_default_lake_formation_permissions">Enable Default Lake Formation Permissions</h3>
+<div class="paragraph">
+<p>In order to query the data in Athena, we highly recommend you enable default Lake Formation Permissions and give your current IAM Role permisssion in AWS Lake Formation. Enabling AWS Lake Formation Permissions helps to build, secure, and manage your data lake quickly and efficiently. Follow the below steps in order to enable Lake Formation and grant your Role the correct permissions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In your AWS Account Console go to the AWS Lake Formation page</p>
+</li>
+<li>
+<p>In the navigation pane, under Data catalog, choose Settings</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Clear both check boxes and choose Save (you have now enabled Lake Formation to control your Data Catalog resources)</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the navigation pane under Permissions, choose Data Lake Permissions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Click the Grant Button on the upper right corner</p>
+</li>
+<li>
+<p>For <strong>IAM users and roles</strong> enter your current IAM Role</p>
+</li>
+<li>
+<p>For <strong>LF-Tags or catalog resources</strong> select Named data catalog resources</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>For <strong>Databases</strong>, select your database with name: <code>aws_datalake_{environment}_{team}_{name}_db"</code> (default name is <code>aws_datalake_dev_demoteam_amcdataset_db</code>)</p>
+</li>
+<li>
+<p>For <strong>Tables</strong>, select <code>All Tables</code></p>
+</li>
+<li>
+<p>Leave <code>Data Filters - Optional</code> Empty</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>For <strong>Table Permissions</strong> select <code>Super</code></p>
+</li>
+<li>
+<p>Click Grant at the bottom of the page to create your Lake Formation Permissions</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You have enabled Lake Formation permissions and given your IAM Role permissions to access all tables in your Glue Database. You are now able to access the data returned from your workflow execution using Amazon Athena once the data is uploaded and processed in the data lake.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</h2>
+<div class="sectionbody">
 <div class="imageblock">
 <div class="content">
 <img src="images/AMC-Quickstart-CodePipeline-Steps.png" alt="AMC Quickstart CodePipeline Steps">
@@ -1717,8 +1681,10 @@ $ make create_workflows</code></pre>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</h3>
+</div>
+<div class="sect1">
+<h2 id="_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To hydrate the data lake and begin populating the data lake with data from your AMC Instance, follow the steps below:</p>
 </div>
@@ -1734,7 +1700,17 @@ $ make create_workflows</code></pre>
 <p>Click "Open JupyterLab" to open the Notebook Instance in a new tab</p>
 </li>
 <li>
-<p>Open the <code>Getting_Started_With_AMC_Quickstart.ipynb</code> Notebook in the <code>platform_manager</code> folder and follow the steps in the notebook to hydrate the data lake.</p>
+<p>Right click the <code>Getting_Started_With_AMC_Quickstart.ipynb</code> Notebook in the <code>platform_manager</code> folder</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Duplicate the Notebook</p>
+</li>
+<li>
+<p>Follow the steps in the notebook to hydrate the data lake.</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -1788,14 +1764,13 @@ $ make create_workflows</code></pre>
 . On the <strong>Configure stack options</strong> page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you finish, choose <strong>Next</strong>.
 . On the <strong>Review</strong> page, review and confirm the template settings. Under <strong>Capabilities</strong>, select the two check boxes to acknowledge that the template creates IAM resources and might require the ability to automatically expand macros.
 . Choose <strong>Create stack</strong> to deploy the stack.
-. Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the AMC Analytics Delivery Kit deployment is ready.
+. Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the AMC Analytics deployment is ready.
 . To view the created resources, see the values displayed in the <strong>Outputs</strong> tab for the stack.</p>
 </div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/additional_info.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1821,6 +1796,9 @@ $ make create_workflows</code></pre>
 </div>
 <div class="paragraph">
 <p>Advertisers can use QuickSight to analyze reports from AMC to identify valuable insights and then scheduling, publishing dashboards to provide marketing insights in one central location. Custom-built dashboards can pull from a series of custom workflows built on a scheduled cadence.</p>
+</div>
+<div class="paragraph">
+<p>Note: As a prerequisite, you should have executed at least one Time to Conversion query against AMC. The result will be used in this section to populate a QuickSight visualization.</p>
 </div>
 <div class="sect2">
 <h3 id="_initial_quicksight_setup">Initial QuickSight Setup</h3>
@@ -1851,10 +1829,109 @@ $ make create_workflows</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</h3>
+<h3 id="_authorize_your_quicksight_connection">Authorize Your QuickSight Connection</h3>
 <div class="paragraph">
-<p>Insert Steps to Get Signed up for QuickSight
-<a href="https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps</a></p>
+<p>To work with Lake Formation and Athena, make sure that you have AWS resource permissions configured in Amazon QuickSight:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enable access to Amazon Athena.</p>
+</li>
+<li>
+<p>Enable access to the correct buckets in Amazon S3 Usually S3 access is enabled when you enable Athena. However, because you can change S3 permissions outside of that process, it&#8217;s a good idea to verify them separately</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Use the following procedure to make sure that you successfully authorized Amazon QuickSight to use Athena. Permissions to AWS resources apply to all Amazon QuickSight users.</p>
+</div>
+<div class="paragraph">
+<p>To perform this action, you must be an Amazon QuickSight administrator. To check if you have access, verify that you see the Manage QuickSight option when you open the menu from your profile at upper right.</p>
+</div>
+<div class="paragraph">
+<p>For more information, review: <a href="https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html</a></p>
+</div>
+<div class="paragraph">
+<p><strong>To authorize Amazon QuickSight to access Athena and Amazon S3:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Choose your profile name (upper right). Choose <strong>Manage QuickSight</strong>, and then choose <strong>Security &amp; permissions</strong>.</p>
+</li>
+<li>
+<p>Under <strong>QuickSight access to AWS services</strong>, choose <strong>Manage</strong>.</p>
+</li>
+<li>
+<p>Find <strong>Athena</strong> in the list. Clear the box by Athena, then select it again to enable Athena. Then choose <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Under <strong>S3 Bucket</strong>, choose the S3 buckets that you want to access from Amazon QuickSight.</p>
+</li>
+<li>
+<p>From the right column, <strong>Write permission for Athena Workgroup</strong>, choose the S3 buckets you could write your Athena results too.</p>
+</li>
+<li>
+<p>Choose <strong>Finish</strong> to confirm your selection or choose <strong>Cancel</strong> to exit without saving.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>, to update your new settings for Amazon QuickSight access to AWS services or choose <strong>Cancel</strong> to exit without making any changes.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>To authorize Amazon QuickSight through AWS Lake Formation:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Collect the Amazon Resource Names (ARNs) of the Amazon QuickSight users and groups that need to access the data in Lake Formation. These users should be Amazon QuickSight authors or administrators.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>Use the AWS CLI to find user ARNs or you can construct the ARNs for each user manually.</p>
+</li>
+<li>
+<p>To construct manually, replace <strong>REGION_NAME</strong>, <strong>ACCOUNT_ID</strong>, and <strong>QUICKSIGHT_USERNAME</strong>: <code><code>arn:aws:quicksight:&lt;REGION_NAME&gt;:&lt;ACCOUNT_ID&gt;:user/default/&lt;QUICKSIGHT_USERNAME&gt;</code></code></p>
+</li>
+<li>
+<p>To collect user ARNs programmatically, run the following list-users command in your terminal (Linux or Mac) or at your command prompt (Windows): <code><code>aws quicksight list-users --aws-account-id 111122223333 --namespace default --region us-east-1</code></code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Next, Sign in to the AWS Console and navigate to AWS Lake Formation as the data lake administrator. A data lake administrator can grant any principal (IAM, QuickSight, or Active Directory) permissions to Data Catalog resources (databases and tables) or data lake locations in Amazon S3.</p>
+</li>
+<li>
+<p>Choose <strong>Databases</strong>.</p>
+</li>
+<li>
+<p>Select the circle next to the database you want to grant access to your QuickSight user.</p>
+</li>
+<li>
+<p>From the <strong>Actions</strong> drop-down menu, choose <strong>Grant</strong>.</p>
+</li>
+<li>
+<p>Select <strong>SAML users and groups</strong> and enter the QuickSight user ARN.</p>
+</li>
+<li>
+<p>Then click into <strong>Named data catalog resources</strong></p>
+</li>
+<li>
+<p>Under Tables, open the drop-down menu and select All tables or selectively choose individual tables to permission access to.</p>
+</li>
+<li>
+<p>For <strong>Table permissions</strong>, choose <strong>Select</strong> and <strong>Describe</strong>.</p>
+</li>
+<li>
+<p>Then click <strong>Grant</strong>.</p>
+</li>
+<li>
+<p>Repeat the preceding steps to grant multiple database permissions to your QuickSight user ARN or other users and groups.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -1954,10 +2031,10 @@ $ make create_workflows</code></pre>
 <div class="olist loweralpha">
 <ol class="loweralpha">
 <li>
-<p>To write a SQL query, choose <strong>Use custom SQL</strong></p>
+<p>To choose the database and table created for the Time to Conversion use case, choose your database from the dropdown under <strong>Database</strong> and choose the Time to Conversion table from the <strong>Tables</strong> list that appears for your database.</p>
 </li>
 <li>
-<p>To choose a database and table, choose your catalog that contains your databases from the dropdown under <strong>Catalog</strong>. Then, choose a database from the dropdown under <strong>Database</strong> and choose a table from the <strong>Tables</strong> list that appears for your database. Note: If you don&#8217;t have the right permissions, you receive the following error message: "You don&#8217;t have sufficient permissions to connect to this dataset or run this query." Contact your QuickSight administrator for assistance. For more information, see Authorizing connections to Amazon Athena: <a href="https://docs.aws.amazon.com/quicksight/latest/user/athena.html" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/athena.html</a></p>
+<p>You can optionally pull the data in with a SQL query, by choosing <strong>Use custom SQL</strong></p>
 </li>
 </ol>
 </div>
@@ -1966,7 +2043,7 @@ $ make create_workflows</code></pre>
 </div>
 </li>
 <li>
-<p>Choose <strong>Edit/preview data</strong>.</p>
+<p>Choose <strong>Select</strong></p>
 </li>
 <li>
 <p>Create a dataset and analyze the data using the table by choosing <strong>Visualize</strong>.</p>
@@ -2063,12 +2140,21 @@ $ make create_workflows</code></pre>
 </ol>
 </div>
 </li>
+<li>
+<p>Use a combination of the filters to analyze the performance by time period, to identify windows with the highest conversion rates.</p>
+</li>
 </ol>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/quicksight-time-to-conversion.png" alt="QuickSightTimeToConversion">
 </div>
+</div>
+<div class="paragraph">
+<p>Figure 6. Verical Bar Chart visual in Amazon QuickSight for the Purchases by Time to Conversion AMC use case</p>
+</div>
+<div class="paragraph">
+<p>For further information on customizing visualizations checkout: <a href="https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html</a></p>
 </div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>

@@ -26,6 +26,7 @@ Each deployment takes about {deployment_time} to complete.
 
 Check the AWS Region that's displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the infrastructure. The template is launched in the {default_deployment_region} Region by default. For more information, see link:#_supported_aws_regions[Supported AWS Regions], earlier in this guide.
 
+
 === Prerequisites for the Deployment
 
 To complete this deployment, you'll need the following in your local environment
@@ -69,20 +70,9 @@ You can verify your git configuration with
 $ git config --list
 ```
 
-The jq Linux command line utility to extract data from JSON documents.
-
-```
-$ jq --version
-```
-
-If not installed already, you can install jq by running in your command line:
-
-```
-$ sudo yum install jq
-```
 
 
-=== [OPTIONAL] Using AWS Cloud9 for Deployment
+#### [OPTIONAL] Using AWS Cloud9 for Deployment
 
 If you would like to deploy this quickstart using an AWS Cloud9 Environment rather than on your local environment, follow these steps to set up AWS Cloud9:
 
@@ -114,7 +104,7 @@ AWS CDK CLI (version 2.10 and above)
 
 === Initial setup with the DDK CLI
 
-Clone the repository for AMC QuickStart
+#### Clone the repository for AMC QuickStart
 
 ```
 $ git clone GITHUB-PATH
@@ -184,9 +174,9 @@ $ git push --set-upstream origin main
 ```
 
 
-=== Deploying the Quickstart
+=== Deploying the Foundational Infrastructure
 
-Once the above steps are performed, run the deploy command to deploy the quickstart
+Once the above steps are performed, run the deploy command to deploy the the Foundational Infrastructure.
 
 ```
 $ ddk deploy --profile [AWS_PROFILE]
@@ -205,33 +195,39 @@ _Microservices:_ This application creates the resources for the supporting Micro
 For a walkthrough of the steps the AWS CodePipeline goes through to deploy these resources please refer to [here](#amc-quickstart-codepipeline-steps).
 
 _NOTE:_ If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the `Retry` button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.
-== Hydrating the Data Lake
 
-To hydrate the data lake run the below shell script
-```
-$ make insert_tps_records
-$ make create_workflows
-```
 
-_NOTE:_ Make sure the `ENV` variable in the `Makefile` is set to the correct environment name before proceeding to hydrate the data lake (default: `dev`)
 
-For a more detailed description of the aforementioned commands, refer to below:
+=== Enable Default Lake Formation Permissions
+In order to query the data in Athena, we highly recommend you enable default Lake Formation Permissions and give your current IAM Role permisssion in AWS Lake Formation. Enabling AWS Lake Formation Permissions helps to build, secure, and manage your data lake quickly and efficiently. Follow the below steps in order to enable Lake Formation and grant your Role the correct permissions:
 
-_Insert TPS Records:_ To initialize the process of onboarding your AMC instance on the Amazon AD Tech platform, this script adds client configurations to a TPS Customer Configuration table in Amazon DynamoDB. The configuration includes your AMC Endpoint URL, AMC Bucket Name and other related information on your AMC Instance. The Tenant Provisioning Service (TPS) will then automatically:
+. In your AWS Account Console go to the AWS Lake Formation page
+. In the navigation pane, under Data catalog, choose Settings
 
-- Onboard clients using configuration which is persisted in a DynamoDB Table. It helps to reduce time to onboard new customers
-- Provide functionality to automatically enable different modules (AMC/Sponsored ADs/DSP) during the onboarding process for each client
-- Provide a centralized location to manage various clients and modules and supports multi-tenancy
+   .. Clear both check boxes and choose Save (you have now enabled Lake Formation to control your Data Catalog resources)
 
-_Create Workflows:_ To initialize the creation, scheduling and execution of AMC workflows, this script adds 4 default workflows to an AMC Workflows Library table in Amazon DynamoDB. From there Workflow Manager Service (WFM) will automatically create workflow schedules and add them to your AMC instance. WFM also allows you to:
+. In the navigation pane under Permissions, choose Data Lake Permissions
 
-- Automatically trigger the deployment of the SQS queues, IAM policies, workflows and workflow schedules in WFM for the customer's AMC instance upon adding or updating a customer record to the Tenant Provisioning Service (TPS)
-- Synchronize workflows and workflow schedules in the Workflow Library service with multiple AMC Instances
-- Send execution requests to an SQS queue rather than directly to the AMC endpoint to prevents timeout failures when there are large number of requests in a short period of time
-- Scheduled with dynamic relative time windows rather than using AMC's scheduling feature which only allows predefined scheduled reporting such as Daily or Weekly
-- Track the status of all workflow executions for customer AMC instances whether they are submitted through WFM or other means (postman, etc.). Having the status synced to DynamoDB allows events to be triggered or notifications to be sent when executions change state. This table can also be used to track historical executions for troubleshooting or performance monitoring.
+   .. Click the Grant Button on the upper right corner
 
-=== AMC Quickstart CodePipeline Steps
+   .. For **IAM users and roles** enter your current IAM Role
+
+   .. For **LF-Tags or catalog resources** select Named data catalog resources
+
+      ... For **Databases**, select your database with name: `aws_datalake_{environment}_{team}_{name}_db"` (default name is `aws_datalake_dev_demoteam_amcdataset_db`)
+
+      ... For **Tables**, select `All Tables`
+
+      ... Leave `Data Filters - Optional` Empty
+
+   .. For **Table Permissions** select `Super`
+
+   .. Click Grant at the bottom of the page to create your Lake Formation Permissions
+
+You have enabled Lake Formation permissions and given your IAM Role permissions to access all tables in your Glue Database. You are now able to access the data returned from your workflow execution using Amazon Athena once the data is uploaded and processed in the data lake.
+
+
+== AMC Quickstart CodePipeline Steps
 
 image::../images/AMC-Quickstart-CodePipeline-Steps.png[AMC Quickstart CodePipeline Steps]
 
@@ -246,14 +242,16 @@ The Code Pipeline Steps are:
     - Data Lake Resources
     - Microservice Resources
 
-=== Hydrating the Data Lake with SageMaker Notebooks
+== Hydrating the Data Lake with SageMaker Notebooks
 
 To hydrate the data lake and begin populating the data lake with data from your AMC Instance, follow the steps below:
 
-1. Log In to your AWS Account and go to Amazon SageMaker
-2. On the Left Side of Your Screen Click on Notebook --> Notebook Instances (you should see one notebook named `saw-platform-manager` with Status "InService")
-3. Click "Open JupyterLab" to open the Notebook Instance in a new tab
-4. Open the `Getting_Started_With_AMC_Quickstart.ipynb` Notebook in the `platform_manager` folder and follow the steps in the notebook to hydrate the data lake.
+. Log In to your AWS Account and go to Amazon SageMaker
+. On the Left Side of Your Screen Click on Notebook --> Notebook Instances (you should see one notebook named `saw-platform-manager` with Status "InService")
+. Click "Open JupyterLab" to open the Notebook Instance in a new tab
+. Right click the `Getting_Started_With_AMC_Quickstart.ipynb` Notebook in the `platform_manager` folder
+   .. Duplicate the Notebook
+   .. Follow the steps in the notebook to hydrate the data lake.
 
 **This Notebook will cover the following:**
 

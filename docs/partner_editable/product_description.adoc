@@ -2,14 +2,11 @@
 // Briefly describe the software. Use consistent and clear branding. 
 // Include the benefits of using the software on AWS, and provide details on usage scenarios.
 
-This Quick Start deploys the AMC Analytics Delivery Kit, which contains the following four modules:
+This Quick Start deploys the {partner-product-short-name}, which contains the following four modules:
 
-* *AWS DataOps Development Kit (DDK)*: This module is based on the open-source https://github.com/awslabs/aws-ddk[AWS DataOps Development Kit (DDK)^] of AWS Professional Services and configured to process advertising-related datasets in AMC. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/data_lake/README.md[AWS DataOps Development Kit (DDK)^].
-
-* *Tenant Provisioning Service*: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/customer_management_service/README.md[Tenant Provisioning Service (Client Manager MicroService)^].
-
-* *Workflow Management Service*: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/data_lake_hydration_service/README.md[Workflow Management Service^].
-
-* *Platform Notebook Manager*: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services. For more information, see https://github.com/aws-quickstart/quickstart-amazon-marketing-cloud/blob/main/amc_quickstart/microservices/platform_management_notebooks/README.md[Platform Notebook Manager^].
+* *AWS DataOps Development Kit (DDK)*: This module is based on the open-source https://github.com/awslabs/aws-ddk[AWS DataOps Development Kit (DDK)^] of AWS Professional Services and configured to process advertising-related datasets in AMC.
+* *Tenant Provisioning Service*: Part of the Client Manager MicroServices package, this module is an Amazon Ad Tech solution for managing multiple Amazon Marketing Cloud clients. 
+* *Workflow Management Service*: The Workflow Management Service is an Amazon Ad Tech solution for managing Amazon Marketing Cloud workflows. 
+* *Platform Notebook Manager*: This module contains sample Jupyter notebooks for Tenant Provisioning and Workflow Manager services. 
 
 For more information about AMC, see https://advertising.amazon.com/solutions/products/amazon-marketing-cloud[Amazon Marketing Cloud^].

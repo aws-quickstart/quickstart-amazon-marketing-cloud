@@ -1,8 +1,8 @@
 // Change the following attributes.
 :quickstart-project-name: quickstart-amazon-marketing-cloud
-:partner-product-name: Amazon Marketing Cloud Analytics Delivery Kit
+:partner-product-name: AMC Analytics on AWS Solution
 // For the following attribute, if you have no short name, enter the same name as partner-product-name.
-:partner-product-short-name: AMC Analytics Delivery Kit
+:partner-product-short-name: AMC Analytics
 // If there's no partner, comment partner-company-name.
 :partner-company-name: Ad Tech Solutions
 :doc-month: March

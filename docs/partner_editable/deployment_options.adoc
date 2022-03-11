@@ -1,5 +1,5 @@
 // Edit this placeholder text to accurately describe your architecture.
 
-This Quick Start provides two deployment options:
+This Quick Start provides one deployment option:
 
-* *AWS CDK deployment*. Use https://aws.amazon.com/cdk/[AWS CDK^] to deploy {partner-product-short-name}. This option takes about five minutes longer than the AWS CloudFormation-only option.
+* *AWS CDK deployment*. Use https://aws.amazon.com/cdk/[AWS CDK^] to deploy {partner-product-short-name}. 
