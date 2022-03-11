@@ -168,12 +168,10 @@ This section provides details on how to create a visualization for the Time to C
   c. Select **advertiser**, then repeat for **campaign** and **file_last_modified**
 10. Use a combindation of the filters to analyze the performance by time period, to identify windows with the highest conversion rates.
 
-For further information on customizing visualizations checkout: https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html
-
 image::../images/quicksight-time-to-conversion.png[QuickSightTimeToConversion]
 Figure 6. Verical Bar Chart visual in Amazon QuickSight for the Purchases by Time to Conversion AMC use case
 
-
+For further information on customizing visualizations checkout: https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html
 
 //== Best practices for using {partner-product-short-name} on AWS
 // Provide post-deployment best practices for using the technology on AWS, including considerations such as migrating data, backups, ensuring high performance, high availability, etc. Link to software documentation for detailed information.
