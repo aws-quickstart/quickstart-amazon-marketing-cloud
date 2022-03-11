@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.13">
 <title>Amazon Marketing Cloud Analytics Delivery Kit on the AWS Cloud</title>
 <style>
 
@@ -844,61 +844,6 @@ p.footer-text a{color:#d7d8d8}
 </li>
 <li><a href="#_hydrating_the_data_lake">Hydrating the Data Lake</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
-<li><a href="#_post_deployment_steps">Post-deployment steps</a></li>
-<li><a href="#_amazon_marketing_cloud_dashboard_insights">Amazon Marketing Cloud Dashboard Insights</a>
-<ul class="sectlevel2">
-<li><a href="#_overview_of_use_cases">Overview of Use Cases</a></li>
-<li><a href="#_use_case_1_audience_analysis">Use Case 1: Audience Analysis</a></li>
-</ul>
-</li>
-<li><a href="#_key_performance_indicators">Key Performance Indicators:</a></li>
-<li><a href="#_business_outcomes">Business Outcomes:</a></li>
-<li><a href="#_visual_details">Visual Details:</a>
-<ul class="sectlevel2">
-<li><a href="#_table_view">Table View:</a></li>
-<li><a href="#_targeted_and_untargeted_analysis_view">Targeted and Untargeted Analysis View:</a></li>
-<li><a href="#_performance_roas_over_average_roas_view">Performance ROAS over average ROAS View:</a></li>
-<li><a href="#_use_case_2_frequency_distribution">Use Case 2: Frequency Distribution</a></li>
-</ul>
-</li>
-<li><a href="#_key_performance_indicators_2">Key Performance Indicators:</a></li>
-<li><a href="#_business_outcomes_2">Business Outcomes:</a></li>
-<li><a href="#_visual_details_2">Visual Details:</a>
-<ul class="sectlevel2">
-<li><a href="#_users_per_bucket_reach_against_roas_view">Users per bucket (Reach) against ROAS View:</a></li>
-<li><a href="#_table_view_2">Table View:</a></li>
-<li><a href="#_users_per_bucket_reach_with_device_type_against_roas_view">Users per bucket (Reach), with device type against ROAS View:</a></li>
-<li><a href="#_roas_over_frequency_buckets_and_device_type_view">ROAS over frequency buckets and device type view:</a></li>
-<li><a href="#_use_case_3_device_exposure">Use Case 3: Device Exposure</a></li>
-</ul>
-</li>
-<li><a href="#_key_performance_indicators_3">Key Performance Indicators:</a></li>
-<li><a href="#_business_outcomes_3">Business Outcomes:</a></li>
-<li><a href="#_visual_details_3">Visual Details:</a>
-<ul class="sectlevel2">
-<li><a href="#_table_view_3">Table View:</a></li>
-<li><a href="#_users_per_device_path_view">Users per Device Path View:</a></li>
-<li><a href="#_new_to_brand_purchases_and_unique_detail_page_views_per_device_path_view">New to Brand purchases and Unique Detail Page Views per Device Path View:</a></li>
-<li><a href="#_use_case_4_geo_analysis">Use Case 4: Geo Analysis</a></li>
-</ul>
-</li>
-<li><a href="#_key_performance_indicators_4">Key Performance Indicators:</a></li>
-<li><a href="#_business_outcomes_4">Business Outcomes:</a></li>
-<li><a href="#_visual_details_4">Visual Details:</a>
-<ul class="sectlevel2">
-<li><a href="#_graphs_across_specified_date_range">Graphs across specified date range:</a></li>
-<li><a href="#_impression_and_roas_over_revenue">Impression and ROAS over Revenue:</a></li>
-<li><a href="#_table_view_4">Table View:</a></li>
-<li><a href="#_use_case_5_product_mix_analysis">Use Case 5: Product Mix Analysis</a></li>
-</ul>
-</li>
-<li><a href="#_key_performance_indicators_5">Key Performance Indicators:</a></li>
-<li><a href="#_business_outcomes_5">Business Outcomes:</a></li>
-<li><a href="#_visual_details_5">Visual Details:</a>
-<ul class="sectlevel2">
-<li><a href="#_table_view_5">Table View:</a></li>
-<li><a href="#_total_users_and_user_conversions_per_product_mix_view">Total Users and User conversions per product mix view:</a></li>
-<li><a href="#_new_to_brand_purchases_and_non_converted_user_view">New to brand purchases and non-converted user view:</a></li>
 </ul>
 </li>
 <li><a href="#_faq">FAQ</a></li>
@@ -1161,7 +1106,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/awslabs/aws-serverless-data-lake-framework" target="_blank" rel="noopener">aws-serverless-data-lake-framework</a></p>
+<p><a href="https://github.com/awslabs/aws-ddk" target="_blank" rel="noopener">AWS DataOps Development Kit (DDK)</a></p>
 <div class="ulist">
 <ul>
 <li>
@@ -1547,92 +1492,186 @@ $ make create_workflows</code></pre>
 <li>
 <p>Once finished go to <a href="https://console.aws.amazon.com/athena/home?region=us-east-1">Amazon Athena</a> <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html">switch the role</a> on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.</p>
 </li>
-<li>
-<p>Run the below queries to explore the sample AMC datasets</p>
-<div class="ulist">
-<ul>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_audience_analysis_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_device_exposure_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_frequency_distribution_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_geo_analysis_adhoc" limit 10;</p>
-</li>
-<li>
-<p>SELECT * FROM "demoteam_amcdataset_dev_stage"."testdemocustomer_product_mix_adhoc" limit 10;</p>
-</li>
-</ul>
-</div>
-</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_post_deployment_steps">Post-deployment steps</h2>
+<h2 id="_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<div class="title">Below are some sample QuickSight Dashboards built using the sample AMC datasets:</div>
-<p>For more detailed configuration steps of the QuickSight dashboards, review the document located <a href="../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf">QuickStart Dashboard Setup Guide</a></p>
+<p>The following section walks you through how to build a QuickSight dashboard with a report from Amazon Marketing Cloud (AMC). With AMC enabling advertisers to query event level data within a privacy friendly environment and Amazon QuickSight offering users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data - you can begin to build out a business intelligence strategy.</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="paragraph">
+<p>Advertisers can use QuickSight to analyze reports from AMC to identify valuable insights and then scheduling, publishing dashboards to provide marketing insights in one central location. Custom-built dashboards can pull from a series of custom workflows built on a scheduled cadence.</p>
+</div>
+<div class="sect2">
+<h3 id="_initial_quicksight_setup">Initial QuickSight Setup</h3>
+<div class="paragraph">
+<p>You will need author access to a QuickSight Account to get started with building your first dashboard. If you don&#8217;t have a QuickSight account already, below are the steps to create one.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Audience Analysis</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard provides analysis on audience segments targeted by the customer and also details of audience segments that user was a part of but not targeted for purchases of customer products on Amazon.</p>
+<p>Launch the <strong>AWS Console</strong> (<a href="https://console.aws.amazon.com" class="bare">https://console.aws.amazon.com</a>) in a new browser tab, search for <strong>QuickSight</strong> and launch it.</p>
 </li>
-</ul>
+<li>
+<p>On the <strong>QuickSight</strong> page, click <strong>Sign up for QuickSight</strong> button.</p>
+</li>
+<li>
+<p>Keep the default <strong>Enterprise</strong> edition, scroll down and click the <strong>Continue</strong> button.</p>
+</li>
+<li>
+<p>Enter a <strong>QuickSight account name</strong> &amp; <strong>Notification email address</strong>. Enter your official email as the notification email.</p>
+</li>
+<li>
+<p>Scroll down and click the <strong>Finish</strong> button. (It can take 15-30 Secs to set up the account)</p>
+</li>
+<li>
+<p>Click the <strong>Go to Amazon QuickSight</strong> button. You will now be taken to QuickSight console.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</h3>
+<div class="paragraph">
+<p>Insert Steps to Get Signed up for QuickSight
+<a href="https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</h3>
+<div class="paragraph">
+</div>
+<div class="sect3">
+<h4 id="_overview_2">Overview</h4>
+<div class="paragraph">
+<p>Advertisers may typically ask - how long does it takes for our customers to convert after last seeing our ad? This use case will enable you with the dimensions and metrics to answer that question.</p>
+</div>
+<div class="paragraph">
+<p>It is important to understand how long it takes customers who see your ad to complete the conversion, and how that impacts the data you see in your conversion report. Sometimes the conversions happen rapidly, within a few minutes and other times, it might take days for your customers to complete the purchase. You can use this information to adjust the duration of your campaign and promotion to maximize sales.</p>
+</div>
+<div class="paragraph">
+<p><strong>Key Performance Indicators (KPIs):</strong></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">KPI</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time to Conversion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of time customers take from last seeing your ad to purchase. The time has been converted to minutes, hours and days from seconds in the query template. You may adjust it based on your use case.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of times any amount of a promoted product or products are included in a purchase event. Purchase events include video rentals and new Subscribe &amp; Save subscriptions. Sum of purchases from users_that_purchased.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Total Brand Purchases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of times any number of products are included in a single purchase event. Purchase events include Subscribe &amp; Save subscriptions and video rentals. This counts purchases for promoted products as well as products from the same brands as the products tracked in the order. (Total purchases = Purchases + Purchases Brand Halo)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_creating_the_visualization">Creating the Visualization:</h4>
+<div class="paragraph">
+<p>This section provides details on how to create a visualization for the Time to Conversion use case in Amazon QuickSight.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Begin by creating a new dataset. Choose <strong>Datasets</strong> from the navigation pane at left, then choose <strong>New dataset</strong>.</p>
+</li>
+<li>
+<p>Next, connect to an Athena Data Source with either a using an existing connection profile (more common) or by creating a new one.</p>
+<div class="olist upperalpha">
+<ol class="upperalpha">
+<li>
+<p>To use an existing Athena connection profile, scroll down to the <strong>FROM EXISTING DATA SOURCES</strong> section, and choose the card for the existing data source that you want to use. Choose <strong>Create dataset</strong>. Cards are labeled with the Athena data source icon and the name provided by the person who created the connection.</p>
+</li>
+<li>
+<p>Next, create a new Athena connection profile, use the following steps:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>In the <strong>FROM NEW DATA SOURCES</strong> section, choose the <strong>Athena</strong> data source card.</p>
+</li>
+<li>
+<p>For <strong>Data source name</strong>, enter a descriptive name</p>
+</li>
+<li>
+<p>For <strong>Athena workgroup</strong>, choose your workgroup</p>
+</li>
+<li>
+<p>Choose <strong>Validate connection</strong> to test the connection</p>
+</li>
+<li>
+<p>Choose <strong>Create data source</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
-<p>Frequency Distribution</p>
-<div class="ulist">
-<ul>
+<p>On the <strong>Choose your table screen</strong>, do the following:</p>
+<div class="olist upperalpha">
+<ol class="upperalpha">
 <li>
-<p>This dashboard provides analysis on performance and delivery by different frequencies/impression exposures to help optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on Amazon.</p>
+<p>For <strong>Catalog</strong>, choose <strong>AwsDataCatalog</strong>.</p>
 </li>
-</ul>
+<li>
+<p>Choose one of the following:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>To write a SQL query, choose <strong>Use custom SQL</strong></p>
+</li>
+<li>
+<p>To choose a database and table, choose your catalog that contains your databases from the dropdown under <strong>Catalog</strong>. Then, choose a database from the dropdown under <strong>Database</strong> and choose a table from the <strong>Tables</strong> list that appears for your database. Note: If you don&#8217;t have the right permissions, you receive the following error message: "You don&#8217;t have sufficient permissions to connect to this dataset or run this query." Contact your QuickSight administrator for assistance. For more information, see Authorizing connections to Amazon Athena: <a href="https://docs.aws.amazon.com/quicksight/latest/user/athena.html" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/athena.html</a></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
-<p>Device Exposure</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types (e.g., TV, Mobile, PC, Tablet) for purchases of assigned customer products on Amazon.</p>
-</li>
-</ul>
-</div>
+<p>Choose <strong>Edit/preview data</strong>.</p>
 </li>
 <li>
-<p>Geo Analysis</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This dashboard provides analysis on performance data by geographic location (e.g.DMA) for purchases of assigned customer products on Amazon.</p>
-</li>
-</ul>
-</div>
+<p>Create a dataset and analyze the data using the table by choosing <strong>Visualize</strong>.</p>
 </li>
 <li>
-<p>Product Mix Analysis</p>
-<div class="ulist">
-<ul>
+<p>In the <strong>Fields list</strong> pane, choose <strong>purchases</strong>, <strong>time_to_conversion</strong>, and <strong>total_brand_purchases</strong>.</p>
+</li>
 <li>
-<p>This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.</p>
+<p>Amazon QuickSight uses AutoGraph to create the visual, selecting the visual type that it determines is most compatible with those fields. In this case, it selects a horizontal bar chart that shows the purchases and total_brand_purchases by time_to_conversion.</p>
 </li>
-</ul>
-</div>
+<li>
+<p>In the <strong>Visual types</strong> pane, select <strong>Vertical bar chart</strong> to rotate the chart.</p>
 </li>
-</ul>
+<li>
+<p>Expand the <strong>Field wells</strong> pane by choosing the expand icon.</p>
+</li>
+<li>
+<p>Choose the <strong>X axis</strong> field well, choose <strong>Sort by</strong>, and then choose <strong>time_to_conversion</strong>.</p>
+</li>
+<li>
+<p>Again from the <strong>X axis</strong> field well, select the <strong>ascending</strong> icon.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -2172,6 +2211,37 @@ image::../images/quicksight-images/product_mix/product_mix_ntb_view.png[ProductM
 <h2 id="_faq">FAQ</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p><strong>Q:</strong> I encountered a <strong>FAILED</strong> status on the <strong>Assets</strong> Step of the AWS CodePipeline Deployment.</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Q:</strong> How do I set up Amazon QuickSight dashboards to visualize the data populated on S3?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Follow the documentation [here](README.md) to set up QuickSight Dashboards for your AMC Instance data.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Q:</strong> Where can I find more information for the workflow queries available to create and schedule with for my AMC Instance?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> On the AMC UI, you can view the Interactive Query Library (IQL) for a list of available queries for a set of different use cases. Also, custom queries are supported.</p>
+</div>
+<div class="paragraph">
+<p>To create, schedule, and manage your workflow queries, refer to the Platform Manager WFM Notebooks in Amazon SageMaker for more detailed documentation.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Q:</strong> Where do I find my the configuration for my AMC Instance?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> On the AMC UI, you can view the Instance Information page for detailed information on the AMC Instance S3 Bucket, Endpoint URL, Data Upload Account, Advertiser IDs, and Entity IDs. Also, you can retrieve this information by raising a ticket to the AMC Team.</p>
+</div>
+<hr>
+<div class="paragraph">
 <p><strong>Q.</strong> I encountered multiple AWS CodeBuild failures.</p>
 </div>
 <div class="paragraph">
@@ -2246,7 +2316,7 @@ and to share your customizations with others.</p>
 </div>
 <p class="footer-text">
 <!-- We can use document attributes: -->
-<!-- Generated with Asciidoctor v2.0.17. -->
+<!-- Generated with Asciidoctor v2.0.13. -->
 <a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> | &copy; 2021, Amazon Web Services, Inc. or its affiliates and Ad Tech Solutions. All rights reserved.
 </p>
 </body>
