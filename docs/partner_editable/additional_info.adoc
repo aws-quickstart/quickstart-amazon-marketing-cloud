@@ -84,7 +84,7 @@ For more information, review: https://docs.aws.amazon.com/quicksight/latest/user
 
 1. Collect the Amazon Resource Names (ARNs) of the Amazon QuickSight users and groups that need to access the data in Lake Formation. These users should be Amazon QuickSight authors or administrators.
   a. Use the AWS CLI to find user ARNs or you can construct the ARNs for each user manually.
-  b. To construct manually, replace REGION_NAME, ACCOUNT_ID, and QUICKSIGHT_USERNAME: ```arn:aws:quicksight:<REGION_NAME>:<ACCOUNT_ID>:user/default/<QUICKSIGHT_USERNAME>```
+  b. To construct manually, replace **REGION_NAME**, **ACCOUNT_ID**, and **QUICKSIGHT_USERNAME**: ```arn:aws:quicksight:<REGION_NAME>:<ACCOUNT_ID>:user/default/<QUICKSIGHT_USERNAME>```
   c. To collect user ARNs programmatically, run the following list-users command in your terminal (Linux or Mac) or at your command prompt (Windows): ```aws quicksight list-users --aws-account-id 111122223333 --namespace default --region us-east-1```
 2. Next, Sign in to the AWS Console and navigate to AWS Lake Formation as the data lake administrator. A data lake administrator can grant any principal (IAM, QuickSight, or Active Directory) permissions to Data Catalog resources (databases and tables) or data lake locations in Amazon S3.
 3. Choose **Databases**.
@@ -138,9 +138,9 @@ This section provides details on how to create a visualization for the Time to C
 3. On the **Choose your table screen**, do the following:
   A. For **Catalog**, choose **AwsDataCatalog**.
   B. Choose one of the following:
-    a. To write a SQL query, choose **Use custom SQL**
-    b. To choose a database and table, choose your catalog that contains your databases from the dropdown under **Catalog**. Then, choose a database from the dropdown under **Database** and choose a table from the **Tables** list that appears for your database. Note: If you don't have the right permissions, you receive the following error message: "You don't have sufficient permissions to connect to this dataset or run this query." Contact your QuickSight administrator for assistance. For more information, see Authorizing connections to Amazon Athena: https://docs.aws.amazon.com/quicksight/latest/user/athena.html
-4. Choose **Edit/preview data**.
+    a. To choose the database and table created for the Time to Conversion use case, choose your database from the dropdown under **Database** and choose the Time to Conversion table from the **Tables** list that appears for your database.
+    b. You can optionally pull the data in with a SQL query, by choosing **Use custom SQL**
+4. Choose **Select**
 5. Create a dataset and analyze the data using the table by choosing **Visualize**. 
   a. In the **Fields list** pane, choose **purchases**, **time_to_conversion**, and **total_brand_purchases**.
   b. Amazon QuickSight uses AutoGraph to create the visual, selecting the visual type that it determines is most compatible with those fields. In this case, it selects a horizontal bar chart that shows the purchases and total_brand_purchases by time_to_conversion.
@@ -166,6 +166,7 @@ This section provides details on how to create a visualization for the Time to C
   a. On the far left pane, choose **Filter**
   b. Then in the Filters pane, choose the **+** in the top right corner.
   c. Select **advertiser**, then repeat for **campaign** and **file_last_modified**
+10. Use a combindation of the filters to analyze the performance by time period, to identify windows with the highest conversion rates.
 
 For further information on customizing visualizations checkout: https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html
 
