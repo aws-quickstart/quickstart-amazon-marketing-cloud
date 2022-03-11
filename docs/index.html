@@ -844,11 +844,6 @@ p.footer-text a{color:#d7d8d8}
 </li>
 <li><a href="#_hydrating_the_data_lake">Hydrating the Data Lake</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
-<li><a href="#_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</a>
-<ul class="sectlevel2">
-<li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
-<li><a href="#_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</a></li>
-<li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
 </ul>
 </li>
 <li><a href="#_faq">FAQ</a></li>
@@ -1548,7 +1543,6 @@ $ make create_workflows</code></pre>
 <div class="sect2">
 <h3 id="_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</h3>
 <div class="paragraph">
-<p>In this section, you&#8217;ll step through how to build and analyze a visualization for the Time to Conversion use case.</p>
 </div>
 <div class="sect3">
 <h4 id="_overview_2">Overview</h4>
@@ -1679,11 +1673,537 @@ $ make create_workflows</code></pre>
 </li>
 </ol>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amazon_marketing_cloud_dashboard_insights">Amazon Marketing Cloud Dashboard Insights</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
+The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
+The users can get read only permissions to this dashboard and can view relevant data visuals.
+The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.</p>
+</div>
+<div class="sect2">
+<h3 id="_overview_of_use_cases">Overview of Use Cases</h3>
+<div class="paragraph">
+<p>Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment, 5 use cases were created to explore the data from multiple perspectives. QuickSight was used for visualization to highlight the marketing insights provided by the use cases.
+The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The 5 uses cases highlighted in the dashboard are as below:
+1. Audience Analysis
+2. Frequency Distribution
+3. Device Exposure
+4. Geo Analysis
+5. Product Mix Analysis</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_case_1_audience_analysis">Use Case 1: Audience Analysis</h3>
+<div class="paragraph">
+<p>This use case gives the analysis of audience segments targeted by the customer and also details of audience segments
+that user was a part of but not targeted for purchases of customer products on Amazon. It provides KPIs for in-proposal
+Display campaigns like impressions, reach, cost, details by audience segments and campaign. The purchases and revenue
+are provided per product (ASIN) for both the targeted and untargeted audience segments. The impressions,
+reach, purchases and sales number on these charts cannot be added up as one purchaser may fall into multiple audiences.
+Each audience’s performance should be analyzed on its own.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_performance_indicators">Key Performance Indicators:</h2>
+<div class="sectionbody">
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>Impressions – Per Audience Segment</p>
+</li>
+<li>
+<p>Clicks – Per Audience Segment</p>
+</li>
+<li>
+<p>Reach – Per Audience Segment</p>
+</li>
+<li>
+<p>Total Cost – Per Audience Segment</p>
+</li>
+<li>
+<p>Sales tracked (Revenue) – Per Product</p>
+</li>
+<li>
+<p>Total Sales tracked (Brand Revenue) – Per Product</p>
+</li>
+<li>
+<p>Conversions – Per Product</p>
+</li>
+<li>
+<p>Purchases – Per Product</p>
+</li>
+<li>
+<p>ROAS over Sales tracked (Revenue)– Per Product</p>
+</li>
+<li>
+<p>ROAS over Total Sales tracked (Brand Revenue) – Per Product</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_outcomes">Business Outcomes:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides potential business outcomes derived from the Audience analysis use case:
+1. Investigating performance of untargeted audiences helps to discover audience segments that can be added to
+current targeted due to their potential positive impact on performance or scale.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Additionally, we can discover more insights into the attributes of our targeted audiences by seeing what other
+untargeted audience segments show strong performance – learning more about our most valued users or audiences to best
+target for potential new customers. This can be used for building better customer profiles, new creative messaging,
+campaign construction, etc.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visual_details">Visual Details:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.</p>
+</div>
+<div class="paragraph">
+<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+</div>
+<div class="sect2">
+<h3 id="_table_view">Table View:</h3>
+<div class="paragraph">
+<p>This visual provides an overview of all audience segments per campaign and ASIN
+Each audience can be analyzed separately by clicking audience segment from controls and it can be further
+analyzed per product by clicking on the List of ASINs table on the left</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png" alt="AudienceAnalysisTabularView">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_targeted_and_untargeted_analysis_view">Targeted and Untargeted Analysis View:</h3>
+<div class="paragraph">
+<p>This visual provides details about the impressions, purchases and ROAS over targeted and untargeted audience segments.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/audience_analysis/audience_analysis_analysis_view.png" alt="AudienceAnalysisView">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_performance_roas_over_average_roas_view">Performance ROAS over average ROAS View:</h3>
+<div class="paragraph">
+<p>This visual provides details about the impressions, purchases and ROAS over targeted and untargeted audience segments.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/audience_analysis/audience_analysis_matched_roas.png" alt="AudienceAnalysisMatchedROAS">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/audience_analysis/audience_analysis_unmatched_roas.png" alt="AudienceAnalysisUnmatchedROAS">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_case_2_frequency_distribution">Use Case 2: Frequency Distribution</h3>
+<div class="paragraph">
+<p>This use case gives an analysis of performance and delivery by different frequencies/impression exposures to help
+optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on
+Amazon. It is used to analyze performance across campaigns and device type within multiple frequency buckets from
+reach, impressions, purchases, conversion rate, and ROAS.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_performance_indicators_2">Key Performance Indicators:</h2>
+<div class="sectionbody">
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>Impressions – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Reach – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Total Cost – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Product Sales (Revenue)– Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Total Product Sales (Brand Revenue) – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Conversions – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Purchases – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Total Purchases – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Total Cost – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>ROAS over Revenue – Per Campaign, Device Type</p>
+</li>
+<li>
+<p>Frequency Buckets</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_outcomes_2">Business Outcomes:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides potential business outcomes derived from the Frequency Distribution use case:
+1. Identify opportunities to increase or decrease frequency caps to improve performance and/or reach over a period of time
+2. Identify potential campaign level frequency cap maximums by analyzing order level frequency over an extended period
+time instead of analyzing shorter time periods of frequency caps at the line-item level.
+3. Identify opportunities to increase or decrease frequency caps on each device types based on campaign performance</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visual_details_2">Visual Details:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides details on the QuickSight dashboard visuals for the Frequency Distribution use case.</p>
+</div>
+<div class="paragraph">
+<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+</div>
+<div class="sect2">
+<h3 id="_users_per_bucket_reach_against_roas_view">Users per bucket (Reach) against ROAS View:</h3>
+<div class="paragraph">
+<p>Provides details on Reach and Return on Ad spend for a selected campaign.
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view.png[FreqDistROASView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_table_view_2">Table View:</h3>
+<div class="paragraph">
+<p>Provides the view of various KPIs per Campaign. This table provides details about the revenue, purchases,
+and ROAS for a given campaign over a specified timeframe.
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_tabular_view.png[FreqDistTabularView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_users_per_bucket_reach_with_device_type_against_roas_view">Users per bucket (Reach), with device type against ROAS View:</h3>
+<div class="paragraph">
+<p>Provides details on Reach and product sales per device type for a selected campaign.
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view_by_device.png[FreqDistROASViewByDevice]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_roas_over_frequency_buckets_and_device_type_view">ROAS over frequency buckets and device type view:</h3>
+<div class="paragraph">
+<p>Provides an overview on ROAS distributed across frequency buckets and Device Type
+image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_over_buckets.png[FreqDistROAS]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_case_3_device_exposure">Use Case 3: Device Exposure</h3>
+<div class="paragraph">
+<p>This use case helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types
+(e.g., TV, Mobile, PC, Tablet) for purchases of assigned customer products on Amazon. It is used to analyze the
+reach overlap across devices and/or exposure path to understand their impact on performance data.
+It helps clients gain visibility into how their users are being served media across their different devices, and the
+associated cost (E.g., how many TV users vs phone users were presented an impression over time). This use highlights
+the targeted device combinations that maximize reach and understand conversion performance for those device combinations
+for returning and new to brand users.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_performance_indicators_3">Key Performance Indicators:</h2>
+<div class="sectionbody">
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>Impressions – Per device path, Campaign</p>
+</li>
+<li>
+<p>Total Cost – Per device path, Campaign</p>
+</li>
+<li>
+<p>Reach – Per device path, Campaign</p>
+</li>
+<li>
+<p>Clicks – Per device path, Campaign</p>
+</li>
+<li>
+<p>Detail Page View – Per device path, Campaign</p>
+</li>
+<li>
+<p>Product Sales (Revenue)– Per device path, Campaign</p>
+</li>
+<li>
+<p>Purchases – Per device path, Campaign</p>
+</li>
+<li>
+<p>New to brand purchases – Per device path, Campaign</p>
+</li>
+<li>
+<p>Total Cost – Per device path, Campaign</p>
+</li>
+<li>
+<p>ROAS over Product Sales (Revenue)– – Per device path, Campaign</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_outcomes_3">Business Outcomes:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides potential business outcomes derived from the Device Exposure use case:
+1. Investigate customer’s path to conversion based on different devices vs combination of devices
+(PC, TV, Mobile, Tablet) to understand if there is a pattern that indicates a better chance of conversion,
+further knowledge of upper funnel device impact on conversions that occur on other devices, etc.
+2. Understand the impact of being served advertisements on more than one device (PC, TV, Mobile, Tablet)
+vs only one (e.g., exposed to impressions only on phone vs phone and TV, and any other combination) to better
+understand performance impact of omnichannel targeting.
+3. Optimize Campaign to select device combinations that can yield better conversions and reach.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visual_details_3">Visual Details:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides details on the QuickSight dashboard visuals for the Device Exposure use case.</p>
+</div>
+<div class="paragraph">
+<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+</div>
+<div class="sect2">
+<h3 id="_table_view_3">Table View:</h3>
+<div class="paragraph">
+<p>Provides the view of various KPIs per device path. This table provides details about the impressions, revenue,
+purchases, cost and ROAS for a given device path over a specified timeframe.
+image::../images/quicksight-images/device_exposure/device_exposure_tabular_view.png[DeviceExpTabularView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_users_per_device_path_view">Users per Device Path View:</h3>
+<div class="paragraph">
+<p>Provides ROAS, Cost and Purchases KPIs for users per device path
+image::../images/quicksight-images/device_exposure/device_exposure_kpi_view.png[DeviceExpKPIsView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_to_brand_purchases_and_unique_detail_page_views_per_device_path_view">New to Brand purchases and Unique Detail Page Views per Device Path View:</h3>
+<div class="paragraph">
+<p>Provides details of new to brand purchases and detail page view across various device path combinations
+(PC, PC and Phone, Phone and Tablet, Phone etc.).
+image::../images/quicksight-images/device_exposure/device_exposure_ntb_view.png[DeviceExpNTBView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_case_4_geo_analysis">Use Case 4: Geo Analysis</h3>
+<div class="paragraph">
+<p>This use case determines performance data by geographic location (e.g.DMA) for purchases of assigned customer products
+on Amazon. It helps identify geographic location where the advertiser is over or under performing and highlights areas
+with highest purchases, reach, impressions and ROAS. Visuals can be analyzed per conversion event subtype, campaign,
+region and city.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_performance_indicators_4">Key Performance Indicators:</h2>
+<div class="sectionbody">
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>Impressions – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>Reach – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>Total Cost – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>Conversions – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>Purchases – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>New to brand Purchases – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>New to brand Product Sales – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>Product Sales (Revenue) – Per Campaign, Device Type, DMA</p>
+</li>
+<li>
+<p>ROAS over Revenue – Per Campaign, Device Type, DMA</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_outcomes_4">Business Outcomes:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides potential business outcomes derived from the Geo Analysis use case:
+1. Shift lower funnel/performance media spend away from geographic locations that are
+underperforming ROAS, Revenue, Purchases, and/or committed action data.
+2. Shift lower funnel/performance media spends towards geographic locations with high
+performance ROAS, Revenue, Purchases, and/or committed action data
+3. Test shifting upper funnel/branding media spend towards underperforming ROAS, Revenue, and/or Purchases DMAs in
+order to improve brand’s footprints in the geos to help drive better lower funnel performance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visual_details_4">Visual Details:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides details on the QuickSight dashboard visuals for the Geo Analysis use case.</p>
+</div>
+<div class="paragraph">
+<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+</div>
+<div class="sect2">
+<h3 id="_graphs_across_specified_date_range">Graphs across specified date range:</h3>
+<div class="paragraph">
+<p>ROAS by region per Campaign (Choose the campaign from the table to analyze per campaign)
+image::../images/quicksight-images/geo_analysis/geo_analysis_region_view.png[GeoAnalysisRegionView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_impression_and_roas_over_revenue">Impression and ROAS over Revenue:</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/geo_analysis/geo_analysis_roas_by_city.png" alt="GeoAnalysisRoasByCity">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/quicksight-images/geo_analysis/geo_analysis_roas_by_city.png" alt="GeoAnalysisRoasByDMA">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_table_view_4">Table View:</h3>
+<div class="paragraph">
+<p>Provides the view of various KPIs per campaign, DMA, device type, conversion event subtype and City.
+This table provides details about the impressions, revenue, purchases, cost and ROAS for a given campaign
+over a specified timeframe.
+image::../images/quicksight-images/geo_analysis/geo_analysis_tabular_view.png[GeoAnalysisTabularView]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_case_5_product_mix_analysis">Use Case 5: Product Mix Analysis</h3>
+<div class="paragraph">
+<p>This use case provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP)
+and KPIs surrounding them. It helps to analyze overall user performance across SP and DSP campaigns. This analysis is
+done at a user level.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_performance_indicators_5">Key Performance Indicators:</h2>
+<div class="sectionbody">
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>Impressions – DSP, SP and DSP&amp;SP campaigns</p>
+</li>
+<li>
+<p>Reach – DSP, SP and DSP&amp;SP campaigns</p>
+</li>
+<li>
+<p>Clicks – DSP, SP and DSP&amp;SP campaigns</p>
+</li>
+<li>
+<p>Total Cost – DSP, SP and DSP&amp;SP campaigns</p>
+</li>
+<li>
+<p>Product Sales (Revenue) – DSP, SP and DSP&amp;SP campaign Purchases – DSP, SP and DSP&amp;SP campaigns</p>
+</li>
+<li>
+<p>New to brand purchases– DSP, SP and DSP&amp;SP campaigns ROAS over Revenue – DSP, SP and DSP&amp;SP campaigns</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_outcomes_5">Business Outcomes:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides potential business outcomes derived from the Product Mix Analysis use case:
+case.
+1. This use case helps to study users exposed to both sponsored products and display. Were they more likely to
+purchase, or make a new to brand purchase, etc. when users were exposed to both vs just sponsored products or just display
+2. Identify conversions and other performance metrics improvement by comparing user performance who have been
+exposed to sponsored products vs display and expose users to either both DSP or Sponsored products or both based
+on the insights derived from the analysis</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_visual_details_5">Visual Details:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section provides details on the QuickSight dashboard visuals for the Product Mix Analysis use case.</p>
+</div>
+<div class="paragraph">
+<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
+</div>
+<div class="sect2">
+<h3 id="_table_view_5">Table View:</h3>
+<div class="paragraph">
+<p>This visual provides tabular view of key performance indicators for a specific given
+image::../images/quicksight-images/product_mix/product_mix_tabular_view.png[ProductMixTabular]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_total_users_and_user_conversions_per_product_mix_view">Total Users and User conversions per product mix view:</h3>
+<div class="paragraph">
+<p>This visual provides details of total users exposed to DSP, SP and both DSP and SP campaigns and the total user conversions
+image::../images/quicksight-images/product_mix/product_mix_reach_view.png[ProductMixReach]</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_new_to_brand_purchases_and_non_converted_user_view">New to brand purchases and non-converted user view:</h3>
+<div class="paragraph">
+<p>This first pie chart provides details on New to brand purchases made by the user exposed to DSP, SP and both DSP and
+SP and second provides details on how many users did not get converted when exposed to either DSP, SP and both.
+image::../images/quicksight-images/product_mix/product_mix_ntb_view.png[ProductMixNTB]</p>
+</div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
-</div>
 </div>
 </div>
 </div>
