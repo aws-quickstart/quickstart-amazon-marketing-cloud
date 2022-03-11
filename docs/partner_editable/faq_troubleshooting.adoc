@@ -1,18 +1,31 @@
 == FAQ
 
 
-*Q:* I encountered a **FAILED** status on the **Assets** Step of the AWS CodePipeline Deployment.
+*Q:* What is AWS DDK?
+
+*A:* The AWS DataOps Development Kit is an open source development framework for customers that build data workflows and modern data architecture on AWS. For more information on this open source framework, reference the documentation [here](https://awslabs.github.io/aws-ddk/).
+
+
+*Q:* I encountered a *CREATE_FAILED* error in CloudFormation when I deployed the Quick Start.
+
+*A:* Make sure you have bootstrapped the AWS Account(s) in use by running the command:
+
+`ddk bootstrap --profile [AWS_PROFILE] --trusted-accounts [AWS_ACCOUNT_ID]`
+
+Also, ensure the `ddk.json` file specifies the correct AWS Account ID for the child environment used to deploy (e.g. default is `dev`).
+
+For additional information, see [Troubleshooting AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html).
+
+
+*Q:* I encountered a *FAILED* status on the *Assets* Step of the AWS CodePipeline Deployment.
 
 *A:* If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the `Retry` button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.
 
----
-
+#
 
 *Q:* How do I set up Amazon QuickSight dashboards to visualize the data populated on S3?
 
 *A:* Follow the documentation [here](README.md) to set up QuickSight Dashboards for your AMC Instance data.
-
----
 
 
 *Q:* Where can I find more information for the workflow queries available to create and schedule with for my AMC Instance?
@@ -21,20 +34,10 @@
 
 To create, schedule, and manage your workflow queries, refer to the Platform Manager WFM Notebooks in Amazon SageMaker for more detailed documentation.
 
----
 
 *Q:* Where do I find my the configuration for my AMC Instance?
 
 *A:* On the AMC UI, you can view the Instance Information page for detailed information on the AMC Instance S3 Bucket, Endpoint URL, Data Upload Account, Advertiser IDs, and Entity IDs. Also, you can retrieve this information by raising a ticket to the AMC Team.
-
----
-
-
-*Q.* I encountered multiple AWS CodeBuild failures.
-
-*A.* This Quick Start invokes four AWS CodeBuilds concurrently. For a new AWS account, you may have a scenario where multiple AWS CodeBuilds are queued and failing. To increase the concurrent AWS CodeBuild service limits, contact https://aws.amazon.com/contact-us/[AWS support^].
-
-
 
 //== Troubleshooting
 

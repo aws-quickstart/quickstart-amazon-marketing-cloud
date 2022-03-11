@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.13">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <title>Amazon Marketing Cloud Analytics Delivery Kit on the AWS Cloud</title>
 <style>
 
@@ -839,11 +839,20 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_deployment_steps">Deployment steps</a>
 <ul class="sectlevel2">
 <li><a href="#_confirm_your_aws_account_configuration">Confirm your AWS account configuration</a></li>
-<li><a href="#_launch_the_quick_start">Launch the Quick Start</a></li>
+<li><a href="#_prerequisites_for_the_deployment">Prerequisites for the Deployment</a></li>
+<li><a href="#_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</a></li>
+<li><a href="#_initial_setup_with_the_ddk_cli">Initial setup with the DDK CLI</a></li>
+<li><a href="#_deploying_the_quickstart">Deploying the Quickstart</a></li>
+<li><a href="#_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</a></li>
+<li><a href="#_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</a></li>
 </ul>
 </li>
-<li><a href="#_hydrating_the_data_lake">Hydrating the Data Lake</a></li>
 <li><a href="#_test_the_deployment">Test the deployment</a></li>
+<li><a href="#_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</a>
+<ul class="sectlevel2">
+<li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
+<li><a href="#_authorize_your_quicksight_connection_through_aws_lake_formation">Authorize Your QuickSight Connection through AWS Lake Formation</a></li>
+<li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
 </ul>
 </li>
 <li><a href="#_faq">FAQ</a></li>
@@ -1363,16 +1372,226 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 </li>
 </ol>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_launch_the_quick_start">Launch the Quick Start</h3>
 <div class="paragraph">
 <p>Each deployment takes about 1.5 hours to complete.</p>
 </div>
 <div class="paragraph">
-<p>+
-. Check the AWS Region that&#8217;s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the infrastructure. The template is launched in the us-east-1 Region by default. For more information, see <a href="#_supported_aws_regions">Supported AWS Regions</a>, earlier in this guide.</p>
+<p>Check the AWS Region that&#8217;s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the infrastructure. The template is launched in the us-east-1 Region by default. For more information, see <a href="#_supported_aws_regions">Supported AWS Regions</a>, earlier in this guide.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites_for_the_deployment">Prerequisites for the Deployment</h3>
+<div class="paragraph">
+<p>To complete this deployment, you&#8217;ll need the following in your local environment</p>
+</div>
+<div class="paragraph">
+<p>Programmatic access to an AWS Account
+Python (version 3.7 or above) and its package manager, pip (version 9.0.3 or above), are required</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python --version
+$ pip --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AWS CLI installed and configured</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ aws --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AWS CDK CLI (version 2.10 and above) installed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ cdk --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Git CLI installed and configured</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If this is your first time using Git, set your git username and email by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git config --global user.name "YOUR NAME"
+$ git config --global user.email "YOU@EMAIL.COM"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can verify your git configuration with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git config --list</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The jq Linux command line utility to extract data from JSON documents.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ jq --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If not installed already, you can install jq by running in your command line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ sudo yum install jq</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</h3>
+<div class="paragraph">
+<p>If you would like to deploy this quickstart using an AWS Cloud9 Environment rather than on your local environment, follow these steps to set up AWS Cloud9:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to the AWS account console using the Admin role and select an AWS region. We recommend choosing a mature region where most services are available (e.g. eu-west-1, us-east-1…)</p>
+</li>
+<li>
+<p>Navigate to <code>Cloud9</code> in the AWS console. Set up a [Cloud9 Environment](<a href="https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html" class="bare">https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html</a>) in the same AWS region (t3.small or higher, Amazon Linux 2) and open the IDE</p>
+</li>
+<li>
+<p>Download the package, upload it to your Cloud9 instance, and unzip it</p>
+</li>
+<li>
+<p>Install jq by running in your command line:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ sudo yum install jq</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Python, Pip, AWS CLI, AWS CDK CLI, and Git CLI packages should all be installed and configured for you by defualt in your Cloud9 environment. Ensure that these pacakges are installed with the correct version with the following commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python --version
+$ pip --version
+$ aws --version
+$ cdk --version
+$ git --version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The version requirements for the packages installed are:
+Python (version 3.7 or above)
+pip (version 9.0.3 or above)
+AWS CDK CLI (version 2.10 and above)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initial_setup_with_the_ddk_cli">Initial setup with the DDK CLI</h3>
+<div class="paragraph">
+<p>Clone the repository for AMC QuickStart</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git clone GITHUB-PATH
+$ cd amc_quickstart</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install AWS DDK CLI, a command line interface to manage your DDK apps</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ pip install aws-ddk</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To verify the installation, run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ddk --help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create and actitavte a virtualenv</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ python -m venv .venv &amp;&amp; source .venv/bin/activate</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Install the dependencies from requirements.txt
+This is when the AWS DDK Core library is installed</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ pip install -r requirements.txt --no-cache-dir</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your AWS account hasn&#8217;t been used to deploy DDK apps before, then you need to bootstrap your environment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ddk bootstrap --help
+$ ddk bootstrap --profile [AWS_PROFILE] --trusted-accounts [AWS_ACCOUNT_ID]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You might recognize a number of files typically found in a CDK Python application (e.g. app.py, cdk.json&#8230;&#8203;). In addition, a file named ddk.json holding configuration about DDK specific constructs is present. Edit the DDK file with right account id, the name of the CodeCommit repository to reference (you will create this repository at a later step)and other data lake parameters (i.e. app, org, team, dataset, and pipeline names).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ Edit ddk.json</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Initialise git for the repository</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git init --initial-branch main</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Execute the create repository command to create a new codecommit repository</p>
+</div>
+<div class="paragraph">
+<p><em>(Make Sure the AMC_QUICKSTART_REPO_NAME matches the <code>repository</code> name value in the <code>ddk.json</code> configuration file before executing)</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ ddk create-repository AMC_QUICKSTART_REPO_NAME --profile [AWS_PROFILE] --region [AWS_REGION]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add and push the initial commit to the repository</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git config --global credential.helper "!aws codecommit --profile &lt;my-profile&gt; credential-helper $@"
+$ git config --global credential.UseHttpPath true
+$ git add .
+$ git commit -m "Configure AMC QUICKSTART"
+$ git push --set-upstream origin main</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploying_the_quickstart">Deploying the Quickstart</h3>
 <div class="paragraph">
 <p>Once the above steps are performed, run the deploy command to deploy the quickstart</p>
 </div>
@@ -1386,7 +1605,7 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AMC-Quickstart-Deploy.png" alt="AMC Quickstart Deploy">
+<img src="images/AMC-Quickstart-Deploy.png" alt="AMC Quickstart Deployment Steps">
 </div>
 </div>
 <div class="paragraph">
@@ -1402,14 +1621,9 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <p>For a walkthrough of the steps the AWS CodePipeline goes through to deploy these resources please refer to [here](#amc-quickstart-codepipeline-steps).</p>
 </div>
 <div class="paragraph">
-<p><em>NOTE:</em> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.</p>
+<p><em>NOTE:</em> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.
+== Hydrating the Data Lake</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hydrating_the_data_lake">Hydrating the Data Lake</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>To hydrate the data lake run the below shell script</p>
 </div>
@@ -1464,6 +1678,108 @@ $ make create_workflows</code></pre>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/AMC-Quickstart-CodePipeline-Steps.png" alt="AMC Quickstart CodePipeline Steps">
+</div>
+</div>
+<div class="paragraph">
+<p>The Code Pipeline Steps are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Source → Pull code from the source CodeCommit Repository</p>
+</li>
+<li>
+<p>Build → Runs <code>cdk synth</code> to translate CDK defintions into CloudFormation Template Definitions</p>
+</li>
+<li>
+<p>UpdatePipeline → Automatically update if new CDK applications or stages are added in the source code</p>
+</li>
+<li>
+<p>Assets → Publish CDK Assets</p>
+</li>
+<li>
+<p>AMCQuickstart → Prepares and Deploys all of the Resources in CloudFormation Stacks, including:</p>
+</li>
+<li>
+<p>Foundational Resources</p>
+</li>
+<li>
+<p>Data Lake Resources</p>
+</li>
+<li>
+<p>Microservice Resources</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</h3>
+<div class="paragraph">
+<p>To hydrate the data lake and begin populating the data lake with data from your AMC Instance, follow the steps below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log In to your AWS Account and go to Amazon SageMaker</p>
+</li>
+<li>
+<p>On the Left Side of Your Screen Click on Notebook -&#8594; Notebook Instances (you should see one notebook named <code>saw-platform-manager</code> with Status "InService")</p>
+</li>
+<li>
+<p>Click "Open JupyterLab" to open the Notebook Instance in a new tab</p>
+</li>
+<li>
+<p>Open the <code>Getting_Started_With_AMC_Quickstart.ipynb</code> Notebook in the <code>platform_manager</code> folder and follow the steps in the notebook to hydrate the data lake.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>This Notebook will cover the following:</strong></p>
+</div>
+<div class="paragraph">
+<p><em>Insert TPS Records:</em> To initialize the process of onboarding your AMC instance on the Amazon AD Tech platform, this notebook will walk through the steps to adds client configurations to a TPS Customer Configuration table in Amazon DynamoDB. The configuration includes your AMC Endpoint URL, AMC Bucket Name and other related information on your AMC Instance. The Tenant Provisioning Service (TPS) will then automatically:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Onboard clients using configuration which is persisted in a DynamoDB Table. It helps to reduce time to onboard new customers</p>
+</li>
+<li>
+<p>Provide functionality to automatically enable different modules (AMC/Sponsored ADs/DSP) during the onboarding process for each client</p>
+</li>
+<li>
+<p>Provide a centralized location to manage various clients and modules and supports multi-tenancy</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Create Workflows:</em> To initialize the creation, scheduling and execution of AMC workflows, this notebook will walk through the steps to add a workflow to an AMC Workflows table in Amazon DynamoDB. From there you will also invoke this workflow to execute and populate data from your AMC Instance to your AMC S3 Bucket. WFM also allows you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatically trigger the deployment of the SQS queues, IAM policies, workflows and workflow schedules in WFM for the customer&#8217;s AMC instance upon adding or updating a customer record to the Tenant Provisioning Service (TPS)</p>
+</li>
+<li>
+<p>Synchronize workflows and workflow schedules in the Workflow Library service with multiple AMC Instances</p>
+</li>
+<li>
+<p>Send execution requests to an SQS queue rather than directly to the AMC endpoint to prevents timeout failures when there are large number of requests in a short period of time</p>
+</li>
+<li>
+<p>Scheduled with dynamic relative time windows rather than using AMC&#8217;s scheduling feature which only allows predefined scheduled reporting such as Daily or Weekly</p>
+</li>
+<li>
+<p>Track the status of all workflow executions for customer AMC instances whether they are submitted through WFM or other means (postman, etc.). Having the status synced to DynamoDB allows events to be triggered or notifications to be sent when executions change state. This table can also be used to track historical executions for troubleshooting or performance monitoring.</p>
+</li>
+</ul>
+</div>
+</div>
 <div class="paragraph">
 <p>+</p>
 </div>
@@ -1479,6 +1795,7 @@ $ make create_workflows</code></pre>
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/additional_info.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1543,6 +1860,7 @@ $ make create_workflows</code></pre>
 <div class="sect2">
 <h3 id="_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</h3>
 <div class="paragraph">
+<p>In this section, you&#8217;ll step through how to build and analyze a visualization for the Time to Conversion use case.</p>
 </div>
 <div class="sect3">
 <h4 id="_overview_2">Overview</h4>
@@ -1652,7 +1970,8 @@ $ make create_workflows</code></pre>
 </li>
 <li>
 <p>Create a dataset and analyze the data using the table by choosing <strong>Visualize</strong>.</p>
-</li>
+<div class="olist loweralpha">
+<ol class="loweralpha">
 <li>
 <p>In the <strong>Fields list</strong> pane, choose <strong>purchases</strong>, <strong>time_to_conversion</strong>, and <strong>total_brand_purchases</strong>.</p>
 </li>
@@ -1673,532 +1992,83 @@ $ make create_workflows</code></pre>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_amazon_marketing_cloud_dashboard_insights">Amazon Marketing Cloud Dashboard Insights</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The AMC Dashboard provides an interactive visualization of marketing performance insights with the ability to slice the data by campaign, device type, DMA, frequency, audience segments, and time periods.
-The dashboard’s goal is to provide a plethora of event level marketing insights in one visualized central location. The dashboard draws from a series of custom workflows built upon Demo Customer data available in AMC that are run on a daily basis. It has a text visual that describes how to read and understand the dashboard
-The users can get read only permissions to this dashboard and can view relevant data visuals.
-The dashboard shows metrics both numerically (in tabular form) and graphically (bar charts, stacked bar combo charts, maps, etc.) to enable quick insight discovery. This data can be exported into csv files for further analysis.</p>
-</div>
-<div class="sect2">
-<h3 id="_overview_of_use_cases">Overview of Use Cases</h3>
-<div class="paragraph">
-<p>Amazon Marketing Cloud (AMC) enables advertisers to query event level data within a privacy friendly environment, 5 use cases were created to explore the data from multiple perspectives. QuickSight was used for visualization to highlight the marketing insights provided by the use cases.
-The dashboard images were designed keeping in mind 5 most commonly used advertising use cases that highlight the applications of using AMC’s event level data. The 5 uses cases highlighted in the dashboard are as below:
-1. Audience Analysis
-2. Frequency Distribution
-3. Device Exposure
-4. Geo Analysis
-5. Product Mix Analysis</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_case_1_audience_analysis">Use Case 1: Audience Analysis</h3>
-<div class="paragraph">
-<p>This use case gives the analysis of audience segments targeted by the customer and also details of audience segments
-that user was a part of but not targeted for purchases of customer products on Amazon. It provides KPIs for in-proposal
-Display campaigns like impressions, reach, cost, details by audience segments and campaign. The purchases and revenue
-are provided per product (ASIN) for both the targeted and untargeted audience segments. The impressions,
-reach, purchases and sales number on these charts cannot be added up as one purchaser may fall into multiple audiences.
-Each audience’s performance should be analyzed on its own.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_key_performance_indicators">Key Performance Indicators:</h2>
-<div class="sectionbody">
+</li>
+<li>
+<p>Add a Title to the visual</p>
 <div class="olist loweralpha">
 <ol class="loweralpha">
 <li>
-<p>Impressions – Per Audience Segment</p>
+<p>On the visual&#8217;s right, choose the <strong>Format visual</strong> icon.</p>
 </li>
 <li>
-<p>Clicks – Per Audience Segment</p>
+<p>In the <strong>Format Visual</strong> pane that opens on the left, choose the <strong>Title</strong> tab.</p>
 </li>
 <li>
-<p>Reach – Per Audience Segment</p>
+<p>Choose <strong>Edit title</strong></p>
 </li>
 <li>
-<p>Total Cost – Per Audience Segment</p>
+<p>In the <strong>Edit title</strong> page that opens, type <strong>Purchases by Time to Conversion</strong></p>
 </li>
 <li>
-<p>Sales tracked (Revenue) – Per Product</p>
-</li>
-<li>
-<p>Total Sales tracked (Brand Revenue) – Per Product</p>
-</li>
-<li>
-<p>Conversions – Per Product</p>
-</li>
-<li>
-<p>Purchases – Per Product</p>
-</li>
-<li>
-<p>ROAS over Sales tracked (Revenue)– Per Product</p>
-</li>
-<li>
-<p>ROAS over Total Sales tracked (Brand Revenue) – Per Product</p>
+<p>When you&#8217;re finished editing, choose <strong>Save</strong>.</p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_business_outcomes">Business Outcomes:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides potential business outcomes derived from the Audience analysis use case:
-1. Investigating performance of untargeted audiences helps to discover audience segments that can be added to
-current targeted due to their potential positive impact on performance or scale.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Additionally, we can discover more insights into the attributes of our targeted audiences by seeing what other
-untargeted audience segments show strong performance – learning more about our most valued users or audiences to best
-target for potential new customers. This can be used for building better customer profiles, new creative messaging,
-campaign construction, etc.</p>
 </li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_details">Visual Details:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides details on the QuickSight dashboard visuals for the Audience Analysis use case.</p>
-</div>
-<div class="paragraph">
-<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
-</div>
-<div class="sect2">
-<h3 id="_table_view">Table View:</h3>
-<div class="paragraph">
-<p>This visual provides an overview of all audience segments per campaign and ASIN
-Each audience can be analyzed separately by clicking audience segment from controls and it can be further
-analyzed per product by clicking on the List of ASINs table on the left</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/quicksight-images/audience_analysis/audience_analysis_tabular_view.png" alt="AudienceAnalysisTabularView">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_targeted_and_untargeted_analysis_view">Targeted and Untargeted Analysis View:</h3>
-<div class="paragraph">
-<p>This visual provides details about the impressions, purchases and ROAS over targeted and untargeted audience segments.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/quicksight-images/audience_analysis/audience_analysis_analysis_view.png" alt="AudienceAnalysisView">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_performance_roas_over_average_roas_view">Performance ROAS over average ROAS View:</h3>
-<div class="paragraph">
-<p>This visual provides details about the impressions, purchases and ROAS over targeted and untargeted audience segments.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/quicksight-images/audience_analysis/audience_analysis_matched_roas.png" alt="AudienceAnalysisMatchedROAS">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/quicksight-images/audience_analysis/audience_analysis_unmatched_roas.png" alt="AudienceAnalysisUnmatchedROAS">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_case_2_frequency_distribution">Use Case 2: Frequency Distribution</h3>
-<div class="paragraph">
-<p>This use case gives an analysis of performance and delivery by different frequencies/impression exposures to help
-optimize campaign frequency caps to maximize conversion likelihood for purchases of assigned customer products on
-Amazon. It is used to analyze performance across campaigns and device type within multiple frequency buckets from
-reach, impressions, purchases, conversion rate, and ROAS.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_key_performance_indicators_2">Key Performance Indicators:</h2>
-<div class="sectionbody">
+<li>
+<p>Change the x-axis label</p>
 <div class="olist loweralpha">
 <ol class="loweralpha">
 <li>
-<p>Impressions – Per Campaign, Device Type</p>
+<p>Again, in the <strong>Format Visual</strong> pane open on the left, choose the <strong>X-axis</strong> tab.</p>
 </li>
 <li>
-<p>Reach – Per Campaign, Device Type</p>
+<p>In the text box below <strong>time_to_conversion</strong>, enter in <strong>Time to Conversion</strong>.</p>
 </li>
 <li>
-<p>Total Cost – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Product Sales (Revenue)– Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Total Product Sales (Brand Revenue) – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Conversions – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Purchases – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Total Purchases – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Total Cost – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>ROAS over Revenue – Per Campaign, Device Type</p>
-</li>
-<li>
-<p>Frequency Buckets</p>
+<p>Close the <strong>Format Visual</strong> pane by choosing the X icon in the upper-right corner of the pane.</p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_business_outcomes_2">Business Outcomes:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides potential business outcomes derived from the Frequency Distribution use case:
-1. Identify opportunities to increase or decrease frequency caps to improve performance and/or reach over a period of time
-2. Identify potential campaign level frequency cap maximums by analyzing order level frequency over an extended period
-time instead of analyzing shorter time periods of frequency caps at the line-item level.
-3. Identify opportunities to increase or decrease frequency caps on each device types based on campaign performance</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_details_2">Visual Details:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides details on the QuickSight dashboard visuals for the Frequency Distribution use case.</p>
-</div>
-<div class="paragraph">
-<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
-</div>
-<div class="sect2">
-<h3 id="_users_per_bucket_reach_against_roas_view">Users per bucket (Reach) against ROAS View:</h3>
-<div class="paragraph">
-<p>Provides details on Reach and Return on Ad spend for a selected campaign.
-image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view.png[FreqDistROASView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_table_view_2">Table View:</h3>
-<div class="paragraph">
-<p>Provides the view of various KPIs per Campaign. This table provides details about the revenue, purchases,
-and ROAS for a given campaign over a specified timeframe.
-image::../images/quicksight-images/frequency_distribution/frequency_distribution_tabular_view.png[FreqDistTabularView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_users_per_bucket_reach_with_device_type_against_roas_view">Users per bucket (Reach), with device type against ROAS View:</h3>
-<div class="paragraph">
-<p>Provides details on Reach and product sales per device type for a selected campaign.
-image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_view_by_device.png[FreqDistROASViewByDevice]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_roas_over_frequency_buckets_and_device_type_view">ROAS over frequency buckets and device type view:</h3>
-<div class="paragraph">
-<p>Provides an overview on ROAS distributed across frequency buckets and Device Type
-image::../images/quicksight-images/frequency_distribution/frequency_distribution_roas_over_buckets.png[FreqDistROAS]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_case_3_device_exposure">Use Case 3: Device Exposure</h3>
-<div class="paragraph">
-<p>This use case helps to determine performance metrics (i.e., ROAS, Impressions, Conversions, Clicks) across device types
-(e.g., TV, Mobile, PC, Tablet) for purchases of assigned customer products on Amazon. It is used to analyze the
-reach overlap across devices and/or exposure path to understand their impact on performance data.
-It helps clients gain visibility into how their users are being served media across their different devices, and the
-associated cost (E.g., how many TV users vs phone users were presented an impression over time). This use highlights
-the targeted device combinations that maximize reach and understand conversion performance for those device combinations
-for returning and new to brand users.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_key_performance_indicators_3">Key Performance Indicators:</h2>
-<div class="sectionbody">
+</li>
+<li>
+<p>Add data labels to your chart</p>
 <div class="olist loweralpha">
 <ol class="loweralpha">
 <li>
-<p>Impressions – Per device path, Campaign</p>
+<p>Next, in the <strong>Format Visual</strong> pane open on the left, choose the <strong>Data Labels</strong> tab.</p>
 </li>
 <li>
-<p>Total Cost – Per device path, Campaign</p>
+<p>Check the box to the left of <strong>Show data labels</strong> to show and customize labels.</p>
 </li>
 <li>
-<p>Reach – Per device path, Campaign</p>
-</li>
-<li>
-<p>Clicks – Per device path, Campaign</p>
-</li>
-<li>
-<p>Detail Page View – Per device path, Campaign</p>
-</li>
-<li>
-<p>Product Sales (Revenue)– Per device path, Campaign</p>
-</li>
-<li>
-<p>Purchases – Per device path, Campaign</p>
-</li>
-<li>
-<p>New to brand purchases – Per device path, Campaign</p>
-</li>
-<li>
-<p>Total Cost – Per device path, Campaign</p>
-</li>
-<li>
-<p>ROAS over Product Sales (Revenue)– – Per device path, Campaign</p>
+<p>Close the <strong>Format Visual</strong> pane by choosing the X icon in the upper-right corner of the pane.</p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_business_outcomes_3">Business Outcomes:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides potential business outcomes derived from the Device Exposure use case:
-1. Investigate customer’s path to conversion based on different devices vs combination of devices
-(PC, TV, Mobile, Tablet) to understand if there is a pattern that indicates a better chance of conversion,
-further knowledge of upper funnel device impact on conversions that occur on other devices, etc.
-2. Understand the impact of being served advertisements on more than one device (PC, TV, Mobile, Tablet)
-vs only one (e.g., exposed to impressions only on phone vs phone and TV, and any other combination) to better
-understand performance impact of omnichannel targeting.
-3. Optimize Campaign to select device combinations that can yield better conversions and reach.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_details_3">Visual Details:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides details on the QuickSight dashboard visuals for the Device Exposure use case.</p>
-</div>
-<div class="paragraph">
-<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
-</div>
-<div class="sect2">
-<h3 id="_table_view_3">Table View:</h3>
-<div class="paragraph">
-<p>Provides the view of various KPIs per device path. This table provides details about the impressions, revenue,
-purchases, cost and ROAS for a given device path over a specified timeframe.
-image::../images/quicksight-images/device_exposure/device_exposure_tabular_view.png[DeviceExpTabularView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_users_per_device_path_view">Users per Device Path View:</h3>
-<div class="paragraph">
-<p>Provides ROAS, Cost and Purchases KPIs for users per device path
-image::../images/quicksight-images/device_exposure/device_exposure_kpi_view.png[DeviceExpKPIsView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_new_to_brand_purchases_and_unique_detail_page_views_per_device_path_view">New to Brand purchases and Unique Detail Page Views per Device Path View:</h3>
-<div class="paragraph">
-<p>Provides details of new to brand purchases and detail page view across various device path combinations
-(PC, PC and Phone, Phone and Tablet, Phone etc.).
-image::../images/quicksight-images/device_exposure/device_exposure_ntb_view.png[DeviceExpNTBView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_case_4_geo_analysis">Use Case 4: Geo Analysis</h3>
-<div class="paragraph">
-<p>This use case determines performance data by geographic location (e.g.DMA) for purchases of assigned customer products
-on Amazon. It helps identify geographic location where the advertiser is over or under performing and highlights areas
-with highest purchases, reach, impressions and ROAS. Visuals can be analyzed per conversion event subtype, campaign,
-region and city.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_key_performance_indicators_4">Key Performance Indicators:</h2>
-<div class="sectionbody">
+</li>
+<li>
+<p>Add Filters</p>
 <div class="olist loweralpha">
 <ol class="loweralpha">
 <li>
-<p>Impressions – Per Campaign, Device Type, DMA</p>
+<p>On the far left pane, choose <strong>Filter</strong></p>
 </li>
 <li>
-<p>Reach – Per Campaign, Device Type, DMA</p>
+<p>Then in the Filters pane, choose the <strong>+</strong> in the top right corner.</p>
 </li>
 <li>
-<p>Total Cost – Per Campaign, Device Type, DMA</p>
-</li>
-<li>
-<p>Conversions – Per Campaign, Device Type, DMA</p>
-</li>
-<li>
-<p>Purchases – Per Campaign, Device Type, DMA</p>
-</li>
-<li>
-<p>New to brand Purchases – Per Campaign, Device Type, DMA</p>
-</li>
-<li>
-<p>New to brand Product Sales – Per Campaign, Device Type, DMA</p>
-</li>
-<li>
-<p>Product Sales (Revenue) – Per Campaign, Device Type, DMA</p>
-</li>
-<li>
-<p>ROAS over Revenue – Per Campaign, Device Type, DMA</p>
+<p>Select <strong>advertiser</strong>, then repeat for <strong>campaign</strong> and <strong>file_last_modified</strong></p>
 </li>
 </ol>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_business_outcomes_4">Business Outcomes:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides potential business outcomes derived from the Geo Analysis use case:
-1. Shift lower funnel/performance media spend away from geographic locations that are
-underperforming ROAS, Revenue, Purchases, and/or committed action data.
-2. Shift lower funnel/performance media spends towards geographic locations with high
-performance ROAS, Revenue, Purchases, and/or committed action data
-3. Test shifting upper funnel/branding media spend towards underperforming ROAS, Revenue, and/or Purchases DMAs in
-order to improve brand’s footprints in the geos to help drive better lower funnel performance.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_details_4">Visual Details:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides details on the QuickSight dashboard visuals for the Geo Analysis use case.</p>
-</div>
-<div class="paragraph">
-<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
-</div>
-<div class="sect2">
-<h3 id="_graphs_across_specified_date_range">Graphs across specified date range:</h3>
-<div class="paragraph">
-<p>ROAS by region per Campaign (Choose the campaign from the table to analyze per campaign)
-image::../images/quicksight-images/geo_analysis/geo_analysis_region_view.png[GeoAnalysisRegionView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_impression_and_roas_over_revenue">Impression and ROAS over Revenue:</h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/quicksight-images/geo_analysis/geo_analysis_roas_by_city.png" alt="GeoAnalysisRoasByCity">
-</div>
+</li>
+</ol>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/quicksight-images/geo_analysis/geo_analysis_roas_by_city.png" alt="GeoAnalysisRoasByDMA">
+<img src="images/quicksight-time-to-conversion.png" alt="QuickSightTimeToConversion">
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_table_view_4">Table View:</h3>
-<div class="paragraph">
-<p>Provides the view of various KPIs per campaign, DMA, device type, conversion event subtype and City.
-This table provides details about the impressions, revenue, purchases, cost and ROAS for a given campaign
-over a specified timeframe.
-image::../images/quicksight-images/geo_analysis/geo_analysis_tabular_view.png[GeoAnalysisTabularView]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_use_case_5_product_mix_analysis">Use Case 5: Product Mix Analysis</h3>
-<div class="paragraph">
-<p>This use case provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP)
-and KPIs surrounding them. It helps to analyze overall user performance across SP and DSP campaigns. This analysis is
-done at a user level.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_key_performance_indicators_5">Key Performance Indicators:</h2>
-<div class="sectionbody">
-<div class="olist loweralpha">
-<ol class="loweralpha">
-<li>
-<p>Impressions – DSP, SP and DSP&amp;SP campaigns</p>
-</li>
-<li>
-<p>Reach – DSP, SP and DSP&amp;SP campaigns</p>
-</li>
-<li>
-<p>Clicks – DSP, SP and DSP&amp;SP campaigns</p>
-</li>
-<li>
-<p>Total Cost – DSP, SP and DSP&amp;SP campaigns</p>
-</li>
-<li>
-<p>Product Sales (Revenue) – DSP, SP and DSP&amp;SP campaign Purchases – DSP, SP and DSP&amp;SP campaigns</p>
-</li>
-<li>
-<p>New to brand purchases– DSP, SP and DSP&amp;SP campaigns ROAS over Revenue – DSP, SP and DSP&amp;SP campaigns</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_business_outcomes_5">Business Outcomes:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides potential business outcomes derived from the Product Mix Analysis use case:
-case.
-1. This use case helps to study users exposed to both sponsored products and display. Were they more likely to
-purchase, or make a new to brand purchase, etc. when users were exposed to both vs just sponsored products or just display
-2. Identify conversions and other performance metrics improvement by comparing user performance who have been
-exposed to sponsored products vs display and expose users to either both DSP or Sponsored products or both based
-on the insights derived from the analysis</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_visual_details_5">Visual Details:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides details on the QuickSight dashboard visuals for the Product Mix Analysis use case.</p>
-</div>
-<div class="paragraph">
-<p>Query used for the visual: <a href="#INSERT-LINK-TO-SQL">[INSERT-LINK-TO-SQL]</a></p>
-</div>
-<div class="sect2">
-<h3 id="_table_view_5">Table View:</h3>
-<div class="paragraph">
-<p>This visual provides tabular view of key performance indicators for a specific given
-image::../images/quicksight-images/product_mix/product_mix_tabular_view.png[ProductMixTabular]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_total_users_and_user_conversions_per_product_mix_view">Total Users and User conversions per product mix view:</h3>
-<div class="paragraph">
-<p>This visual provides details of total users exposed to DSP, SP and both DSP and SP campaigns and the total user conversions
-image::../images/quicksight-images/product_mix/product_mix_reach_view.png[ProductMixReach]</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_new_to_brand_purchases_and_non_converted_user_view">New to brand purchases and non-converted user view:</h3>
-<div class="paragraph">
-<p>This first pie chart provides details on New to brand purchases made by the user exposed to DSP, SP and both DSP and
-SP and second provides details on how many users did not get converted when exposed to either DSP, SP and both.
-image::../images/quicksight-images/product_mix/product_mix_ntb_view.png[ProductMixNTB]</p>
 </div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>
@@ -2207,23 +2077,46 @@ image::../images/quicksight-images/product_mix/product_mix_ntb_view.png[ProductM
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_faq">FAQ</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q:</strong> What is AWS DDK?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> The AWS DataOps Development Kit is an open source development framework for customers that build data workflows and modern data architecture on AWS. For more information on this open source framework, reference the documentation [here](<a href="https://awslabs.github.io/aws-ddk/" class="bare">https://awslabs.github.io/aws-ddk/</a>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> I encountered a <strong>CREATE_FAILED</strong> error in CloudFormation when I deployed the Quick Start.</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Make sure you have bootstrapped the AWS Account(s) in use by running the command:</p>
+</div>
+<div class="paragraph">
+<p><code>ddk bootstrap --profile [AWS_PROFILE] --trusted-accounts [AWS_ACCOUNT_ID]</code></p>
+</div>
+<div class="paragraph">
+<p>Also, ensure the <code>ddk.json</code> file specifies the correct AWS Account ID for the child environment used to deploy (e.g. default is <code>dev</code>).</p>
+</div>
+<div class="paragraph">
+<p>For additional information, see [Troubleshooting AWS CloudFormation](<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html" class="bare">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html</a>).</p>
+</div>
 <div class="paragraph">
 <p><strong>Q:</strong> I encountered a <strong>FAILED</strong> status on the <strong>Assets</strong> Step of the AWS CodePipeline Deployment.</p>
 </div>
 <div class="paragraph">
 <p><strong>A:</strong> If deploying in a new AWS Account, the Assets stage of the CodePipeline may fail due to limitations for the number of concurrent file assets to publish. This is a current limitation of AWS CodeBuild. To fix, click the <code>Retry</code> button in CodePipeline for the Assets Stage. This will manually continue the Assets Stage to continue building file assets from its most current progress.</p>
 </div>
-<hr>
+<div class="paragraph">
+<p>#</p>
+</div>
 <div class="paragraph">
 <p><strong>Q:</strong> How do I set up Amazon QuickSight dashboards to visualize the data populated on S3?</p>
 </div>
 <div class="paragraph">
 <p><strong>A:</strong> Follow the documentation [here](README.md) to set up QuickSight Dashboards for your AMC Instance data.</p>
 </div>
-<hr>
 <div class="paragraph">
 <p><strong>Q:</strong> Where can I find more information for the workflow queries available to create and schedule with for my AMC Instance?</p>
 </div>
@@ -2233,19 +2126,11 @@ image::../images/quicksight-images/product_mix/product_mix_ntb_view.png[ProductM
 <div class="paragraph">
 <p>To create, schedule, and manage your workflow queries, refer to the Platform Manager WFM Notebooks in Amazon SageMaker for more detailed documentation.</p>
 </div>
-<hr>
 <div class="paragraph">
 <p><strong>Q:</strong> Where do I find my the configuration for my AMC Instance?</p>
 </div>
 <div class="paragraph">
 <p><strong>A:</strong> On the AMC UI, you can view the Instance Information page for detailed information on the AMC Instance S3 Bucket, Endpoint URL, Data Upload Account, Advertiser IDs, and Entity IDs. Also, you can retrieve this information by raising a ticket to the AMC Team.</p>
-</div>
-<hr>
-<div class="paragraph">
-<p><strong>Q.</strong> I encountered multiple AWS CodeBuild failures.</p>
-</div>
-<div class="paragraph">
-<p><strong>A.</strong> This Quick Start invokes four AWS CodeBuilds concurrently. For a new AWS account, you may have a scenario where multiple AWS CodeBuilds are queued and failing. To increase the concurrent AWS CodeBuild service limits, contact <a href="https://aws.amazon.com/contact-us/" target="_blank" rel="noopener">AWS support</a>.</p>
 </div>
 </div>
 </div>
@@ -2316,7 +2201,7 @@ and to share your customizations with others.</p>
 </div>
 <p class="footer-text">
 <!-- We can use document attributes: -->
-<!-- Generated with Asciidoctor v2.0.13. -->
+<!-- Generated with Asciidoctor v2.0.17. -->
 <a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> | &copy; 2021, Amazon Web Services, Inc. or its affiliates and Ad Tech Solutions. All rights reserved.
 </p>
 </body>
