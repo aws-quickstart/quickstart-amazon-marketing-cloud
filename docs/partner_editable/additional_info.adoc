@@ -58,9 +58,45 @@ You will need author access to a QuickSight Account to get started with building
 5. Scroll down and click the **Finish** button. (It can take 15-30 Secs to set up the account)
 6. Click the **Go to Amazon QuickSight** button. You will now be taken to QuickSight console.
 
-=== Authorize Your QuickSight Connection through AWS Lake Formation
-Insert Steps to Get Signed up for QuickSight
-https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html#lake-formation-lf-steps
+=== Authorize Your QuickSight Connection
+To work with Lake Formation and Athena, make sure that you have AWS resource permissions configured in Amazon QuickSight:
+
+* Enable access to Amazon Athena.
+* Enable access to the correct buckets in Amazon S3 Usually S3 access is enabled when you enable Athena. However, because you can change S3 permissions outside of that process, it's a good idea to verify them separately
+
+Use the following procedure to make sure that you successfully authorized Amazon QuickSight to use Athena. Permissions to AWS resources apply to all Amazon QuickSight users.
+
+To perform this action, you must be an Amazon QuickSight administrator. To check if you have access, verify that you see the Manage QuickSight option when you open the menu from your profile at upper right.
+
+For more information, review: https://docs.aws.amazon.com/quicksight/latest/user/lake-formation.html 
+
+**To authorize Amazon QuickSight to access Athena and Amazon S3:**
+
+1. Choose your profile name (upper right). Choose **Manage QuickSight**, and then choose **Security & permissions**.
+2. Under **QuickSight access to AWS services**, choose **Manage**.
+3. Find **Athena** in the list. Clear the box by Athena, then select it again to enable Athena. Then choose **Next**.
+4. Under **S3 Bucket**, choose the S3 buckets that you want to access from Amazon QuickSight.
+5. From the right column, **Write permission for Athena Workgroup**, choose the S3 buckets you could write your Athena results too.
+6. Choose **Finish** to confirm your selection or choose **Cancel** to exit without saving.
+7. Click **Save**, to update your new settings for Amazon QuickSight access to AWS services or choose **Cancel** to exit without making any changes.
+
+**To authorize Amazon QuickSight through AWS Lake Formation:**
+
+1. Collect the Amazon Resource Names (ARNs) of the Amazon QuickSight users and groups that need to access the data in Lake Formation. These users should be Amazon QuickSight authors or administrators.
+  a. Use the AWS CLI to find user ARNs or you can construct the ARNs for each user manually.
+  b. To construct manually, replace REGION_NAME, ACCOUNT_ID, and QUICKSIGHT_USERNAME: ```arn:aws:quicksight:<REGION_NAME>:<ACCOUNT_ID>:user/default/<QUICKSIGHT_USERNAME>```
+  c. To collect user ARNs programmatically, run the following list-users command in your terminal (Linux or Mac) or at your command prompt (Windows): ```aws quicksight list-users --aws-account-id 111122223333 --namespace default --region us-east-1```
+2. Next, Sign in to the AWS Console and navigate to AWS Lake Formation as the data lake administrator. A data lake administrator can grant any principal (IAM, QuickSight, or Active Directory) permissions to Data Catalog resources (databases and tables) or data lake locations in Amazon S3.
+3. Choose **Databases**.
+4. Select the circle next to the database you want to grant access to your QuickSight user.
+5. From the **Actions** drop-down menu, choose **Grant**.
+6. Select **SAML users and groups** and enter the QuickSight user ARN.
+7. Then click into **Named data catalog resources**
+8. Under Tables, open the drop-down menu and select All tables or selectively choose individual tables to permission access to. 
+9. For **Table permissions**, choose **Select** and **Describe**.
+10. Then click **Grant**.
+11. Repeat the preceding steps to grant multiple database permissions to your QuickSight user ARN or other users and groups.
+
 
 === Query & Visualize Your First AMC Use Case 
 In this section, you'll step through how to build and analyze a visualization for the Time to Conversion use case.
@@ -131,8 +167,10 @@ This section provides details on how to create a visualization for the Time to C
   b. Then in the Filters pane, choose the **+** in the top right corner.
   c. Select **advertiser**, then repeat for **campaign** and **file_last_modified**
 
+For further information on customizing visualizations checkout: https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html
 
 image::../images/quicksight-time-to-conversion.png[QuickSightTimeToConversion]
+Figure 6. Verical Bar Chart visual in Amazon QuickSight for the Purchases by Time to Conversion AMC use case
 
 
 
