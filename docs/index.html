@@ -836,25 +836,24 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_technical_requirements">Technical requirements</a></li>
 </ul>
 </li>
-<li><a href="#_deployment_steps">Deployment steps</a>
+<li><a href="#_deployment_steps">Deployment steps</a></li>
+<li><a href="#_prerequisites_for_the_deployment">Prerequisites for the Deployment</a>
 <ul class="sectlevel2">
-<li><a href="#_confirm_your_aws_account_configuration">Confirm your AWS account configuration</a></li>
-<li><a href="#_prerequisites_for_the_deployment">Prerequisites for the Deployment</a></li>
-<li><a href="#_initial_setup_with_the_ddk_cli">Initial setup with the DDK CLI</a></li>
+<li><a href="#_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</a></li>
 <li><a href="#_deploying_the_foundational_infrastructure">Deploying the Foundational Infrastructure</a></li>
 <li><a href="#_enable_default_lake_formation_permissions">Enable Default Lake Formation Permissions</a></li>
 </ul>
 </li>
-<li><a href="#_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</a></li>
+<li><a href="#_codepipeline_steps">CodePipeline Steps</a></li>
 <li><a href="#_hydrating_the_data_lake_with_sagemaker_notebooks">Hydrating the Data Lake with SageMaker Notebooks</a></li>
-<li><a href="#_test_the_deployment">Test the deployment</a></li>
-<li><a href="#_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</a>
+<li><a href="#_building_your_first_quicksight_dashboard">Building Your First QuickSight Dashboard</a>
 <ul class="sectlevel2">
 <li><a href="#_initial_quicksight_setup">Initial QuickSight Setup</a></li>
 <li><a href="#_authorize_your_quicksight_connection">Authorize Your QuickSight Connection</a></li>
 <li><a href="#_query_visualize_your_first_amc_use_case">Query &amp; Visualize Your First AMC Use Case</a></li>
 </ul>
 </li>
+<li><a href="#_cleaning_up_the_amc_analytics">Cleaning Up the AMC Analytics</a></li>
 <li><a href="#_faq">FAQ</a></li>
 <li><a href="#_customer_responsibility">Customer responsibility</a></li>
 <li><a href="#_parameter_reference">Parameter reference</a></li>
@@ -1043,12 +1042,7 @@ After you deploy the Quick Start, create <a href="https://docs.aws.amazon.com/aw
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Deploying this Quick Start for a new virtual private cloud (VPC) with
-default parameters builds the following AMC Analytics environment in the
-AWS Cloud.</p>
-</div>
-<div id="architecture1" class="imageblock">
+<td class="tableblock halign-left valign-top"><div class="content"><div id="architecture1" class="imageblock">
 <div class="content">
 <img src="images/architecture_diagram.png" alt="Architecture">
 </div>
@@ -1188,68 +1182,31 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="preview_mode">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource</th>
+<th class="tableblock halign-left valign-top">This deployment uses</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Resource</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon Simple Storage Service (S3) buckets</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS KMS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon DynamoDB</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Lambda</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon SNS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon SQS</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Systems Manager</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Glue Jobs</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Lake Formation</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Glue Catalog</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS CloudFormation Stacks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CodePipeline - Concurrently running builds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AWS Identity and Access Management (IAM) roles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon CloudWatch Log Group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 Buckets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS CodeCommit Repository</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS CodePipeline Pipeline</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AWS CodeBuild Projects</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon Athena</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon SageMaker Notebook</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon QuickSight (<a href="../docs/AMC_Analytics_Delivery_Kit-Quicksight_Instructions.pdf" target="_blank" rel="noopener">dashboard setup guide available</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SQS Queues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 </tbody>
 </table>
@@ -1313,11 +1270,13 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
-<thead>
+<tbody>
 <tr>
-<th class="tableblock halign-left valign-top"></th>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>No additional preparation required.</p>
+</div></div></td>
 </tr>
-</thead>
+</tbody>
 </table>
 </div>
 </div>
@@ -1330,27 +1289,30 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/deploy_steps.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
-<div class="sect2">
-<h3 id="_confirm_your_aws_account_configuration">Confirm your AWS account configuration</h3>
+<div class="paragraph">
+<p>Follow each of the AMC Analytics Deployment Steps:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Sign in to your AWS account at <a href="https://aws.amazon.com" target="_blank" rel="noopener">https://aws.amazon.com</a> with an IAM user role that has the necessary permissions. For more information, see <a href="#_planning_the_deployment">Planning the deployment</a>, earlier in this guide.</p>
+<p>Setup Prerequisites</p>
 </li>
 <li>
-<p>Ensure that your AWS account is configured correctly, as discussed in the <a href="#_technical_requirements">Technical requirements</a> section.</p>
+<p>Deploying the Foundational Infrastructure</p>
+</li>
+<li>
+<p>Initial setup with the DDK CLI</p>
+</li>
+<li>
+<p>Lake Formation Permissions</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>Each deployment takes about 1.5 hours to complete.</p>
-</div>
-<div class="paragraph">
-<p>Check the AWS Region that&#8217;s displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the infrastructure. The template is launched in the us-east-1 Region by default. For more information, see <a href="#_supported_aws_regions">Supported AWS Regions</a>, earlier in this guide.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_prerequisites_for_the_deployment">Prerequisites for the Deployment</h3>
+<div class="sect1">
+<h2 id="_prerequisites_for_the_deployment">Prerequisites for the Deployment</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>To complete this deployment, you&#8217;ll need the following in your local environment</p>
 </div>
@@ -1405,8 +1367,8 @@ $ git config --global user.email "YOU@EMAIL.COM"</code></pre>
 <pre class="highlight"><code>$ git config --list</code></pre>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</h4>
+<div class="sect2">
+<h3 id="_optional_using_aws_cloud9_for_deployment">[OPTIONAL] Using AWS Cloud9 for Deployment</h3>
 <div class="paragraph">
 <p>If you would like to deploy this quickstart using an AWS Cloud9 Environment rather than on your local environment, follow these steps to set up AWS Cloud9:</p>
 </div>
@@ -1449,12 +1411,12 @@ Python (version 3.7 or above)
 pip (version 9.0.3 or above)
 AWS CDK CLI (version 2.10 and above)</p>
 </div>
+<div class="paragraph">
+<p>Deploying the Foundational Infrastructure
+=== Initial setup with the DDK CLI</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_initial_setup_with_the_ddk_cli">Initial setup with the DDK CLI</h3>
 <div class="sect3">
-<h4 id="_clone_the_repository_for_amc_quickstart">Clone the repository for AMC QuickStart</h4>
+<h4 id="_clone_the_repository_for_amc_analytics">Clone the repository for AMC Analytics</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ git clone GITHUB-PATH
@@ -1642,7 +1604,7 @@ $ git push --set-upstream origin main</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amc_quickstart_codepipeline_steps">AMC Quickstart CodePipeline Steps</h2>
+<h2 id="_codepipeline_steps">CodePipeline Steps</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -1774,22 +1736,7 @@ $ git push --set-upstream origin main</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_test_the_deployment">Test the deployment</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Monitor the <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1">AWS CloudFormation</a>, <a href="https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1">AWS CodeBuild</a> and <a href="https://console.aws.amazon.com/codesuite/codepipeline/pipelines?region=us-east-1">AWS CodePipeline</a> in us-east-1 region and should not have any errors or failures. It will take approximate 90 minutes.</p>
-</li>
-<li>
-<p>Once finished go to <a href="https://console.aws.amazon.com/athena/home?region=us-east-1">Amazon Athena</a> <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html">switch the role</a> on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_building_your_first_quicksight_dashboard_with_reports_from_amc">Building Your First QuickSight Dashboard with Reports from AMC</h2>
+<h2 id="_building_your_first_quicksight_dashboard">Building Your First QuickSight Dashboard</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following section walks you through how to build a QuickSight dashboard with a report from Amazon Marketing Cloud (AMC). With AMC enabling advertisers to query event level data within a privacy friendly environment and Amazon QuickSight offering users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data - you can begin to build out a business intelligence strategy.</p>
@@ -2156,12 +2103,60 @@ $ git push --set-upstream origin main</code></pre>
 <div class="paragraph">
 <p>For further information on customizing visualizations checkout: <a href="https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html" class="bare">https://docs.aws.amazon.com/quicksight/latest/user/working-with-visuals.html</a></p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cleaning_up_the_amc_analytics">Cleaning Up the AMC Analytics</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the solution has been deployed and tested, use the following command to clean up the resources deployed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ make delete_all</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>NOTE:</em> Before running this command, look into the <code>Makefile</code> and ensure that:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>delete_repositories</code> function is passing the correct <code>-d AMC_QUICKSTART_REPO_NAME</code> (default: <code>ddk-amc-quickstart</code>)</p>
+</li>
+<li>
+<p>The <code>delete_bootstrap</code> function is passing the correct <code>--stack-name BOOTSTRAP_STACK_NAME</code> (default: <code>DdkDevBootstrap</code>)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This command will go through the following sequence of steps in order to clean up your AWS account environment:</p>
+</div>
+<div class="paragraph">
+<p>![Alt](docs/images/AMC-Quickstart-Delete.png)</p>
+</div>
+<div class="paragraph">
+<p>Some CloudWatch General Log Groups May Remain in your Account with Logs specific to AMC Quickstart resources, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>/aws/sagemaker/NotebookInstances</p>
+</li>
+<li>
+<p>/aws-glue/jobs/error</p>
+</li>
+<li>
+<p>/aws-glue/jobs/output</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em><strong>This portion of the deployment guide is located at <code>docs/partner_editable/faq_troubleshooting.adoc</code></strong></em></p>
 </div>
 <div class="preview_mode">
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">

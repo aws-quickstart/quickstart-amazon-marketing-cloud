@@ -1,33 +1,13 @@
-=== Confirm your AWS account configuration
-
-. Sign in to your AWS account at https://aws.amazon.com[https://aws.amazon.com^] with an IAM user role that has the necessary permissions. For more information, see link:#_planning_the_deployment[Planning the deployment], earlier in this guide.
-. Ensure that your AWS account is configured correctly, as discussed in the link:#_technical_requirements[Technical requirements] section.
-
-// Optional based on Marketplace listing. Not to be edited
-ifdef::marketplace_subscription[]
-=== Subscribe to the {partner-product-short-name} AMI
-
-This Quick Start requires a subscription to the AMI for {partner-product-short-name} in AWS Marketplace.
-
-. Sign in to your AWS account.
-. Open the page for the {marketplace_listing_url}[{partner-product-short-name} AMI in AWS Marketplace^], and then choose *Continue to Subscribe*.
-. Review the terms and conditions for software usage, and then choose *Accept Terms*. +
-  A confirmation page loads, and an email confirmation is sent to the account owner. For detailed subscription instructions, see the https://aws.amazon.com/marketplace/help/200799470[AWS Marketplace documentation^].
-
-. When the subscription process is complete, exit out of AWS Marketplace without further action. *Do not* provision the software from AWS Marketplace—the Quick Start deploys the AMI for you.
-endif::marketplace_subscription[]
-// \Not to be edited
 
 
-// Adapt the following warning to your Quick Start.
-//WARNING: If you deploy {partner-product-short-name} into an existing VPC, ensure that your VPC has two private subnets in different Availability Zones for the workload instances and that the subnets are not shared. This Quick Start does not support https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html[shared subnets^]. The subnets require https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html[NAT gateways^] in their route tables to allow the instances to download packages and software without exposing the instances to the internet. Also ensure that the domain name in the DHCP options is configured, as explained in http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html[DHCP options sets^]. Provide your VPC settings when you launch the Quick Start.
+Follow each of the {partner-product-short-name} Deployment Steps:
 
-Each deployment takes about {deployment_time} to complete.
+. Setup Prerequisites
+. Deploying the Foundational Infrastructure
+. Initial setup with the DDK CLI
+. Lake Formation Permissions
 
-Check the AWS Region that's displayed in the upper-right corner of the navigation bar, and change it if necessary. This Region is where you build the infrastructure. The template is launched in the {default_deployment_region} Region by default. For more information, see link:#_supported_aws_regions[Supported AWS Regions], earlier in this guide.
-
-
-=== Prerequisites for the Deployment
+== Prerequisites for the Deployment
 
 To complete this deployment, you'll need the following in your local environment
 
@@ -72,7 +52,7 @@ $ git config --list
 
 
 
-#### [OPTIONAL] Using AWS Cloud9 for Deployment
+=== [OPTIONAL] Using AWS Cloud9 for Deployment
 
 If you would like to deploy this quickstart using an AWS Cloud9 Environment rather than on your local environment, follow these steps to set up AWS Cloud9:
 
@@ -101,10 +81,10 @@ pip (version 9.0.3 or above)
 AWS CDK CLI (version 2.10 and above)
 
 
-
+Deploying the Foundational Infrastructure
 === Initial setup with the DDK CLI
 
-#### Clone the repository for AMC QuickStart
+#### Clone the repository for {partner-product-short-name}
 
 ```
 $ git clone GITHUB-PATH
@@ -227,7 +207,8 @@ In order to query the data in Athena, we highly recommend you enable default Lak
 You have enabled Lake Formation permissions and given your IAM Role permissions to access all tables in your Glue Database. You are now able to access the data returned from your workflow execution using Amazon Athena once the data is uploaded and processed in the data lake.
 
 
-== AMC Quickstart CodePipeline Steps
+
+== CodePipeline Steps
 
 image::../images/AMC-Quickstart-CodePipeline-Steps.png[AMC Quickstart CodePipeline Steps]
 
@@ -268,3 +249,5 @@ _Create Workflows:_ To initialize the creation, scheduling and execution of AMC 
 - Send execution requests to an SQS queue rather than directly to the AMC endpoint to prevents timeout failures when there are large number of requests in a short period of time
 - Scheduled with dynamic relative time windows rather than using AMC's scheduling feature which only allows predefined scheduled reporting such as Daily or Weekly
 - Track the status of all workflow executions for customer AMC instances whether they are submitted through WFM or other means (postman, etc.). Having the status synced to DynamoDB allows events to be triggered or notifications to be sent when executions change state. This table can also be used to track historical executions for troubleshooting or performance monitoring.
+
+

@@ -1,5 +1,8 @@
 // Edit this placeholder text to accurately describe your architecture.
 
+
 This Quick Start provides one deployment option:
+
+
 
 * *AWS CDK deployment*. Use https://aws.amazon.com/cdk/[AWS CDK^] to deploy {partner-product-short-name}. 

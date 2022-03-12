@@ -1,14 +1,12 @@
 // If no preparation is required, remove this content.
 
-//==== Prepare your AWS account
-
-//Verify that your AWS account has the permissions required to create the resources listed in the link:#_resource_quotas[Resource quotas] section of this guide.
-
-
-//==== Prepare your {partner-company-name} account
+//=== Prepare your {partner-company-name} account
 
 //Setup aws profile to access aws account from local system. Preferably admin access or using a role which has admin access.
 
 //==== Prepare for the deployment
 
 // Describe any preparation required to complete the product build, such as obtaining licenses or placing files in S3.
+
+
+No additional preparation required.
