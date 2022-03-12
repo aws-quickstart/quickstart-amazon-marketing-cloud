@@ -1,12 +1,14 @@
 // Add steps as necessary for accessing the software, post-configuration, and testing. Don’t include full usage instructions for your software, but add links to your product documentation for that information.
 //Should any sections not be applicable, remove them
 
-== Test the deployment
+
+
+//== Test the deployment
 // If steps are required to test the deployment, add them here. If not, remove the heading
-* Monitor the link:https://console.aws.amazon.com/cloudformation/home?region=us-east-1[AWS CloudFormation], link:https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1[AWS CodeBuild] and link:https://console.aws.amazon.com/codesuite/codepipeline/pipelines?region=us-east-1[AWS CodePipeline] in us-east-1 region and should not have any errors or failures. It will take approximate 90 minutes.
+//* Monitor the link:https://console.aws.amazon.com/cloudformation/home?region=us-east-1[AWS CloudFormation], link:https://console.aws.amazon.com/codesuite/codebuild/projects?region=us-east-1[AWS CodeBuild] and link:https://console.aws.amazon.com/codesuite/codepipeline/pipelines?region=us-east-1[AWS CodePipeline] in us-east-1 region and should not have any errors or failures. It will take approximate 90 minutes.
 
 
-* Once finished go to link:https://console.aws.amazon.com/athena/home?region=us-east-1[Amazon Athena] link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html[switch the role] on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.
+//* Once finished go to link:https://console.aws.amazon.com/athena/home?region=us-east-1[Amazon Athena] link:https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html[switch the role] on the top right to @-saw-datalake-users-, Ex. - @demoteam-saw-datalake-users-us-east-1. If using the default settings of the module, put the Account Id the same as the AWS Account Id being used. The Role name should be @demoteam-saw-datalake-users-us-east-1. Switch Amazon Athena workgroup to ---workgroup, EX - demoteam-demodl-dev-workgroup.
 
 ////
 * Run the below queries to explore the sample AMC datasets
@@ -43,7 +45,7 @@ For more detailed configuration steps of the QuickSight dashboards, review the d
 ** This dashboard provides performance data of users exposed to both sponsored products (SP) and display campaigns (DSP) and KPIs surrounding them.
 ////
 
-== Building Your First QuickSight Dashboard with Reports from AMC
+== Building Your First QuickSight Dashboard
 The following section walks you through how to build a QuickSight dashboard with a report from Amazon Marketing Cloud (AMC). With AMC enabling advertisers to query event level data within a privacy friendly environment and Amazon QuickSight offering users a cloud-powered business analytics service to build visualizations, perform ad-hoc analysis, and quickly get business insights from their data - you can begin to build out a business intelligence strategy. 
 
 Advertisers can use QuickSight to analyze reports from AMC to identify valuable insights and then scheduling, publishing dashboards to provide marketing insights in one central location. Custom-built dashboards can pull from a series of custom workflows built on a scheduled cadence. 
@@ -189,3 +191,28 @@ For further information on customizing visualizations checkout: https://docs.aws
 //Provide any other information of interest to users, especially focusing on areas where AWS or cloud usage differs from on-premises usage.
 
 //_Add any other details that will help the customer use the software on AWS._
+
+
+== Cleaning Up the {partner-product-short-name}
+
+Once the solution has been deployed and tested, use the following command to clean up the resources deployed:
+
+```
+$ make delete_all
+```
+
+_NOTE:_ Before running this command, look into the `Makefile` and ensure that:
+
+1.  The `delete_repositories` function is passing the correct `-d AMC_QUICKSTART_REPO_NAME` (default: `ddk-amc-quickstart`)
+
+2.  The `delete_bootstrap` function is passing the correct `--stack-name BOOTSTRAP_STACK_NAME` (default: `DdkDevBootstrap`)
+
+This command will go through the following sequence of steps in order to clean up your AWS account environment:
+
+![Alt](docs/images/AMC-Quickstart-Delete.png)
+
+Some CloudWatch General Log Groups May Remain in your Account with Logs specific to AMC Quickstart resources, including:
+
+- /aws/sagemaker/NotebookInstances
+- /aws-glue/jobs/error
+- /aws-glue/jobs/output
