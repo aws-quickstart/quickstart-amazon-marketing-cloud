@@ -74,55 +74,61 @@ Continue to the [Initial setup with the DDK CLI](#Initial-setup-with-the-DDK-CLI
 
 ## Initial setup with the DDK CLI
 
-Clone the repository for AMC QuickStart
+Clone the repository for AMC QuickStart and remove existing git version control:
 
 ```
-$ git clone GITHUB-PATH
-$ cd amc_quickstart
+git clone GITHUB-PATH
+
+cd quickstart-amazon-marketing-cloud
+
+rm -rf .git
 ```
 
 Install AWS DDK CLI, a command line interface to manage your DDK apps
 
 ```
-$ pip install aws-ddk
+pip install aws-ddk
 ```
 
 To verify the installation, run:
 
 ```
-$ ddk --help
+ddk --help
 ```
 
 Create and actitavte a virtualenv
 
 ```
-$ python -m venv .venv && source .venv/bin/activate
+python -m venv .venv && source .venv/bin/activate
 ```
 
 Install the dependencies from requirements.txt
 This is when the AWS DDK Core library is installed
 
 ```
-$ pip install -r requirements.txt --no-cache-dir
+pip install -r requirements.txt --no-cache-dir
 ```
 
 If your AWS account hasn't been used to deploy DDK apps before, then you need to bootstrap your environment:
 
 ```
-$ ddk bootstrap --help
-$ ddk bootstrap --profile [AWS_PROFILE] --trusted-accounts [AWS_ACCOUNT_ID]
+ddk bootstrap --help
+ddk bootstrap --profile [AWS_PROFILE] --trusted-accounts [AWS_ACCOUNT_ID]
 ```
+_NOTE: THE default profile if none specified is `default` and the default trust-accounts if none specified is the account that is being bootstrap. Use the `ddk bootstrap --help` command for more information._
 
-You might recognize a number of files typically found in a CDK Python application (e.g. app.py, cdk.json...). In addition, a file named ddk.json holding configuration about DDK specific constructs is present. Edit the DDK file with right account id, the name of the CodeCommit repository to reference (you will create this repository at a later step)and other data lake parameters (i.e. app, org, team, dataset, and pipeline names).
+You might recognize a number of files typically found in a CDK Python application (e.g. app.py, cdk.json...). In addition, a file named ddk.json holding configuration about DDK specific constructs is present. 
 
-```
-$ Edit ddk.json
-```
+Edit the DDK file with the following:
+- The account id for the CICD and Child Account (will be the same if deploying in a single account) 
+- The name of the CodeCommit repository to reference (you will create this repository at a later step)
+- Other data lake parameters (i.e. app, org, team, dataset, and pipeline names).
+
 
 Initialise git for the repository
 
 ```
-$ git init --initial-branch main
+git init --initial-branch main
 ```
 
 Execute the create repository command to create a new codecommit repository
@@ -130,15 +136,15 @@ Execute the create repository command to create a new codecommit repository
 _(Make Sure the AMC_QUICKSTART_REPO_NAME matches the `repository` name value in the `ddk.json` configuration file before executing)_
 
 ```
-$ ddk create-repository AMC_QUICKSTART_REPO_NAME --profile [AWS_PROFILE] --region [AWS_REGION]
+ddk create-repository [AMC_QUICKSTART_REPO_NAME] --profile [AWS_PROFILE] --region [AWS_REGION]
 ```
 
 Add and push the initial commit to the repository
 
 ```
-$ git add .
-$ git commit -m "Configure AMC QUICKSTART"
-$ git push --set-upstream origin main
+git add .
+git commit -m "Configure AMC QUICKSTART"
+git push --set-upstream origin main
 ```
 
 #
@@ -148,7 +154,7 @@ $ git push --set-upstream origin main
 Once the above steps are performed, run the deploy command to deploy the quickstart
 
 ```
-$ ddk deploy --profile [AWS_PROFILE]
+ddk deploy --profile [AWS_PROFILE]
 ```
 
 The deploy all step deploys an AWS CodePipeline along with its respective AWS CloudFormation Stacks. The last stage of each pipeline delivers the AMC Quickstart infrastructure respectively in the child (default dev) environment through CloudFormation.
