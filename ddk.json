@@ -24,10 +24,7 @@
         "amc-stage-bucket": { "versioned": false },
         "amc-analytics-bucket": { "versioned": false },
         "amc-artifacts-bucket": { "versioned": false },
-        "amc-athena-bucket": { "versioned": false },
-        "codepipelinePipelineArtifactsBucketEncryptionKey3A0FD228": {
-          "enable_key_rotation": true
-        }
+        "amc-athena-bucket": { "versioned": false }
       }
     }
   }
